@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/001-servlet/nbproject/private/
+/001-servlet/target/
+/002-jsp-jsf/nbproject/private/
+/002-jsp/target/
