@@ -6,8 +6,22 @@
     <artifactId>001-servlet</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <description>Exemples de Servlets simples</description>
 
     <name>001-servlet</name>
+    
+    <organization>
+        <name>Davidson Consulting</name>
+        <url>http://www.davidson.fr/</url>
+    </organization>
+    <licenses>
+  <license>
+    <name>Apache License, Version 2.0</name>
+    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    <distribution>repo</distribution>
+    <comments>A business-friendly OSS license</comments>
+  </license>
+</licenses>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
