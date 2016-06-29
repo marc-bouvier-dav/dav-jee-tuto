@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.davidson.sample.jee</groupId>
-    <artifactId>001-servlet</artifactId>
+    <artifactId>003-jsf</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <description>Exemples de Servlets simples</description>
 
-    <name>001-servlet</name>
+    <name>003-jsf</name>
     
+    <description>Exemples d'utilisation de pages JSF</description>
     <organization>
         <name>Davidson Consulting</name>
         <url>http://www.davidson.fr/</url>
@@ -42,16 +42,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.7</version>
-        </dependency>
-        <!--        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>
-        </dependency>-->
     </dependencies>
 
     <build>
