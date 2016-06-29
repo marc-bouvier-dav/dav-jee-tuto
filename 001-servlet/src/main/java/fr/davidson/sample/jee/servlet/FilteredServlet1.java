@@ -35,7 +35,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author osboxes
+ * @author Marc Bouvier
  */
 public class FilteredServlet1 extends HttpServlet {
 
@@ -56,10 +56,16 @@ public class FilteredServlet1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FilteredServlet</title>");            
+            out.println("<title>Servlet FilteredServlet</title>");  
+            out.println("<link rel='stylesheet' type='text/css' href='"+request.getContextPath() +"/public/css/style.css'/>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FilteredServlet at " + request.getContextPath() + "</h1>");
+            out.println("<p>Les filtres permettent de manipuler les requetes / reponses de servlet avant ou après leur priuse en compte. Les filtres peuvent être enchainés.</p>");
+            out.println("<p>Ils peuvent être utilisés par exemple pour gérer la sécurité, transformer des requêtes, dispatcher des requêtes vers d'autres servlets ou pages...</p>");
+            out.println("<p>Cette servlet est filtrée par le filtre 'LogFilter', ainsi, les valeurs des paramètres aparaissent dans la console du serveur</p>");
+            out.println("<p>La servlet 'Servlet1' n'estpas filtrée par 'LogFilter', les paramètres n'apparaissent pas dans la console dans le cas de l'utilisation de cette dernière.</p>");
+            out.println("<p><a href='" + request.getContextPath() + "'>Retour</a></p>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -28,6 +28,7 @@ package fr.davidson.sample.jee.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author osboxes
+ * @author Marc Bouvier
  */
 public class Servlet1 extends HttpServlet {
 
@@ -56,12 +57,22 @@ public class Servlet1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet1</title>");            
+            out.println("<title>Servlet Servlet1</title>"); 
+            out.println("<link rel='stylesheet' type='text/css' href='"+request.getContextPath() +"/public/css/style.css'/>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Servlet1 at " + request.getContextPath() + "</h1>");
-            out.println("<h2>Method = " + method + "</h2>");
-            out.println("<form method='POST' action='"+request.getRequestURI()+"'><input type='submit'/></form>");
+            out.println("<p>Cet exemple permet de montrer le fonctionnement basique d'une servlet retournant une page html.</p>");
+            out.println("<p>Le code de cet exemple se trouve dans la classe Serlvet1.java</p>");
+            out.println("<p>Cette servlet est configurée dans le descripteur de déploiement (WEB-INF/web.xml) et est mappée sur l'url /Servlet1</p>");
+            out.println("<p>Il est possible dans la servlet de prendre en compte les requêtes en method GET ou POST de façon distincte (en général les 2 méthodes sont prises en compte de la même façon)</p>");
+            out.println("<p class='code'>Method = " + method + "<br/>");
+            for(Map.Entry<String, String[]> entrySet : request.getParameterMap().entrySet()){
+            out.println(entrySet.getKey()+ " : "+entrySet.getValue()[0]+"<br/>");    
+            }
+            out.println("<form method='POST' action='"+request.getRequestURI()+"'><label for='paramPOST'>Param Post</label><input id='paramPOST' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (POST)'/></form>");
+            out.println("<form method='GET' action='"+request.getRequestURI()+"'><label for='paramGET'>Param Get</label><input id='paramGET' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (GET)'/></form>");
+            out.println("<p><a href='" + request.getContextPath() + "'>Retour</a></p>");
             out.println("</body>");
             out.println("</html>");
         }

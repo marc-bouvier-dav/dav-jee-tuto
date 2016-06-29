@@ -50,7 +50,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author osboxes
+ * @author Marc Bouvier
  */
 public class LogFilter implements Filter {
     

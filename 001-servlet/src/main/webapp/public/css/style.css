@@ -1,0 +1,97 @@
+/*
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org>
+*/
+/* 
+    Created on : 29-Jun-2016, 20:23:04
+    Author     : Marc Bouvier
+*/
+
+body{
+    background-color: #181818;
+    background-image: url(../img/davidson_txt_161x17_padding_5px.png);
+    background-repeat: no-repeat;
+
+    color : #a5a4a4;
+    padding: 10px;
+    margin : 10px;
+}
+body,a{
+    font-family: monospace;
+}
+
+a{
+    color:aquamarine;
+}
+
+a:visited{
+    color:cornflowerblue;    
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: Georgia, Times, serif;
+    color : #f0296b;
+}
+
+ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+li { 
+    padding-left: 1em; 
+    text-indent: -.7em;
+}
+
+li:before {
+    content: "▪ ";
+    color: #f0296b;
+    font-size: 10px;
+    line-height: 20px;
+}
+input{
+    margin-left:4px;
+    margin-right:4px;
+}
+.btn-flat {
+    background-color: #f0296b;
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+}
+
+.code{
+    color:#4c4c4c;
+    background-color: #d3f0d4;
+    border-radius: 5px;
+    padding:5px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
