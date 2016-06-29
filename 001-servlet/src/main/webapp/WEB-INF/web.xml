@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>fr.davidson.sample.jee.filter.LogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <url-pattern>/FilteredServlet1/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>Servlet1</servlet-name>
         <servlet-class>fr.davidson.sample.jee.servlet.Servlet1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilteredServlet1</servlet-name>
+        <servlet-class>fr.davidson.sample.jee.servlet.FilteredServlet1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilteredServlet1</servlet-name>
+        <url-pattern>/FilteredServlet1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

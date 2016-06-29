@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author osboxes
  */
-public class Servlet1 extends HttpServlet {
+public class FilteredServlet1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,7 +48,7 @@ public class Servlet1 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response,String method)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -56,18 +56,16 @@ public class Servlet1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet1</title>");            
+            out.println("<title>Servlet FilteredServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Servlet1 at " + request.getContextPath() + "</h1>");
-            out.println("<h2>Method = " + method + "</h2>");
-            out.println("<form method='POST' action='"+request.getRequestURI()+"'><input type='submit'/></form>");
+            out.println("<h1>Servlet FilteredServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -79,7 +77,7 @@ public class Servlet1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response,"GET");
+        processRequest(request, response);
     }
 
     /**
@@ -93,7 +91,7 @@ public class Servlet1 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response,"POST");
+        processRequest(request, response);
     }
 
     /**
