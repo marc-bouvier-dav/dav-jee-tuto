@@ -1,4 +1,3 @@
-Reference-style: 
 ![alt text][logo]
 
 Projets d'exemples Java EE
