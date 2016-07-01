@@ -8,4 +8,4 @@ Projets d'exemples Java EE
  * [003-jsf](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/tree/master/003-jsf)
 
 
-[logo]: https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/LOGO_seul-261x300.jpg "Davidson Consulting"
+[logo]: https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/dav_logo_small.png "Davidson Consulting"
