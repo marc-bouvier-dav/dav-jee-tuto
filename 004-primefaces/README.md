@@ -1,4 +1,3 @@
-![alt text](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/dav_logo_small.png "Davidson Consulting")
 [![alt text](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
 Exemples d'utilisation de Primefaces (javaee6)
 ==================================
