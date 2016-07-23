@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Exemple 2 : utilisation de ui:insert et ui:define</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <div>
+            <h1>Exemple 2 : Utilisation de templates JSF</h1>
+            <p>
+                Exemple de facelet s'appuyant sur un template (<code>template-exemple3.xhtml</code>) pour réutiliser une mise en page.
+            </p>
+            <p>
+                <ui:insert name="sous-titre">
+                    Utilisation des valeurs par défaut décrites dans le template <code>template-exemple3.xhtml</code>
+                </ui:insert>
+            </p>
+        </div>
+        <ui:insert name="en-tete">
+            <div id="en-tete">
+                <h1>Entête par défaut</h1>
+                <p>La partie <code>"entete"</code> du template de cette page (<code>template-exemple3.xhtml</code>) peut être surchargée dans une facelet utilisant le template de la façon suivante :</p>
+                <pre>
+                <code>
+    &lt;ui:define name=&quot;en-tete&quot;&gt;
+        Contenu de l'entête à surcharger.
+    &lt;/ui:define&gt;
+                </code>
+                </pre>
+                <hr/>
+            </div>
+        </ui:insert>
+
+        <ui:insert name="contenu">
+            <div id="contenu">
+                <h1>Contenu par défaut</h1>
+                <p>L'utilisation de templates permet d'éviter de redéfinir à chaque fois certaines caractéristiques d'une page</p>
+                <p>On peut ainsi réutiliser les feuilles de styles et la disposition de certains éléments dans plusieurs pages</p>
+                <p>Cela simplifie l'écriture des facelets de page qui ne contiennent plus que ce qui est spécifiques à celles-ci</p>
+                <p>La partie <code>"contenu"</code> du template de cette page (<code>template-exemple3.xhtml</code>) peut être surchargée dans une facelet utilisant le template de la façon suivante :</p>
+                <pre>
+                <code>
+    &lt;ui:define name=&quot;contenu&quot;&gt;
+        Contenu principal à surcharger.
+    &lt;/ui:define&gt;
+                </code>
+                </pre>
+                <hr/>
+            </div>
+        </ui:insert>
+        <ui:insert name="pied-page">
+            <div id="pied-page">
+                <h1>Pied de page par défaut</h1>
+                <p>La partie <code>"pied-page"</code> du template de cette page (<code>template-exemple3.xhtml</code>) peut être surchargée dans une facelet utilisant le template de la façon suivante :</p>
+                <pre>
+                <code>
+    &lt;ui:define name=&quot;pied-page&quot;&gt;
+        Contenu du pied de page à surcharger.
+    &lt;/ui:define&gt;
+                </code>
+                </pre>
+                <hr/>
+                <p><h:link value="Retour" outcome="index" /></p>
+                <p>
+                    <!-- Cette taglib génère un lien vers la page exemple2.xhtml -->
+                    <h:link value="Exemple de surcharge des ui:include par ui:define" outcome="exemple3" />
+                </p>
+            </div>
+        </ui:insert>
+    </h:body>
+</html>
+

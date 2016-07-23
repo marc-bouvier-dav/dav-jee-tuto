@@ -24,18 +24,22 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org>
 */
+@charset "UTF-8";
 /* 
     Created on : 29-Jun-2016, 20:23:04
     Author     : Marc Bouvier
 */
-
+/* JSF permet de référencer des resources relatives à l'application en utilisant EL'*/
 body{
     background-color: #181818;
-    background-image: url(../images/davidson_txt_161x17_padding_5px.png);
+    background-image: url("#{resource['images/davidson_txt_161x17_padding_5px.png']}");
     background-repeat: no-repeat;
 
     color : #a5a4a4;
-    padding: 10px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     margin : 10px;
 }
 body,a{
@@ -88,10 +92,13 @@ input{
     
 }
 
-.code{
+code , .code{
     color:#4c4c4c;
     background-color: #d3f0d4;
     border-radius: 5px;
     padding:5px;
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+pre code {
+    display: block;
 }

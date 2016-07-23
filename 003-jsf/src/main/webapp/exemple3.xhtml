@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:ui="http://java.sun.com/jsf/facelets">  
+    <h:body>
+        <ui:composition template="templates/template-exemple3.xhtml">
+            <ui:define name="sous-titre">
+                <!-- Remarque au passage, l'ordre d'apparition des ui:define n'a
+                aucune importance vu qu'il est décrit dans le template-->
+                Surcharge des valeurs par défaut décrites par <code>ui:include</code> dans 
+                le template <code>template-exemlple2.xhtml</code> en utilisant <code>ui:define</code>
+            </ui:define>
+                
+            <ui:define name="en-tete">
+                <h1>Entete</h1>
+                <p>Entête par défaut (décrite dans <code>"template-exemple3.xhtml"</code>) surchargée.</p>
+            </ui:define>
+            <ui:define name="contenu">
+                <h1>Contenu</h1>
+                <p>Entête par défaut(décrite dans <code>"template-exemple3.xhtml"</code>) surchargée.</p>
+            </ui:define>
+            <ui:define name="pied-page">
+                <h1>Pied de page</h1>
+                <p>Entête par défaut(décrite dans <code>"template-exemple3.xhtml"</code>) surchargée.</p>
+                <p><h:link value="Retour" outcome="index" /></p>
+                <p><h:link value="Exemple d'utilisation des ui:include par défaut" outcome="exemple3-default" /></p>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>  

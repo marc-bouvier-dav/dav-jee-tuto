@@ -18,7 +18,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>6.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -26,8 +26,9 @@
             <artifactId>primefaces</artifactId>
             <version>6.0</version>
         </dependency>
+        <!-- Dépendance permettant d'utiliser le thème mint-choc de primefaces -->
+        <!-- Ce thème est déclaré dans web.xml -->
         <dependency>
-            
             <groupId>org.primefaces.themes</groupId>
             <artifactId>mint-choc</artifactId>
             <version>1.0.10</version>
@@ -74,7 +75,7 @@
                                 <artifactItem>
                                     <groupId>javax</groupId>
                                     <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
+                                    <version>6.0</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>

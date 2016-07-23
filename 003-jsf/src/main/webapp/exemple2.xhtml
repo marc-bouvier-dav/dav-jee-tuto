@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"    >
     <h:head>
         <title>Facelet et managed bean</title>
-        <link  rel="stylesheet" type="text/css"  href="#{request.contextPath}/public/css/style.css"/>
+        <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body>
         <h1>Facelet et managed bean</h1>
@@ -15,7 +15,7 @@
             </h:outputText>
         </p>
         <p>
-        <a href="#{request.contextPath}">Retour</a>
+            <h:link value="Retour" outcome="index"/>
         </p>
     </h:body>
 </html>
