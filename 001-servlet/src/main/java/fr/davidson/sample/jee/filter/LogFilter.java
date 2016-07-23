@@ -49,64 +49,58 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Filtre qui, lorsqu'il est appliqué à une servlet, inscrit des informations
+ * relatives à la requête dans le journal d'exécution de l'application.
  *
  * @author Marc Bouvier
  */
 public class LogFilter implements Filter {
-    
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(LogFilter.class);
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-    
+
     public LogFilter() {
-    }    
-    
+    }
+
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void doBeforeProcessing(RequestWrapper request, ResponseWrapper response)
             throws IOException, ServletException {
-        
-            LOGGER.debug("LogFilter:DoBeforeProcessing");
-        
 
-        // Write code here to process the request and/or response before
-        // the rest of the filter chain is invoked.
-        // For example, a filter that implements setParameter() on a request
-        // wrapper could set parameters on the request before passing it on
-        // to the filter chain.
-        /*
-	String [] valsOne = {"val1a", "val1b"};
-	String [] valsTwo = {"val2a", "val2b", "val2c"};
-	request.setParameter("name1", valsOne);
-	request.setParameter("nameTwo", valsTwo);
-         */
-        // For example, a logging filter might log items on the request object,
-        // such as the parameters.
-        
-	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
-	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
-	    int n = values.length;
-	    StringBuffer buf = new StringBuffer();
-	    buf.append(name);
-	    buf.append("=");
-	    for(int i=0; i < n; i++) {
-	        buf.append(values[i]);
-	        if (i < n-1)
-	            buf.append(",");
-	    }
-	  LOGGER.info(buf.toString());
-	}
-         
-    }    
-    
+        LOGGER.debug("LogFilter:DoBeforeProcessing");
+
+        //Journalisation des élements de la requête.
+        for (Enumeration en = request.getParameterNames(); en.hasMoreElements();) {
+            String name = (String) en.nextElement();
+            String values[] = request.getParameterValues(name);
+            int n = values.length;
+            StringBuilder buf = new StringBuilder();
+            buf.append(name);
+            buf.append("=");
+            for (int i = 0; i < n; i++) {
+                buf.append(values[i]);
+                if (i < n - 1) {
+                    buf.append(",");
+                }
+            }
+            LOGGER.info(buf.toString());
+        }
+
+    }
+
     private void doAfterProcessing(RequestWrapper request, ResponseWrapper response)
             throws IOException, ServletException {
-        
-            LOGGER.debug("LogFilter:DoAfterProcessing");
-        
+
+        LOGGER.debug("LogFilter:DoAfterProcessing");
 
         // Write code here to process the request and/or response after
         // the rest of the filter chain is invoked.
@@ -157,10 +151,8 @@ public class LogFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
-        
-            LOGGER.debug("LogFilter:doFilter()");
-        
+
+        LOGGER.debug("LogFilter:doFilter()");
 
         // Create wrappers for the request and response objects.
         // Using these, you can extend the capabilities of the
@@ -172,11 +164,11 @@ public class LogFilter implements Filter {
         // include requests.
         RequestWrapper wrappedRequest = new RequestWrapper((HttpServletRequest) request);
         ResponseWrapper wrappedResponse = new ResponseWrapper((HttpServletResponse) response);
-        
+
         doBeforeProcessing(wrappedRequest, wrappedResponse);
-        
+
         Throwable problem = null;
-        
+
         try {
             chain.doFilter(wrappedRequest, wrappedResponse);
         } catch (Throwable t) {
@@ -186,7 +178,7 @@ public class LogFilter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-        
+
         doAfterProcessing(wrappedRequest, wrappedResponse);
 
         // If there was a problem, we want to rethrow it if it is
@@ -221,18 +213,18 @@ public class LogFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-                       
+
             LOGGER.debug("LogFilter: Initializing filter");
-           
+
         }
     }
 
@@ -248,22 +240,22 @@ public class LogFilter implements Filter {
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
-        
+
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -280,7 +272,7 @@ public class LogFilter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -295,7 +287,6 @@ public class LogFilter implements Filter {
         return stackTrace;
     }
 
-
     /**
      * This request wrapper class extends the support class
      * HttpServletRequestWrapper, which implements all the methods in the
@@ -304,7 +295,7 @@ public class LogFilter implements Filter {
      * access to the wrapped request using the method getRequest()
      */
     class RequestWrapper extends HttpServletRequestWrapper {
-        
+
         public RequestWrapper(HttpServletRequest request) {
             super(request);
         }
@@ -313,12 +304,11 @@ public class LogFilter implements Filter {
         // you must also override the getParameter, getParameterValues, getParameterMap,
         // and getParameterNames methods.
         protected Hashtable localParams = null;
-        
+
         public void setParameter(String name, String[] values) {
-            
-            LOGGER.debug("LogFilter::setParameter({}={}) localParams = {}",name,values,localParams);
-            
-            
+
+            LOGGER.debug("LogFilter::setParameter({}={}) localParams = {}", name, values, localParams);
+
             if (localParams == null) {
                 localParams = new Hashtable();
                 // Copy the parameters from the underlying request.
@@ -332,12 +322,12 @@ public class LogFilter implements Filter {
             }
             localParams.put(name, values);
         }
-        
+
         @Override
         public String getParameter(String name) {
-            
-                LOGGER.debug("LogFilter::getParameter({}) localParams = {}",name,localParams);
-            
+
+            LOGGER.debug("LogFilter::getParameter({}) localParams = {}", name, localParams);
+
             if (localParams == null) {
                 return getRequest().getParameter(name);
             }
@@ -351,34 +341,34 @@ public class LogFilter implements Filter {
             }
             return (val == null ? null : val.toString());
         }
-        
+
         @Override
         public String[] getParameterValues(String name) {
-            
-                LOGGER.debug("LogFilter::getParameterValues({}) localParams = {}" ,name,localParams);
-            
+
+            LOGGER.debug("LogFilter::getParameterValues({}) localParams = {}", name, localParams);
+
             if (localParams == null) {
                 return getRequest().getParameterValues(name);
             }
             return (String[]) localParams.get(name);
         }
-        
+
         @Override
         public Enumeration getParameterNames() {
-            
-                LOGGER.debug("LogFilter::getParameterNames() localParams = {}" , localParams);
-            
+
+            LOGGER.debug("LogFilter::getParameterNames() localParams = {}", localParams);
+
             if (localParams == null) {
                 return getRequest().getParameterNames();
             }
             return localParams.keys();
-        }        
-        
+        }
+
         @Override
         public Map getParameterMap() {
-            
-                LOGGER.debug("LogFilter::getParameterMap() localParams = {}" , localParams);
-            
+
+            LOGGER.debug("LogFilter::getParameterMap() localParams = {}", localParams);
+
             if (localParams == null) {
                 return getRequest().getParameterMap();
             }
@@ -394,9 +384,9 @@ public class LogFilter implements Filter {
      * get access to the wrapped response using the method getResponse()
      */
     class ResponseWrapper extends HttpServletResponseWrapper {
-        
+
         public ResponseWrapper(HttpServletResponse response) {
-            super(response);            
+            super(response);
         }
 
         // You might, for example, wish to know what cookies were set on the response
@@ -423,5 +413,5 @@ public class LogFilter implements Filter {
 	}
          */
     }
-    
+
 }

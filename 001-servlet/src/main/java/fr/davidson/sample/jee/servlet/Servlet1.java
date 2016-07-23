@@ -35,30 +35,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Cette servlet simpliste permet d'afficher une page HTML
+ * <ul>
+ * <li>Elle prend en compte le parametre "paramGET" quand la méthode de la
+ * requête HTTP est GET</li>
+ * <li>Elle prend en compte le parametre "paramPOST" quand la méthode de la
+ * requête HTTP est POST</li>
+ * </ul>
  *
  * @author Marc Bouvier
  */
 public class Servlet1 extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Affiche la page au format HTML.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @param method
+     * @throws ServletException
+     * @throws IOException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response,String method)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String method)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet1</title>"); 
-            out.println("<link rel='stylesheet' type='text/css' href='"+request.getContextPath() +"/public/css/style.css'/>");
+            out.println("<title>Servlet Servlet1</title>");
+            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() + "/public/css/style.css'/>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Servlet1 at " + request.getContextPath() + "</h1>");
@@ -67,54 +74,55 @@ public class Servlet1 extends HttpServlet {
             out.println("<p>Cette servlet est configurée dans le descripteur de déploiement (WEB-INF/web.xml) et est mappée sur l'url /Servlet1</p>");
             out.println("<p>Il est possible dans la servlet de prendre en compte les requêtes en method GET ou POST de façon distincte (en général les 2 méthodes sont prises en compte de la même façon)</p>");
             out.println("<p class='code'>Method = " + method + "<br/>");
-            for(Map.Entry<String, String[]> entrySet : request.getParameterMap().entrySet()){
-            out.println(entrySet.getKey()+ " : "+entrySet.getValue()[0]+"<br/>");    
+            for (Map.Entry<String, String[]> entrySet : request.getParameterMap().entrySet()) {
+                out.println(entrySet.getKey() + " : " + entrySet.getValue()[0] + "<br/>");
             }
-            out.println("<form method='POST' action='"+request.getRequestURI()+"'><label for='paramPOST'>Param Post</label><input id='paramPOST' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (POST)'/></form>");
-            out.println("<form method='GET' action='"+request.getRequestURI()+"'><label for='paramGET'>Param Get</label><input id='paramGET' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (GET)'/></form>");
+            out.println("<form method='POST' action='" + request.getRequestURI() + "'><label for='paramPOST'>Param Post</label><input id='paramPOST' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (POST)'/></form>");
+            out.println("<form method='GET' action='" + request.getRequestURI() + "'><label for='paramGET'>Param Get</label><input id='paramGET' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (GET)'/></form>");
             out.println("<p><a href='" + request.getContextPath() + "'>Retour</a></p>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Prise en compte d'une requête HTTP en GET. (paramètres visibles dans
+     * l'URL.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response,"GET");
+        processRequest(request, response, "GET");
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Prise en compte d'une requête HTTP en POST. (Méthode en général utilisée
+     * lors de la soumission de formulaires.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response,"POST");
+        processRequest(request, response, "POST");
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Description courte de la Servlet.
      *
-     * @return a String containing servlet description
+     * @return
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Servlet simple";
+    }
 
 }

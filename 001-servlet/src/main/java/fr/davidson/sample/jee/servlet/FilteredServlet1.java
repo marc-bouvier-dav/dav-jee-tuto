@@ -26,6 +26,7 @@
  */
 package fr.davidson.sample.jee.servlet;
 
+import fr.davidson.sample.jee.filter.LogFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,19 +35,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Exemple de Servlet dont les requêtes sont filtrées.
+ * <p>
+ * Cette servlet est filtrée par le filtre suivant : {@link LogFilter}
+ * </p>
  *
  * @author Marc Bouvier
  */
 public class FilteredServlet1 extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Affichage de la page en HTML.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -56,8 +60,8 @@ public class FilteredServlet1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FilteredServlet</title>");  
-            out.println("<link rel='stylesheet' type='text/css' href='"+request.getContextPath() +"/public/css/style.css'/>");
+            out.println("<title>Servlet FilteredServlet</title>");
+            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() + "/public/css/style.css'/>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FilteredServlet at " + request.getContextPath() + "</h1>");
@@ -71,14 +75,13 @@ public class FilteredServlet1 extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Prise en compte la requête HTTP en GET.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -87,12 +90,12 @@ public class FilteredServlet1 extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Prise en compte de la requête HTTP en POST.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -101,13 +104,13 @@ public class FilteredServlet1 extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Description courte de la servlet.
      *
-     * @return a String containing servlet description
+     * @return
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Servlet filtrée";
+    }
 
 }
