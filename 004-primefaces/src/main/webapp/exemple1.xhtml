@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>  
+  
+    </h:head>  
+      
+    <h:body>  
+      
+        <p:dataTable var="item" value="#{exemple1ManagedBean.list }">
+            <p:column headerText="Label">
+                <h:outputText value="#{item.label}"  />
+            </p:column>
+            <p:column headerText="Date">
+                <h:outputFormat value="#{item.date}"/>
+            </p:column>
+            <p:column headerText="Entier long">
+                <h:outputText value="#{item.entierLong}"/>
+            </p:column>
+            <p:column headerText="Decimal">
+                <h:outputText value="#{item.decimal}"/>
+            </p:column>
+            
+            
+        </p:dataTable>
+          
+    </h:body>  
+</html>  
