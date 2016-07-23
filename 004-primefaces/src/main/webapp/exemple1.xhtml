@@ -13,6 +13,9 @@
     <h:body>  
         <p:panel>
             <f:facet name="header">Exemple 1 : Tableau dans Primefaces</f:facet>
+            
+            <!-- Ce tableau affiche toutes les lignes de la liste présente dans 
+            le managed bean Exemple1ManagedBean -->
             <p:dataTable var="item" value="#{exemple1ManagedBean.list }">
                 <p:column headerText="Label">
                     <h:outputText value="#{item.label}"  />
@@ -26,10 +29,9 @@
                 <p:column headerText="Decimal">
                     <h:outputText value="#{item.decimal}"/>
                 </p:column>
-
-
             </p:dataTable>
         </p:panel>
+        
         <p><h:link value="Retour" outcome="index" /></p>
     </h:body>  
 </html>  
