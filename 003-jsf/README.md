@@ -1,4 +1,4 @@
-[![alt text](dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
+[![alt text](/dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
 Exemples d'utilisation de pages JSF (javaee6)
 ===================================
 
