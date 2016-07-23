@@ -9,6 +9,27 @@
 
     <name>004-primefaces</name>
 
+    <description>Exemples d'utilisation de Primefaces</description>
+    <organization>
+        <name>Davidson Consulting</name>
+        <url>http://www.davidson.fr/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Unlicense</name>
+            <url>http://unlicense.org/</url>
+            <comments>This is free and unencumbered software released into the public domain.</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <email>marc.bouvier@davidson.fr</email>
+            <name>Marc Bouvier</name>
+            <organization>Davidson Consulting</organization>
+            <organizationUrl>http://www.davidson.fr/</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

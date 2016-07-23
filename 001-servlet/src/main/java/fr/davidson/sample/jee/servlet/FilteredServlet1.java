@@ -40,7 +40,7 @@ import javax.servlet.http.HttpServletResponse;
  * Cette servlet est filtrée par le filtre suivant : {@link LogFilter}
  * </p>
  *
- * @author Marc Bouvier
+ * @author Marc Bouvier Bouvier
  */
 public class FilteredServlet1 extends HttpServlet {
 

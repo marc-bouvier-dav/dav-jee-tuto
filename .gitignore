@@ -51,3 +51,7 @@ Temporary Items
 /002-jsp/target/
 /003-jsf/target/
 /004-primefaces/target/
+/005-spring-mvc/target/
+/005-spring-mvc-jsp/target/
+/005-spring-mvc-jsp (copy)/target/
+/006-spring-mvc-thymeleaf/target/

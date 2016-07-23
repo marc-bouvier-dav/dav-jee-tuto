@@ -43,7 +43,7 @@ import javax.servlet.http.HttpServletResponse;
  * requête HTTP est POST</li>
  * </ul>
  *
- * @author Marc Bouvier
+ * @author Marc Bouvier Bouvier
  */
 public class Servlet1 extends HttpServlet {
 

@@ -9,11 +9,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
+ * Classe comportant des champs de types différents afin de montrer leur prise
+ * en compte au niveau de la vue JSF.
  *
- * @author marc
+ * @author Marc Bouvier
  */
 public class Exemple1 {
-    
+
     private String label;
     private Date date;
     private Long entierLong;
@@ -51,9 +53,4 @@ public class Exemple1 {
         this.decimal = decimal;
     }
 
-  
-    
-    
-    
-    
 }

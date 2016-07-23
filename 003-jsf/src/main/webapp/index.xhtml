@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"    >
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Exemples de pages JSF</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -11,13 +12,20 @@
         <h1>Exemples de pages JSF</h1>
         <ul>
             <li><h:link value="Exemple 1 : Facelet simple" outcome="exemple1"/></li>
+
+        </ul>
+        <h1>Exemples de managed beans</h1>
+        <ul>
             <li><h:link value="Exemple 2 : Facelet et managed beans" outcome="exemple2"/></li>
+            <li>TODO : managed beans : différents scopes</li>
+            <li>TODO : converters : conversion de types non supportés</li>
         </ul>
         <h1>Exemples d'utilisation de templates JSF</h1>
-          <ul>
-                <li><h:link value="Exemple 3 : surcharge des ui:include d'un template avec ui:define" outcome="exemple3"/></li>
-                <li><h:link value="Exemple 3 : utilisation des valeurs par défaut des ui:include d'un template" outcome="exemple3-default"/></li>
-            </ul>
+        <ul>
+            <li><h:link value="Exemple 3 : surcharge des ui:include d'un template avec ui:define" outcome="exemple3"/></li>
+            <li><h:link value="Exemple 3 : utilisation des valeurs par défaut des ui:include d'un template" outcome="exemple3-default"/></li>
+        </ul>
+
     </h:body>
 </html>
 

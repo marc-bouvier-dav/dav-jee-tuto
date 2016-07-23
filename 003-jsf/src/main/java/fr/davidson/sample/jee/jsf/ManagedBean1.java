@@ -27,25 +27,32 @@
 package fr.davidson.sample.jee.jsf;
 
 import java.util.Date;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+
 
 /**
+ * Bean managé par JSF, il est accessible aux facelet via EL
+ * <p>
+ * Ce bean est en scope Request (@{@link RequestScoped}), cela signifie que l'objet est recréé à chaque
+ * requête HTTP de facelet l'utilisant.</p>
  *
- * @author Marc Bouvier
+ * @author Marc Bouvier Bouvier
  */
 @Named(value = "managedBean1")
 @RequestScoped
 public class ManagedBean1 {
-    
+
+    /**
+     * Attribut de type date
+     */
     private Date dateCourante;
-    
 
     /**
      * Creates a new instance of ManagedBean1
      */
     public ManagedBean1() {
-        dateCourante=new Date();
+        dateCourante = new Date();
     }
 
     public Date getDateCourante() {
@@ -55,7 +62,5 @@ public class ManagedBean1 {
     public void setDateCourante(Date dateCourante) {
         this.dateCourante = dateCourante;
     }
-    
-    
-    
+
 }

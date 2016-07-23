@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"    >
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet et managed bean</title>
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body>
         <h1>Facelet et managed bean</h1>
-        <p>Date courante : 
+        <p>Date courante (utilisation de h:ouputText et f:convertDateTime): 
+            <!-- Affichage de la date présente dans le managed bean managedBean1
+            au format dd/MM/yyyy HH:mm -->
             <h:outputText value="#{managedBean1.dateCourante}" >
                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
             </h:outputText>
