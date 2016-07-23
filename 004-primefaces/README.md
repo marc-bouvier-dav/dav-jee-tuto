@@ -1,4 +1,4 @@
-[![alt text](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
+[![alt text](dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
 Exemples d'utilisation de Primefaces (javaee6)
 ==================================
 
@@ -15,4 +15,4 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/004-primefaces/src/main/webapp/exemple1.xhtml)
+ - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/exemple1.xhtml)
