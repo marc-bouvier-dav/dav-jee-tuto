@@ -16,3 +16,5 @@ Exemples
 --------
 
  - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/exemple1.xhtml)
+
+[Parent](/)
