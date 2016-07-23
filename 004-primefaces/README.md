@@ -15,4 +15,4 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple d'utilisation d'un tableau dans primefaces utilisant un backing beans](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/004-primefaces/src/main/webapp/exemple1.xhtml)
+ - [Exemple d'utilisation d'un tableau dans primefaces utilisant un backing bean](https://github.com/marc-bouvier-dav/dav-j2ee-tuto/blob/master/004-primefaces/src/main/webapp/exemple1.xhtml)
