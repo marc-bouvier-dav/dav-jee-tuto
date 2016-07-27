@@ -1,0 +1,36 @@
+package com.agipi.g2a.tiana.web.servlet;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+/**
+ * Servlet de monitoring utilisant Spring et maven.
+ */
+@WebServlet("/Monitoring")
+@SuppressWarnings("serial")
+public class MonitoringServlet extends HttpServlet {
+
+    /** Dans le fichier de properties parsé par Spring : build.version=${project.version} .*/
+    @Value("${project.version}")
+    private String version;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String contentType = "application/json";
+        response.setHeader("Content-Type", contentType);
+        response.getWriter().print("{version : '" + version + "'}");
+    }
+}
