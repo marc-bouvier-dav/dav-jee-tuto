@@ -14,3 +14,19 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 
 Exemples
 --------
+        <ul>
+            <li><h:link value="Exemple 1 : Facelet simple" outcome="exemple1"/></li>
+
+        </ul>
+        <h1>Exemples de managed beans</h1>
+        <ul>
+            <li><h:link value="Exemple 2 : Facelet et managed beans" outcome="exemple2"/></li>
+            <li>TODO : managed beans : différents scopes</li>
+            <li>TODO : converters : conversion de types non supportés</li>
+            <li>TODO : différents type de managed beans : séparation des responsabilités</li>
+        </ul>
+        <h1>Exemples d'utilisation de templates JSF</h1>
+        <ul>
+            <li><h:link value="Exemple 3 : surcharge des ui:include d'un template avec ui:define" outcome="exemple3"/></li>
+            <li><h:link value="Exemple 3 : utilisation des valeurs par défaut des ui:include d'un template" outcome="exemple3-default"/></li>
+        </ul>
