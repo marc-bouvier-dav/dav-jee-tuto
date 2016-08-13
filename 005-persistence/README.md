@@ -11,9 +11,8 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
  - [Apache TomEE](http://tomee.apache.org/)
  - [RedHat Jboss AS 6 et plus (Web profile)](http://jbossas.jboss.org/downloads), puis [WildFly 8 et plus](http://wildfly.org/)
  - Tous les autres serveurs supportant le profil web jee6 et jee7
- - Installer payara
- - créer une base de données
- - Configurer un connection pool et une datasource
+ - Installer glassfish / payara et le configurer dans netbeans ([voir wiki](https://github.com/marc-bouvier-dav/dav-jee-tuto/wiki/Installer-Payara-dans-Netbeans))
+ - Créer une base de données et Configurer un connection pool et une datasource ([voir wiki](https://github.com/marc-bouvier-dav/dav-jee-tuto/wiki/Configuer-datasource---connection-pool-dans-Netbeans---Payara---Glassfish))
 
 Exemples
 --------
