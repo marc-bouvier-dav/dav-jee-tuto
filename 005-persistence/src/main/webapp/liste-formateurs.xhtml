@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">  
+
+    <h:head>  
+        <title>Liste editable des formateurs</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>  
+
+    <h:body>  
+        <p:panel>
+            <f:facet name="header">Liste editable des formateurs</f:facet>
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="true"/>
+                <!-- Ce tableau affiche toutes les lignes de la liste présente dans 
+                le managed bean Exemple1ManagedBean -->
+                <p:dataTable var="item" value="#{listeFormateursManagedBean.formateurs}" editable="true" paginator="true" >
+                    <!-- Modification de la ligne et rafraichissement des messages --> 
+                    <p:ajax event="rowEdit" listener="#{listeFormateursManagedBean.onRowEdit}" update=":form:msgs" />
+                    <!-- Annulation de la modification et rafraichissement des messages --> 
+                    <p:ajax event="rowEditCancel" listener="#{listeFormateursManagedBean.onRowCancel}" update=":form:msgs" />
+  
+                    <p:column headerText="id">
+                        <h:outputText value="#{item.id}"  />
+                    </p:column>
+                    <p:column headerText="Nom">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{item.nom}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="nomInput" value="#{item.nom}"></p:inputText></f:facet>
+                        </p:cellEditor>
+
+                    </p:column>
+                    <p:column headerText="Prenom">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{item.prenom}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="prenomInput" value="#{item.prenom}"></p:inputText></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <!-- bouton pour modifier la ligne-->
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+
+        <p><h:link value="Retour" outcome="index" /></p>
+    </h:body>  
+</html>  

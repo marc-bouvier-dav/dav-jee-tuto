@@ -31,12 +31,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author osboxes
  */
 @Entity
+@Table(name="FORMATEUR")
 public class Formateur extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -36,6 +36,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Cette entité représente une session de formation.
@@ -47,6 +48,7 @@ import javax.persistence.OneToOne;
  * @author osboxes
  */
 @Entity
+@Table(name="SESSION_FORMATION")
 public class SessionFormation implements Serializable {
 
     private static final long serialVersionUID = 1L;

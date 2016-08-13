@@ -27,6 +27,7 @@
 package fr.davidson.sample.jee.domain.model.formation;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,6 +44,9 @@ public abstract class Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
+    
+    private String nom;
+    private String prenom;
 
     public Long getId() {
         return id;
@@ -52,21 +56,41 @@ public abstract class Personne implements Serializable {
         this.id = id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Personne)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Personne other = (Personne) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Personne other = (Personne) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -74,7 +98,10 @@ public abstract class Personne implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.davidson.sample.jee.domain.model.Personne[ id=" + id + " ]";
+        return "Personne{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
+    
+
+  
     
 }
