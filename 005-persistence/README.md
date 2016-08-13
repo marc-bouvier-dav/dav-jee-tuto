@@ -17,4 +17,5 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/exemple1.xhtml)
+ - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/liste-formateurs.xhtml)
+ 
