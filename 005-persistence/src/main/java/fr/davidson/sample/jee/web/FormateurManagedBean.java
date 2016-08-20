@@ -23,7 +23,8 @@ public class FormateurManagedBean {
 
     public void createNew() {
         formateurService.create(formateur);
-        formateur = new Formateur();
+        init();
+               
     }
 
     public Formateur getFormateur() {

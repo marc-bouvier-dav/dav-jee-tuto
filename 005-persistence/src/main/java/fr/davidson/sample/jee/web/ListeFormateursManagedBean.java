@@ -48,9 +48,8 @@ public class ListeFormateursManagedBean {
     }
 
     public void onDeleteFormateur(Formateur formateur) {
-        //pour feedback direct à l'écran
-        formateurs.remove(formateur);
         formateurService.remove(formateur);
+        init();
     }
 
 }

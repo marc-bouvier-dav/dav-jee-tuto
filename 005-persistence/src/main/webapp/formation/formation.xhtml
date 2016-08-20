@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>  
+        <title>Formation</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>  
+    <h:body>
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <p:panel id="nouvelle-formation"  header="Nouvelle Formation">
+                    <h:form id="form-nouvelle-formation">
+                        <p:inputText id="libelle" value="#{formationManagedBean.formation.libelle}"
+                                     required="true"/>
+                        <p:commandButton icon="ui-icon-plus" value="Créer" update=":nouvelle-formation :liste-formations"
+                                         actionListener="#{formationManagedBean.createNew()}"/>
+                    </h:form>
+                </p:panel>
+                <p:panel id="liste-formations" header="Liste des formations">
+                    <h:form id="form-liste-formations">
+                        <p:dataTable value="#{formationsManagedBean.formations}"
+                                     var="rowFormation"
+                                     >
+                            <p:column id="id" headerText="id">
+                                <h:outputText value="#{rowFormation.id}"/>
+                            </p:column>
+                            <p:column id="libelle" headerText="Libellé">
+                                <h:outputText value="#{rowFormation.libelle}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                </p:panel>
+            </div>
+            <div class="ui-g-6">
+                <p:panel id="nouvelle-session" header="Nouvelle session">
+                    <h:form rendered="#{not empty sessionFormationManagedBean.formations}">
+                        <h:panelGrid columns="2">
+                           
+                            <p:outputLabel for="formateur" value="Formateur"/>
+                            <p:selectOneMenu id="formateur" value="#{sessionFormationManagedBean.sessionFormation.formateur}"
+                                             required="true">
+                                <f:selectItem/>
+                                <f:selectItems value="#{sessionFormationManagedBean.formateurs}"
+                                               var="formateur"
+                                               itemValue="#{formateur}"
+                                               itemLabel="#{formateur.prenom} #{formateur.nom}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel for="formation" value="Formation"/>
+                            <p:selectOneMenu id="formation" value="#{sessionFormationManagedBean.sessionFormation.formation}"
+                                             required="true">
+                                <f:selectItem/>
+                                <f:selectItems value="#{sessionFormationManagedBean.formations}"
+                                               var="formation"
+                                               itemValue="#{formation}"
+                                               itemLabel="#{formation.id} - #{formation.libelle}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel for="dateDebut" value="Date de début"/>
+                            <p:calendar id="dateDebut" value="#{sessionFormationManagedBean.sessionFormation.debut}" required="true"
+                                        />
+                            <p:outputLabel for="dateFin" value="Date de fin"/> 
+                            <p:calendar id="dateFin" value="#{sessionFormationManagedBean.sessionFormation.fin}" required="true">
+                            </p:calendar>
+                            
+                            <p:commandButton icon="ui-icon-plus" value="Créer"
+                                             actionListener="#{sessionFormationManagedBean.createNew()}"
+                                             update=":nouvelle-session :sessions-formation">
+                            </p:commandButton>
+                        </h:panelGrid>
+
+                    </h:form>
+                </p:panel>
+                <p:panel id="sessions-formation" header="Liste des sessions de formation">
+
+                </p:panel>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-6" >
+                <p:panel id="session-formation" header="Session de formation">
+
+                </p:panel>
+            </div>
+        </div>
+        <p><h:link value="Retour" outcome="/index" /></p>
+    </h:body>
+</html>
+
