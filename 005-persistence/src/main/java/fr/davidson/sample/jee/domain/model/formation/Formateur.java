@@ -38,13 +38,13 @@ import javax.persistence.Table;
  * @author osboxes
  */
 @Entity
-@Table(name="FORMATEUR")
+@Table(name = "FORMATEUR")
 public class Formateur extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @OneToMany(targetEntity = SessionFormation.class)
-    @JoinColumn(name="formateur")
+    @JoinColumn(name = "formateur")
     private List<SessionFormation> sessionsFormation;
 
     public List<SessionFormation> getSessionsFormation() {
@@ -54,12 +54,10 @@ public class Formateur extends Personne implements Serializable {
     public void setSessionsFormation(List<SessionFormation> sessionsFormation) {
         this.sessionsFormation = sessionsFormation;
     }
-    
-    
-    
+
     @Override
     public String toString() {
         return "fr.davidson.sample.jee.domain.model.Formateur[ id=" + id + " ]";
     }
-    
+
 }

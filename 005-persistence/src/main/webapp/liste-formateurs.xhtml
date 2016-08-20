@@ -12,17 +12,31 @@
 
     <h:body>  
         <p:panel>
+            <f:facet name="header">Nouveau formateur</f:facet>
+            <h:form id="form-nouveau-formateur">
+
+                <p:outputLabel for="prenom" value="Prénom"/>
+                <p:inputText id="prenom" required="true" value="#{formateurManagedBean.formateur.prenom}"/>
+                <p:outputLabel for="nom" value="Nom"/>
+                <p:inputText id="nom" required="true" value="#{formateurManagedBean.formateur.nom}"/>
+                <p:commandButton actionListener="#{formateurManagedBean.createNew}"
+                                 value="Créer"
+                                 update=":form-nouveau-formateur :form-liste-formateurs"
+                                 icon="ui-icon-plus"/>
+            </h:form>
+        </p:panel>
+        <p:panel>
             <f:facet name="header">Liste editable des formateurs</f:facet>
-            <h:form id="form">
+            <h:form id="form-liste-formateurs">
                 <p:growl id="msgs" showDetail="true"/>
                 <!-- Ce tableau affiche toutes les lignes de la liste présente dans 
                 le managed bean Exemple1ManagedBean -->
-                <p:dataTable var="item" value="#{listeFormateursManagedBean.formateurs}" editable="true" paginator="true" >
+                <p:dataTable var="item" value="#{listeFormateursManagedBean.formateurs}" editable="true">
                     <!-- Modification de la ligne et rafraichissement des messages --> 
-                    <p:ajax event="rowEdit" listener="#{listeFormateursManagedBean.onRowEdit}" update=":form:msgs" />
+                    <p:ajax event="rowEdit" listener="#{listeFormateursManagedBean.onRowEdit}" update=":form-liste-formateurs:msgs" />
                     <!-- Annulation de la modification et rafraichissement des messages --> 
-                    <p:ajax event="rowEditCancel" listener="#{listeFormateursManagedBean.onRowCancel}" update=":form:msgs" />
-  
+                    <p:ajax event="rowEditCancel" listener="#{listeFormateursManagedBean.onRowCancel}" update=":form-liste-formateurs:msgs" />
+
                     <p:column headerText="id">
                         <h:outputText value="#{item.id}"  />
                     </p:column>
@@ -42,6 +56,12 @@
                     <!-- bouton pour modifier la ligne-->
                     <p:column style="width:32px">
                         <p:rowEditor />
+                    </p:column>
+                    <p:column style="width:32px">
+                        <p:commandButton icon="ui-icon-trash" 
+                                         actionListener="#{listeFormateursManagedBean.onDeleteFormateur(item)}" 
+                                         update=":form-liste-formateurs"
+                                         />
                     </p:column>
                 </p:dataTable>
             </h:form>

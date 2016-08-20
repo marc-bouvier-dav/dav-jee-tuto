@@ -24,9 +24,10 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.domain.service;
+package fr.davidson.sample.jee.domain.service.impl;
 
 import fr.davidson.sample.jee.domain.model.formation.Formation;
+import fr.davidson.sample.jee.domain.service.FormationService;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,7 +37,7 @@ import javax.persistence.PersistenceContext;
  * @author osboxes
  */
 @Stateless
-public class FormationFacade extends AbstractFacade<Formation> implements FormationFacadeLocal {
+public class FormationImpl extends AbstractCrudService<Formation> implements FormationService {
 
     @PersistenceContext(unitName = "005_persistence_davidson")
     private EntityManager em;
@@ -46,8 +47,8 @@ public class FormationFacade extends AbstractFacade<Formation> implements Format
         return em;
     }
 
-    public FormationFacade() {
+    public FormationImpl() {
         super(Formation.class);
     }
-    
+
 }

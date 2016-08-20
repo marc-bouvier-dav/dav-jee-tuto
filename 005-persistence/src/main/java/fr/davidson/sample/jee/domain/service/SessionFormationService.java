@@ -26,28 +26,29 @@
  */
 package fr.davidson.sample.jee.domain.service;
 
-import fr.davidson.sample.jee.domain.model.formation.Participant;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import fr.davidson.sample.jee.domain.model.formation.SessionFormation;
+import java.util.List;
+import javax.ejb.Local;
 
 /**
  *
  * @author osboxes
  */
-@Stateless
-public class ParticipantFacade extends AbstractFacade<Participant> implements ParticipantFacadeLocal {
+@Local
+public interface SessionFormationService {
 
-    @PersistenceContext(unitName = "005_persistence_davidson")
-    private EntityManager em;
+    void create(SessionFormation sessionFormation);
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+    void edit(SessionFormation sessionFormation);
 
-    public ParticipantFacade() {
-        super(Participant.class);
-    }
-    
+    void remove(SessionFormation sessionFormation);
+
+    SessionFormation find(Object id);
+
+    List<SessionFormation> findAll();
+
+    List<SessionFormation> findRange(int[] range);
+
+    int count();
+
 }

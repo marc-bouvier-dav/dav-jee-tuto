@@ -26,7 +26,7 @@
  */
 package fr.davidson.sample.jee.domain.service;
 
-import fr.davidson.sample.jee.domain.model.formation.Participant;
+import fr.davidson.sample.jee.domain.model.formation.Formateur;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -35,20 +35,20 @@ import javax.ejb.Local;
  * @author osboxes
  */
 @Local
-public interface ParticipantFacadeLocal {
+public interface FormateurService {
 
-    void create(Participant participant);
+    void create(Formateur formateur);
 
-    void edit(Participant participant);
+    void edit(Formateur formateur);
 
-    void remove(Participant participant);
+    void remove(Formateur formateur);
 
-    Participant find(Object id);
+    Formateur find(Object id);
 
-    List<Participant> findAll();
+    List<Formateur> findAll();
 
-    List<Participant> findRange(int[] range);
+    List<Formateur> findRange(int[] range);
 
     int count();
-    
+
 }

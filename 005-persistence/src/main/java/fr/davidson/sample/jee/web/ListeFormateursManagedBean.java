@@ -1,7 +1,6 @@
 package fr.davidson.sample.jee.web;
 
 import fr.davidson.sample.jee.domain.model.formation.Formateur;
-import fr.davidson.sample.jee.domain.service.FormateurFacadeLocal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -10,27 +9,20 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import org.primefaces.event.RowEditEvent;
-
+import fr.davidson.sample.jee.domain.service.FormateurService;
 
 @ManagedBean
 @RequestScoped
 public class ListeFormateursManagedBean {
-    
-    
 
-@Inject 
-private FormateurFacadeLocal formateurService;
+    @Inject
+    private FormateurService formateurService;
 
-List<Formateur> formateurs;
+    List<Formateur> formateurs;
 
     @PostConstruct
-    private void init(){
-        /*
-    final Formateur formateur = new Formateur();
-    formateur.setNom("BOUVIER");
-    formateur.setPrenom("Marc");
-formateurService.create(formateur);*/
-formateurs=formateurService.findAll();
+    private void init() {
+        formateurs = formateurService.findAll();
     }
 
     public List<Formateur> getFormateurs() {
@@ -41,19 +33,24 @@ formateurs=formateurService.findAll();
         this.formateurs = formateurs;
     }
 
-    
     public void onRowEdit(RowEditEvent event) {
-    final Formateur formateurEdite = (Formateur) event.getObject();
-        FacesMessage msg = new FacesMessage("Formateur modifié", 
+        final Formateur formateurEdite = (Formateur) event.getObject();
+        FacesMessage msg = new FacesMessage("Formateur modifié",
                 String.valueOf((formateurEdite).getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
         formateurService.edit(formateurEdite);
     }
-     
+
     public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Modification annulée", 
+        FacesMessage msg = new FacesMessage("Modification annulée",
                 String.valueOf(((Formateur) event.getObject()).getId()));
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onDeleteFormateur(Formateur formateur) {
+        //pour feedback direct à l'écran
+        formateurs.remove(formateur);
+        formateurService.remove(formateur);
     }
 
 }

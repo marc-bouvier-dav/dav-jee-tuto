@@ -24,9 +24,10 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.domain.service;
+package fr.davidson.sample.jee.domain.service.impl;
 
-import fr.davidson.sample.jee.domain.model.formation.Formateur;
+import fr.davidson.sample.jee.domain.model.formation.Participant;
+import fr.davidson.sample.jee.domain.service.ParticipantService;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,7 +37,7 @@ import javax.persistence.PersistenceContext;
  * @author osboxes
  */
 @Stateless
-public class FormateurFacade extends AbstractFacade<Formateur> implements FormateurFacadeLocal {
+public class ParticipantImpl extends AbstractCrudService<Participant> implements ParticipantService {
 
     @PersistenceContext(unitName = "005_persistence_davidson")
     private EntityManager em;
@@ -46,8 +47,8 @@ public class FormateurFacade extends AbstractFacade<Formateur> implements Format
         return em;
     }
 
-    public FormateurFacade() {
-        super(Formateur.class);
+    public ParticipantImpl() {
+        super(Participant.class);
     }
-    
+
 }

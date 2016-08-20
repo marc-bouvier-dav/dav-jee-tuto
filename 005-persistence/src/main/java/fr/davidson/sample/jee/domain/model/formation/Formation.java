@@ -37,7 +37,7 @@ import javax.persistence.Table;
  * @author osboxes
  */
 @Entity
-@Table(name="FORMATION")
+@Table(name = "FORMATION")
 public class Formation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -77,5 +77,5 @@ public class Formation implements Serializable {
     public String toString() {
         return "fr.davidson.sample.jee.domain.model.FormationBean[ id=" + id + " ]";
     }
-    
+
 }

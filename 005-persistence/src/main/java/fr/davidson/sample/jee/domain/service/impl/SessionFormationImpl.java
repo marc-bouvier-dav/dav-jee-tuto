@@ -24,31 +24,31 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.domain.service;
+package fr.davidson.sample.jee.domain.service.impl;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import java.util.List;
-import javax.ejb.Local;
+import fr.davidson.sample.jee.domain.model.formation.SessionFormation;
+import fr.davidson.sample.jee.domain.service.SessionFormationService;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author osboxes
  */
-@Local
-public interface FormationFacadeLocal {
+@Stateless
+public class SessionFormationImpl extends AbstractCrudService<SessionFormation> implements SessionFormationService {
 
-    void create(Formation formation);
+    @PersistenceContext(unitName = "005_persistence_davidson")
+    private EntityManager em;
 
-    void edit(Formation formation);
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
-    void remove(Formation formation);
+    public SessionFormationImpl() {
+        super(SessionFormation.class);
+    }
 
-    Formation find(Object id);
-
-    List<Formation> findAll();
-
-    List<Formation> findRange(int[] range);
-
-    int count();
-    
 }

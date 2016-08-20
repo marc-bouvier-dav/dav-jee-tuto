@@ -38,17 +38,17 @@ import javax.persistence.Table;
  * @author osboxes
  */
 @Entity
-@Table(name="PARTICIPANT")
+@Table(name = "PARTICIPANT")
 public class Participant extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     SessionFormation sessionFormation;
-    
+
     Boolean presence;
 
     public Long getId() {
@@ -75,8 +75,6 @@ public class Participant extends Personne implements Serializable {
         this.presence = presence;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -101,5 +99,5 @@ public class Participant extends Personne implements Serializable {
     public String toString() {
         return "fr.davidson.sample.jee.domain.model.Participant[ id=" + id + " ]";
     }
-    
+
 }

@@ -41,49 +41,63 @@ import javax.persistence.Table;
 /**
  * Cette entité représente une session de formation.
  * <p>
- * Une session de formation est une occurence d'une formation. Elle réunit un 
- * formateur et des participants. Une session commence à une date donnée et se 
+ * Une session de formation est une occurence d'une formation. Elle réunit un
+ * formateur et des participants. Une session commence à une date donnée et se
  * termine à une autre date.
  * </p>
+ *
  * @author osboxes
  */
 @Entity
-@Table(name="SESSION_FORMATION")
+@Table(name = "SESSION_FORMATION")
 public class SessionFormation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    /** Identifiant technique. */
+
+    /**
+     * Identifiant technique.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    /** Formation sur laquelle porte la session de formation. */
+
+    /**
+     * Formation sur laquelle porte la session de formation.
+     */
     Formation formation;
-    
-    /** Jour et heure de début de la formation.*/
+
+    /**
+     * Jour et heure de début de la formation.
+     */
     Date debut;
-    
-    /** Jour et heure de fin de la formation.*/
+
+    /**
+     * Jour et heure de fin de la formation.
+     */
     Date fin;
-    
-    /** Participants inscrits à la session de formation.*/
+
+    /**
+     * Participants inscrits à la session de formation.
+     */
     List<Participant> participants;
-    
-    /** Formateur animateur de la session de formation.*/
+
+    /**
+     * Formateur animateur de la session de formation.
+     */
     @ManyToOne(targetEntity = Formateur.class)
     Formateur formateur;
-    
 
-    /** Ajouter un nouveau participant à la session de formation.*/
+    /**
+     * Ajouter un nouveau participant à la session de formation.
+     */
     public Participant ajouterParticipant(Participant participant) {
-        
+
         participant.setSessionFormation(this);
         this.participants.add(participant);
-        
+
         return participant;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -132,8 +146,6 @@ public class SessionFormation implements Serializable {
         this.formateur = formateur;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -158,5 +170,5 @@ public class SessionFormation implements Serializable {
     public String toString() {
         return "fr.davidson.sample.jee.domain.model.SessionFormation[ id=" + id + " ]";
     }
-    
+
 }

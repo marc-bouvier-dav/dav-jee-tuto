@@ -26,7 +26,7 @@
  */
 package fr.davidson.sample.jee.domain.service;
 
-import fr.davidson.sample.jee.domain.model.formation.SessionFormation;
+import fr.davidson.sample.jee.domain.model.formation.Participant;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -35,20 +35,20 @@ import javax.ejb.Local;
  * @author osboxes
  */
 @Local
-public interface SessionFormationFacadeLocal {
+public interface ParticipantService {
 
-    void create(SessionFormation sessionFormation);
+    void create(Participant participant);
 
-    void edit(SessionFormation sessionFormation);
+    void edit(Participant participant);
 
-    void remove(SessionFormation sessionFormation);
+    void remove(Participant participant);
 
-    SessionFormation find(Object id);
+    Participant find(Object id);
 
-    List<SessionFormation> findAll();
+    List<Participant> findAll();
 
-    List<SessionFormation> findRange(int[] range);
+    List<Participant> findRange(int[] range);
 
     int count();
-    
+
 }
