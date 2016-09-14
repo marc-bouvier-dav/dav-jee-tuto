@@ -27,10 +27,17 @@
 package fr.davidson.sample.jee.domain.model.formation;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -43,9 +50,19 @@ public class Formation implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private Long id;
     
     private String libelle;
+    
+    @OneToMany(mappedBy = "formation")
+    private List<SessionFormation> sessions;
+    
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name = "FORMATION_SUJET", 
+            joinColumns = @JoinColumn(name = "FORMATION_ID",referencedColumnName = "ID"), 
+            inverseJoinColumns = @JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE"))
+    private List<Sujet> sujets;
 
     public Long getId() {
         return id;
@@ -61,6 +78,22 @@ public class Formation implements Serializable {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public List<SessionFormation> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<SessionFormation> sessions) {
+        this.sessions = sessions;
+    }
+
+    public List<Sujet> getSujets() {
+        return sujets;
+    }
+
+    public void setSujets(List<Sujet> sujets) {
+        this.sujets = sujets;
     }
 
     

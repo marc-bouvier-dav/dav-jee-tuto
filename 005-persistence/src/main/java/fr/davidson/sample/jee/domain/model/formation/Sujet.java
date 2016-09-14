@@ -28,7 +28,9 @@ package fr.davidson.sample.jee.domain.model.formation;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,25 +40,38 @@ import javax.persistence.Table;
  * @author osboxes
  */
 @Entity
-@Table(name = "FORMATEUR")
-public class Formateur extends Personne implements Serializable {
+@Table(name = "SUJET")
+public class Sujet extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(mappedBy = "formateur")
-    private List<SessionFormation> sessionsFormation;
+    @Id
+            @Column(name = "CODE")
+    String code;
+    
+    private String libelle;
 
-    public List<SessionFormation> getSessionsFormation() {
-        return sessionsFormation;
+    public String getCode() {
+        return code;
     }
 
-    public void setSessionsFormation(List<SessionFormation> sessionsFormation) {
-        this.sessionsFormation = sessionsFormation;
+    public void setCode(String code) {
+        this.code = code;
     }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+    
+    
 
     @Override
     public String toString() {
-        return "fr.davidson.sample.jee.domain.model.Formateur[ id=" + id + " ]";
+        return "fr.davidson.sample.jee.domain.model.Sujet[ id=" + id + " ]";
     }
 
 }

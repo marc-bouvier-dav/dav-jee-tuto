@@ -35,6 +35,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -64,28 +65,30 @@ public class SessionFormation implements Serializable {
     /**
      * Formation sur laquelle porte la session de formation.
      */
-    Formation formation;
+    @ManyToOne
+    private Formation formation;
 
     /**
      * Jour et heure de début de la formation.
      */
-    Date debut;
+    private Date debut;
 
     /**
      * Jour et heure de fin de la formation.
      */
-    Date fin;
+    private Date fin;
 
     /**
      * Participants inscrits à la session de formation.
      */
-    List<Participant> participants;
+    @OneToMany(mappedBy = "sessionFormation")
+    private List<Participant> participants;
 
     /**
      * Formateur animateur de la session de formation.
      */
-    @ManyToOne(targetEntity = Formateur.class)
-    Formateur formateur;
+    @ManyToOne
+    private Formateur formateur;
 
     /**
      * Ajouter un nouveau participant à la session de formation.

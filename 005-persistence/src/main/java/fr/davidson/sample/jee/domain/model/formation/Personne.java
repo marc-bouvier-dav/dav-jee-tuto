@@ -45,8 +45,8 @@ public abstract class Personne implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
-    private String nom;
-    private String prenom;
+    protected String nom;
+    protected String prenom;
 
     public Long getId() {
         return id;
