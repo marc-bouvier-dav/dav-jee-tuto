@@ -28,6 +28,7 @@ package fr.davidson.sample.jee.domain.model.formation;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,9 +61,9 @@ public class Formation implements Serializable {
     
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "FORMATION_SUJET", 
-            joinColumns = @JoinColumn(name = "FORMATION_ID",referencedColumnName = "ID"), 
-            inverseJoinColumns = @JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE"))
-    private List<Sujet> sujets;
+            joinColumns = {@JoinColumn(name = "FORMATION_ID",referencedColumnName = "formation")}, 
+            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "sujet")})
+    private Set<Sujet> sujets;
 
     public Long getId() {
         return id;
@@ -88,11 +89,11 @@ public class Formation implements Serializable {
         this.sessions = sessions;
     }
 
-    public List<Sujet> getSujets() {
+    public Set<Sujet> getSujets() {
         return sujets;
     }
 
-    public void setSujets(List<Sujet> sujets) {
+    public void setSujets(Set<Sujet> sujets) {
         this.sujets = sujets;
     }
 

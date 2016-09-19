@@ -27,12 +27,9 @@
 package fr.davidson.sample.jee.domain.model.formation;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -41,12 +38,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "SUJET")
-public class Sujet extends Personne implements Serializable {
+public class Sujet implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-            @Column(name = "CODE")
+    @Column(name = "CODE")
     String code;
     
     private String libelle;
@@ -71,7 +68,7 @@ public class Sujet extends Personne implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.davidson.sample.jee.domain.model.Sujet[ id=" + id + " ]";
+        return "fr.davidson.sample.jee.domain.model.Sujet[ code=" + code + " ]";
     }
 
 }
