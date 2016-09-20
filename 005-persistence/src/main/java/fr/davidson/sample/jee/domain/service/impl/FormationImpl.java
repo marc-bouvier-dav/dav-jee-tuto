@@ -27,14 +27,16 @@
 package fr.davidson.sample.jee.domain.service.impl;
 
 import fr.davidson.sample.jee.domain.model.formation.Formation;
+import fr.davidson.sample.jee.domain.model.formation.Sujet;
 import fr.davidson.sample.jee.domain.service.FormationService;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Stateless
 public class FormationImpl extends AbstractCrudService<Formation> implements FormationService {
@@ -51,4 +53,13 @@ public class FormationImpl extends AbstractCrudService<Formation> implements For
         super(Formation.class);
     }
 
+    @Override
+    public List<Formation> findWithSujet(Sujet sujet) {
+        return em.createNamedQuery("findWithSujet", Formation.class)
+                .setParameter("sujet", sujet)
+                .getResultList();
+    }
+
+    
+    
 }

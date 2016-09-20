@@ -37,7 +37,7 @@ import javax.inject.Named;
  * Ce bean est en scope Request (@{@link RequestScoped}), cela signifie que l'objet est recréé à chaque
  * requête HTTP de facelet l'utilisant.</p>
  *
- * @author Marc Bouvier Bouvier
+ * @author marc.bouvier@davidson.fr Bouvier
  */
 @Named(value = "managedBean1")
 @RequestScoped

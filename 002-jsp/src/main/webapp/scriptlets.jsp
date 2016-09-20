@@ -1,7 +1,7 @@
 <%-- 
     Document   : page1
     Created on : 29-Jun-2016, 21:45:22
-    Author     : Marc Bouvier
+    Author     : marc.bouvier@davidson.fr
 --%>
 
 <%@page import="java.util.Date"%>

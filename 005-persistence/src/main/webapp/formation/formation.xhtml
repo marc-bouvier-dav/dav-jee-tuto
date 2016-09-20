@@ -15,15 +15,15 @@
                     <h:form id="form-nouvelle-formation">
                         <p:inputText id="libelle" value="#{formationManagedBean.formation.libelle}"
                                      required="true"/>
-                        <p:commandButton icon="ui-icon-plus" value="Créer" update=":nouvelle-formation :liste-formations"
+                        <p:commandButton icon="ui-icon-plus" value="Créer" update=":nouvelle-formation :liste-formations :nouvelle-session"
                                          actionListener="#{formationManagedBean.createNew()}"/>
                     </h:form>
                 </p:panel>
                 <p:panel id="liste-formations" header="Liste des formations">
                     <h:form id="form-liste-formations">
                         <p:dataTable value="#{formationsManagedBean.formations}"
-                                     var="rowFormation"
-                                     >
+                                     var="rowFormation"                                    >
+                            
                             <p:column id="id" headerText="id">
                                 <h:outputText value="#{rowFormation.id}"/>
                             </p:column>
@@ -37,12 +37,12 @@
             </div>
             <div class="ui-g-6">
                 <p:panel id="nouvelle-session" header="Nouvelle session">
-                    <h:form rendered="#{not empty sessionFormationManagedBean.formations}">
+                    <h:form>
                         <h:panelGrid columns="2">
                            
                             <p:outputLabel for="formateur" value="Formateur"/>
                             <p:selectOneMenu id="formateur" value="#{sessionFormationManagedBean.sessionFormation.formateur}"
-                                             required="true">
+                                             required="true" converter="#{formateurConverter}">
                                 <f:selectItem/>
                                 <f:selectItems value="#{sessionFormationManagedBean.formateurs}"
                                                var="formateur"
@@ -51,7 +51,7 @@
                             </p:selectOneMenu>
                             <p:outputLabel for="formation" value="Formation"/>
                             <p:selectOneMenu id="formation" value="#{sessionFormationManagedBean.sessionFormation.formation}"
-                                             required="true">
+                                             required="true" converter="#{formationConverter}">
                                 <f:selectItem/>
                                 <f:selectItems value="#{sessionFormationManagedBean.formations}"
                                                var="formation"
@@ -74,14 +74,31 @@
                     </h:form>
                 </p:panel>
                 <p:panel id="sessions-formation" header="Liste des sessions de formation">
-
+                        <p:dataTable value="#{listeSessionsFormationManagedBean1.sessionsFormation}"
+                                 var="rowSessionFormation">
+                        <p:column id="id" headerText="id">
+                            <h:outputText value="#{rowSessionFormation.id}"/>
+                        </p:column>
+                        <p:column id="formateur" headerText="Formateur">
+                            <h:outputText value="#{rowSessionFormation.formateur.nom} #{rowSessionFormation.formateur.prenom}"/>
+                        </p:column>
+                        <p:column id="formation" headerText="Formation">
+                            <h:outputText value="#{rowSessionFormation.formation.libelle}"/>
+                        </p:column>
+                        <p:column id="debut" headerText="Début">
+                            <h:outputText value="#{rowSessionFormation.debut}"/>
+                        </p:column>
+                        <p:column id="fin" headerText="Fin">
+                            <h:outputText value="#{rowSessionFormation.fin}"/>
+                        </p:column>
+                    </p:dataTable>
                 </p:panel>
             </div>
         </div>
         <div class="ui-g">
             <div class="ui-g-6" >
                 <p:panel id="session-formation" header="Session de formation">
-
+                    
                 </p:panel>
             </div>
         </div>

@@ -24,31 +24,44 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.domain.service;
+package fr.davidson.sample.jee.web.converter;
 
-import fr.davidson.sample.jee.domain.model.formation.Participant;
-import java.util.List;
-import javax.ejb.Local;
+import fr.davidson.sample.jee.domain.model.formation.Formateur;
+import fr.davidson.sample.jee.domain.model.formation.Formation;
+import fr.davidson.sample.jee.domain.service.FormateurService;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
- * @author marc.bouvier@davidson.fr
+ * @author osboxes
  */
-@Local
-public interface ParticipantService {
+@Named
+public class FormateurConverter implements Converter{
 
-    void create(Participant participant);
+    @Inject private FormateurService formateurService;
+    
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        Formateur formateur=null;
+        if(value!=null&& Long.valueOf(value)!=null){
+            Long id = Long.valueOf(value);
+            formateur = formateurService.find(id);
+        }
+        return formateur;
+    }
 
-    void edit(Participant participant);
-
-    void remove(Participant participant);
-
-    Participant find(Object id);
-
-    List<Participant> findAll();
-
-    List<Participant> findRange(int[] range);
-
-    int count();
-
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        String resultat = null;
+        if(value instanceof Formateur){
+            resultat = String.valueOf(((Formateur)value).getId());
+        }
+        return resultat;
+    }
+    
 }

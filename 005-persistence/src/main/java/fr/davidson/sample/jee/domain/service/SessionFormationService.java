@@ -32,7 +32,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Local
 public interface SessionFormationService {

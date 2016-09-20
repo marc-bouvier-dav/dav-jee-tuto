@@ -38,14 +38,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Entity
 @Table(name = "FORMATION")
+@NamedQueries({
+    @NamedQuery(name = "findWithSujet", query = 
+          " SELECT formation FROM Formation formation "
+        + " join formation.sujets sujet "
+        + " WHERE sujet = :sujet")})
 public class Formation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,8 +68,8 @@ public class Formation implements Serializable {
     
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "FORMATION_SUJET", 
-            joinColumns = {@JoinColumn(name = "FORMATION_ID",referencedColumnName = "formation")}, 
-            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "sujet")})
+            joinColumns = {@JoinColumn(name = "FORMATION_ID",referencedColumnName = "ID")}, 
+            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE")})
     private Set<Sujet> sujets;
 
     public Long getId() {

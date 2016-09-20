@@ -12,7 +12,7 @@ import java.util.Date;
  * Classe comportant des champs de types différents afin de montrer leur prise
  * en compte au niveau de la vue JSF.
  *
- * @author Marc Bouvier
+ * @author marc.bouvier@davidson.fr
  */
 public class Exemple1 {
 

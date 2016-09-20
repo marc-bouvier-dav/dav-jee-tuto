@@ -34,7 +34,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Stateless
 public class ParticipantImpl extends AbstractCrudService<Participant> implements ParticipantService {

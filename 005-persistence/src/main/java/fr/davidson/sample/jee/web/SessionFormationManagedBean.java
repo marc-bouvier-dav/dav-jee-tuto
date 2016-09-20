@@ -39,6 +39,7 @@ public class SessionFormationManagedBean implements Serializable{
     }
 
     public void createNew() {
+        
         sessionFormationService.create(sessionFormation);
         init();
     }
@@ -59,7 +60,6 @@ public class SessionFormationManagedBean implements Serializable{
         return formations;
     }
 
-  
     
     
     

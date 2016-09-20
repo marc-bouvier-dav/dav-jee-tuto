@@ -35,7 +35,7 @@ import javax.persistence.MappedSuperclass;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @MappedSuperclass
 public abstract class Personne implements Serializable {

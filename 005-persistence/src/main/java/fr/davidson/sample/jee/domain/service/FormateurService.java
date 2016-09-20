@@ -32,7 +32,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Local
 public interface FormateurService {
@@ -50,5 +50,7 @@ public interface FormateurService {
     List<Formateur> findRange(int[] range);
 
     int count();
+    
+    
 
 }

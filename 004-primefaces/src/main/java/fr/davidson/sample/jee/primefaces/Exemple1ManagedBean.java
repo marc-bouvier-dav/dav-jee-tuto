@@ -18,7 +18,7 @@ import javax.faces.bean.RequestScoped;
  * <p>
  * Cet objet a une portée limitée à la requête : @{@link RequestScoped}</p>
  *
- * @author Marc Bouvier
+ * @author marc.bouvier@davidson.fr
  */
 @ManagedBean
 @RequestScoped

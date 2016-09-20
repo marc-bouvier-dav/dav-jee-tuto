@@ -52,7 +52,7 @@ import org.slf4j.LoggerFactory;
  * Filtre qui, lorsqu'il est appliqué à une servlet, inscrit des informations
  * relatives à la requête dans le journal d'exécution de l'application.
  *
- * @author Marc Bouvier Bouvier
+ * @author marc.bouvier@davidson.fr Bouvier
  */
 public class LogFilter implements Filter {
 

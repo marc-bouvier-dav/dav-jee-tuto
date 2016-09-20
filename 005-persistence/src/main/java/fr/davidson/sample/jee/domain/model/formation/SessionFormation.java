@@ -47,7 +47,7 @@ import javax.persistence.Table;
  * termine à une autre date.
  * </p>
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Entity
 @Table(name = "SESSION_FORMATION")

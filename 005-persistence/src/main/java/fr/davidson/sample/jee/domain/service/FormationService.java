@@ -26,13 +26,15 @@
  */
 package fr.davidson.sample.jee.domain.service;
 
+import fr.davidson.sample.jee.domain.model.formation.Formateur;
 import fr.davidson.sample.jee.domain.model.formation.Formation;
+import fr.davidson.sample.jee.domain.model.formation.Sujet;
 import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Local
 public interface FormationService {
@@ -50,5 +52,14 @@ public interface FormationService {
     List<Formation> findRange(int[] range);
 
     int count();
+    
+    /// Implémentations personnalisées
+    
+    /**
+     * Récupère les formations pour un sujet donné.
+     * @param sujet sujet sur lequel est filtrée la recherche
+     * @return  formations
+     */
+    List<Formation> findWithSujet(Sujet sujet);
 
 }

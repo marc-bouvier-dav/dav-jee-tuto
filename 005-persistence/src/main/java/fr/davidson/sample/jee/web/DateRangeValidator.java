@@ -37,7 +37,7 @@ import javax.faces.validator.ValidatorException;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
  @FacesValidator("dateRangeValidator")
 public class DateRangeValidator implements Validator{

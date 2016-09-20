@@ -24,31 +24,40 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.domain.service;
+package fr.davidson.sample.jee.web.converter;
 
-import fr.davidson.sample.jee.domain.model.formation.Participant;
-import java.util.List;
-import javax.ejb.Local;
+import fr.davidson.sample.jee.domain.model.formation.Formation;
+import fr.davidson.sample.jee.domain.service.FormationService;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
- * @author marc.bouvier@davidson.fr
+ * @author osboxes
  */
-@Local
-public interface ParticipantService {
+@Named
+public class FormationConverter implements Converter{
+@Inject private FormationService formationService;
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        Formation formation= null;
+        if(value!=null && Long.valueOf(value) !=null){
+            formation = formationService.find(Long.valueOf(value));
+        }
+        return formation;
+    }
 
-    void create(Participant participant);
-
-    void edit(Participant participant);
-
-    void remove(Participant participant);
-
-    Participant find(Object id);
-
-    List<Participant> findAll();
-
-    List<Participant> findRange(int[] range);
-
-    int count();
-
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        String resultat = null;
+        if(value instanceof Formation){
+            resultat = String.valueOf(((Formation)value).getId());
+        }
+        return resultat;
+    }
+    
 }

@@ -38,7 +38,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Entity
 @Table(name = "PARTICIPANT")

@@ -33,7 +33,7 @@ import javax.persistence.EntityManager;
  * Classe abstraite générique fournissant les opérations usuelles (create read
  * update delete) sur les entités JPA.
  *
- * @author Marc Bouvier
+ * @author marc.bouvier@davidson.fr
  */
 public abstract class AbstractCrudService<T> {
 
