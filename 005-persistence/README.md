@@ -17,9 +17,9 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple 1 : Ajout d'un formateur, liste des formateurs (Primefaces : Tableau, ligne éditable. JPA : Insertion, suppression, recherche simple d'une donnée depuis la base de données)](./src/main/webapp/formateur/liste-formateurs.xhtml)
- - [Exemple 2 : Ajout d'une formation, d'une session de formation. (JSF : update, converters. Primefaces : selection dans tableau. JPA lister des données)](./src/main/webapp/formateur/liste-formateurs.xhtml)
- - [Exemple 3 : JPA : recherche filtrée multicritère](./src/main/webapp/session-formation/recherche-sessions.xhtml)
+ - [Exemple 1 : Ajout d'un formateur, liste des formateurs.](./src/main/webapp/formateur/liste-formateurs.xhtml) (Primefaces : Tableau, ligne éditable. JPA : Insertion, suppression, recherche simple d'une donnée depuis la base de données)
+ - [Exemple 2 : Ajout d'une formation, d'une session de formation.](./src/main/webapp/formateur/liste-formateurs.xhtml)  (JSF : update, converters. Primefaces : selection dans tableau. JPA lister des données)
+ - [Exemple 3 : Recherche.](./src/main/webapp/session-formation/recherche-sessions.xhtml) (JPA : recherche filtrée multicritère)
  
 Exercices
 --------
