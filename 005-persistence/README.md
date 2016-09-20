@@ -17,7 +17,8 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/formateur/liste-formateurs.xhtml)
+ - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean. Insertion d'une donnée et récupération d'une liste depuis la base de données](./src/main/webapp/formateur/liste-formateurs.xhtml)
+ - [Exemple 2 : JSF : update, converters. Primefaces : selection dans tableau](./src/main/webapp/formateur/liste-formateurs.xhtml)
  
 Exercices
 --------
