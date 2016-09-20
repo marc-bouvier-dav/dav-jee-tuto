@@ -17,5 +17,10 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/liste-formateurs.xhtml)
+ - [Exemple 1 : utilisation d'un tableau dans primefaces utilisant un backing bean](./src/main/webapp/formateur/liste-formateurs.xhtml)
  
+Exercices
+--------
+
+ - Modifier les entités, les services et les facelets pour qu'un participant puisse assister à plusieurs sessions de formation
+ - Dans l'exemple 2 ([formation.xhtml](./src/main/webapp/formation/formation.xhtml)), Permettre d'ajouter des participants à une session de formation. L'afficahge du formulaire d'ajout et de la liste des participants sera conditionné par la sélection dans la liste des sessions de formation.
