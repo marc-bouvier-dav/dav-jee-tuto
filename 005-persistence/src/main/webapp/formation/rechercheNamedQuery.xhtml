@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>  
+        <title>Recherche named query</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>  
+    <h:body>
+        <p:panel>
+            <h:form>
+                <p:commandButton actionListener="#{formationNamedQueryManagedBean.createFormations}" update="@form" value="Créer formations"/>
+                <p:selectOneMenu value="#{formationNamedQueryManagedBean.sujet}" converter="#{sujetConverter}">
+                    <f:selectItems value="#{formationNamedQueryManagedBean.sujets}" var="sujet" itemLabel="#{sujet.libelle}"/>
+                </p:selectOneMenu>
+                <p:commandButton actionListener="#{formationNamedQueryManagedBean.searchFromSujet}" update=":listeFormations"/>
+                
+            </h:form>
+            <p:dataList id="listeFormations" value="#{formationNamedQueryManagedBean.formations}"
+                        var="formation">
+                <p:column headerText="id">#{formation.id}</p:column>
+                <p:column headerText="libelle">#{formation.libelle}</p:column>
+            </p:dataList>
+        </p:panel>
+        <p><h:link value="Retour" outcome="/index" /></p>
+    </h:body>
+</html>
+

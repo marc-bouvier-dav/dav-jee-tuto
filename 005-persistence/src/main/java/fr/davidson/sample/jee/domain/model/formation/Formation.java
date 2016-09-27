@@ -69,7 +69,7 @@ public class Formation implements Serializable {
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name = "FORMATION_SUJET", 
             joinColumns = {@JoinColumn(name = "FORMATION_ID",referencedColumnName = "ID")}, 
-            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE")})
+            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE")}) 
     private Set<Sujet> sujets;
 
     public Long getId() {
