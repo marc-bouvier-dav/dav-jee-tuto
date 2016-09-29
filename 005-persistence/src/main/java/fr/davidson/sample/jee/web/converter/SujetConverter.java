@@ -36,7 +36,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Named
 public class SujetConverter implements Converter{

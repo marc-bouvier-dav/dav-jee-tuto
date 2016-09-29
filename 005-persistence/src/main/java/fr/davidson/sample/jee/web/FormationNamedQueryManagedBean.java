@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import javax.faces.view.ViewScoped;
 import java.util.List;
+import javax.faces.event.ActionEvent;
 
 @ManagedBean
 @ViewScoped
@@ -24,7 +25,7 @@ public class FormationNamedQueryManagedBean implements Serializable {
 
     private List<Formation> formations;
 
-    private Sujet sujet;
+    private String codeSujet;
     private List<Sujet> sujets;
 
     @PostConstruct
@@ -39,7 +40,7 @@ public class FormationNamedQueryManagedBean implements Serializable {
             sujetService.create(sujetScala);
             
             sujets = sujetService.findAll();
-            
+            createFormations();
             
            
         }
@@ -76,6 +77,7 @@ public class FormationNamedQueryManagedBean implements Serializable {
     }
 
     public void searchFromSujet() {
+        Sujet sujet = sujetService.find(codeSujet);
         formations = formationService.findWithSujet(sujet);
     }
 
@@ -87,14 +89,6 @@ public class FormationNamedQueryManagedBean implements Serializable {
         this.formations = formations;
     }
 
-    public Sujet getSujet() {
-        return sujet;
-    }
-
-    public void setSujet(Sujet sujet) {
-        this.sujet = sujet;
-    }
-
     public List<Sujet> getSujets() {
         return sujets;
     }
@@ -103,4 +97,13 @@ public class FormationNamedQueryManagedBean implements Serializable {
         this.sujets = sujets;
     }
 
+    public String getCodeSujet() {
+        return codeSujet;
+    }
+
+    public void setCodeSujet(String codeSujet) {
+        this.codeSujet = codeSujet;
+    }
+
+    
 }

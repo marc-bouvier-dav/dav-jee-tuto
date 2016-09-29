@@ -66,10 +66,10 @@ public class Formation implements Serializable {
     @OneToMany(mappedBy = "formation")
     private List<SessionFormation> sessions;
     
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.MERGE)
     @JoinTable(name = "FORMATION_SUJET", 
             joinColumns = {@JoinColumn(name = "FORMATION_ID",referencedColumnName = "ID")}, 
-            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE")}) 
+            inverseJoinColumns = {@JoinColumn(name = "SUJET_CODE",referencedColumnName = "CODE",insertable = false,updatable = false)}) 
     private Set<Sujet> sujets;
 
     public Long getId() {

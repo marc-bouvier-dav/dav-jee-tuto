@@ -10,20 +10,31 @@
     </h:head>  
     <h:body>
         <p:panel>
-            <h:form>
-                <p:commandButton actionListener="#{formationNamedQueryManagedBean.createFormations}" update="@form" value="Créer formations"/>
-                <p:selectOneMenu value="#{formationNamedQueryManagedBean.sujet}" converter="#{sujetConverter}">
-                    <f:selectItems value="#{formationNamedQueryManagedBean.sujets}" var="sujet" itemLabel="#{sujet.libelle}"/>
+            <h:form id="search-form">
+                <p:outputLabel for="sujet" value="Sujet"/>
+                <p:selectOneMenu id="sujet" value="#{formationNamedQueryManagedBean.codeSujet}" >
+                    <f:selectItems value="#{formationNamedQueryManagedBean.sujets}" var="sujet" itemLabel="#{sujet.libelle}"
+                                   itemValue="#{sujet.code}"/>
                 </p:selectOneMenu>
-                <p:commandButton actionListener="#{formationNamedQueryManagedBean.searchFromSujet}" update=":listeFormations"/>
-                
+                <p:commandButton value="Rechercher"
+                                 actionListener="#{formationNamedQueryManagedBean.searchFromSujet()}" 
+                                 update=":listeFormations"/>
+
+
+
             </h:form>
-            <p:dataList id="listeFormations" value="#{formationNamedQueryManagedBean.formations}"
-                        var="formation">
-                <p:column headerText="id">#{formation.id}</p:column>
-                <p:column headerText="libelle">#{formation.libelle}</p:column>
-            </p:dataList>
         </p:panel>
+        <p:panel id="listeFormations" >
+            <h:form>
+                <p:dataTable value="#{formationNamedQueryManagedBean.formations}" 
+                             var="formation">
+                    <p:column headerText="id" ><h:outputText value="#{formation.id}"/></p:column>
+                    <p:column headerText="libelle"><h:outputText value="#{formation.libelle}"/></p:column>
+
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+
         <p><h:link value="Retour" outcome="/index" /></p>
     </h:body>
 </html>
