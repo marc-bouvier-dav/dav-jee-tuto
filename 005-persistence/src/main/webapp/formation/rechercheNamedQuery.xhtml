@@ -9,6 +9,39 @@
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>  
     <h:body>
+        <p>Recherche par named query. La requête est déja écrite au niveau de l'entity Formation. Un nom lui est associé.
+        Il est possible de appeler cette requête à partir de son nom.</p>
+         <div class="ui-g">
+             <div class="ui-g-6">
+                 <h2>Requête dans l'entité</h2>
+        <pre>
+        <code>
+@Entity
+@Table(name = "FORMATION")
+@NamedQueries({
+    @NamedQuery(name = "findWithSujet", query = 
+          " SELECT formation FROM Formation formation "
+        + " join formation.sujets sujet "
+        + " WHERE sujet = :sujet")})
+public class Formation {
+...
+}
+        </code>
+        </pre>
+             </div>
+             <div class="ui-g-6">
+                 <h2>Execution de la requête</h2>
+        <pre>
+        <code>
+em.createNamedQuery("findWithSujet", Formation.class)
+    .setParameter("sujet", sujet)
+    .getResultList();
+        </code>
+        </pre>
+             </div>
+         </div>
+
+        
         <p:panel>
             <h:form id="search-form">
                 <p:outputLabel for="sujet" value="Sujet"/>
