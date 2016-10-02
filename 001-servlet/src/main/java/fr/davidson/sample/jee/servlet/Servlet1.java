@@ -28,7 +28,6 @@ package fr.davidson.sample.jee.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,47 +46,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Servlet1 extends HttpServlet {
 
-    /**
-     * Affiche la page au format HTML.
-     *
-     * @param request
-     * @param response
-     * @param method
-     * @throws ServletException
-     * @throws IOException
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response, String method)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Servlet1</title>");
-            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() + "/public/css/style.css'/>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Servlet1 at " + request.getContextPath() + "</h1>");
-            out.println("<p>Cet exemple permet de montrer le fonctionnement basique d'une servlet retournant une page html.</p>");
-            out.println("<p>Le code de cet exemple se trouve dans la classe Serlvet1.java</p>");
-            out.println("<p>Cette servlet est configurée dans le descripteur de déploiement (WEB-INF/web.xml) et est mappée sur l'url /Servlet1</p>");
-            out.println("<p>Il est possible dans la servlet de prendre en compte les requêtes en method GET ou POST de façon distincte (en général les 2 méthodes sont prises en compte de la même façon)</p>");
-            out.println("<p class='code'>Method = " + method + "<br/>");
-            for (Map.Entry<String, String[]> entrySet : request.getParameterMap().entrySet()) {
-                out.println(entrySet.getKey() + " : " + entrySet.getValue()[0] + "<br/>");
-            }
-            out.println("<form method='POST' action='" + request.getRequestURI() + "'><label for='paramPOST'>Param Post</label><input id='paramPOST' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (POST)'/></form>");
-            out.println("<form method='GET' action='" + request.getRequestURI() + "'><label for='paramGET'>Param Get</label><input id='paramGET' type='text' name='param'/><input class='btn-flat' type='submit' value='Soumettre le formulaire (GET)'/></form>");
-            out.println("<p><a href='" + request.getContextPath() + "'>Retour</a></p>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
     /**
-     * Prise en compte d'une requête HTTP en GET. (paramètres visibles dans
-     * l'URL.
+     * Prise en compte d'une requête HTTP en GET. 
      *
      * @param request
      * @param response
@@ -97,32 +58,13 @@ public class Servlet1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response, "GET");
+        response.setContentType("text/html;charset=UTF-8");
+        try (final PrintWriter out = response.getWriter()) {
+            out.println("hello world");
+        }
     }
 
-    /**
-     * Prise en compte d'une requête HTTP en POST. (Méthode en général utilisée
-     * lors de la soumission de formulaires.
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response, "POST");
-    }
+  
 
-    /**
-     * Description courte de la Servlet.
-     *
-     * @return
-     */
-    @Override
-    public String getServletInfo() {
-        return "Servlet simple";
-    }
 
 }

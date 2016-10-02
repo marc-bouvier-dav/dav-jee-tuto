@@ -10,23 +10,31 @@
     </filter>
     <filter-mapping>
         <filter-name>LogFilter</filter-name>
-        <url-pattern>/FilteredServlet1/*</url-pattern>
+        <url-pattern>/FilteredServlet/*</url-pattern>
     </filter-mapping>
+    <servlet>
+        <servlet-name>Servlet2</servlet-name>
+        <servlet-class>fr.davidson.sample.jee.servlet.Servlet2</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>Servlet1</servlet-name>
         <servlet-class>fr.davidson.sample.jee.servlet.Servlet1</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FilteredServlet1</servlet-name>
-        <servlet-class>fr.davidson.sample.jee.servlet.FilteredServlet1</servlet-class>
+        <servlet-name>FilteredServlet</servlet-name>
+        <servlet-class>fr.davidson.sample.jee.servlet.FilteredServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet2</servlet-name>
+        <url-pattern>/Servlet2</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/Servlet1</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>FilteredServlet1</servlet-name>
-        <url-pattern>/FilteredServlet1</url-pattern>
+        <servlet-name>FilteredServlet</servlet-name>
+        <url-pattern>/FilteredServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
