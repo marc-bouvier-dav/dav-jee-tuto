@@ -6,18 +6,6 @@ Projets d'exemples Java EE
  * [001-servlet](./001-servlet) : Exemples de servlets
  * [002-jsp](./002-jsp) : Exemples d'utilisation de pages JSP (ancien standard de vues Jave EE)
  * [003-jsf](./003-jsf) : Exemples d'utilisation de facelets (nouveau standard de vues Jave EE)
- * TODO : 005-persistence : Exemples JSF avec couche métier (JPA)
- * TODO : 003-jsf-cdi
- * TODO : 003-jsf-ejb
  * [004-primefaces](./004-primefaces) : Exemples d'utilisation du framework PrimeFaces
- * TODO : 005-jax-rs-web : Services web REST avec JAX-RS
- * TODO : 005-jax-rs-client : Client REST avec JAX-RS
- * TODO : 006-jax-ws-web : Services web SOAP avec JAX-WS
- * TODO : 006-jax-ws-client : Client SOAP avec JAX-WS
- * TODO : 009-security
- * TODO : 010-inter-local : Internationalisation / localisation
- 
-Alternatives à Java EE
-======================
- * [101-spring-mvc-jsp](./101-spring-mvc-jsp) : Exemples d'utilisation du framework Spring MVC (templates JSP)
- * [102-spring-mvc-thymeleaf](./102-spring-mvc-thymeleaf) : Exemples d'utilisation du framework Spring MVC (templates ThymeLeaf)
+ * [005-persistence](./005-persistence) : Exemples JSF avec couche métier (JPA)
+
