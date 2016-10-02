@@ -15,5 +15,6 @@ Cet exemple peut être exécuté sans configuration supplémentaire sur
 Exemples
 --------
 
- - [Servlet simple](./src/main/java/fr/davidson/sample/jee/servlet/Servlet1.java)
- - [Servlet filtrée](./001-servlet/src/main/java/fr/davidson/sample/jee/servlet/FilteredServlet1.java)
+ - [Servlet simple Hello world, GET](./src/main/java/fr/davidson/sample/jee/servlet/Servlet1.java)
+ - [Servlet Basique, GET, POST](./src/main/java/fr/davidson/sample/jee/servlet/Servlet2.java)
+ - [Servlet filtrée](./001-servlet/src/main/java/fr/davidson/sample/jee/servlet/FilteredServlet.java)
