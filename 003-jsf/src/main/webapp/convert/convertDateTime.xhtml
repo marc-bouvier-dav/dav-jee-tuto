@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Attribut "converter" : conversion de données</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Attribut "converter" : conversion de données</h1>
+        <h2>f:convertDateTime</h2>
+        <p>pattern="yyyy-MM-dd" : <h:outputText value="#{managedBean1.dateCourante}">
+                <f:convertDateTime  pattern="yyyy-MM-dd"/>
+            </h:outputText>
+        </p>
+        <p> dateStyle="long"
+            <h:outputText value="#{managedBean1.dateCourante}">
+                <f:convertDateTime  dateStyle="long"/>
+            </h:outputText>
+        </p>
+        <p>locale="fr_FR"
+            <h:outputText value="#{managedBean1.dateCourante}">
+                <f:convertDateTime  locale="fr_FR"/>
+            </h:outputText>
+        </p>
+        <p>locale="ja_JP"
+            <h:outputText value="#{managedBean1.dateCourante}">
+                <f:convertDateTime  locale="ja_JP"/>
+            </h:outputText>
+        </p>
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
