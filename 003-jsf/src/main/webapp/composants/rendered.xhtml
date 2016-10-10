@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Attribut "rendered" : affichage conditionnel d'un composant</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Attribut "rendered" : affichage conditionnel d'un composant</h1>
+        <h2>rendered="true"</h2>
+        <p>Lorsque la valeur de l'attribut "rendered" d'un composant est à true, celui-ci est affiché. 
+            (remarque affiché ou non, il est présent dans l'arbre de composants JSF)</p>
+        <p class="code">
+            &lt;h:panelGroup rendered=&quot;#&#123;renderedManagedBean.afficherHello&#125;&quot;&gt;Hello&lt;/h:panelGroup&gt;
+        </p>
+        <h:panelGroup rendered="#{renderedManagedBean.afficherHello}">Hello</h:panelGroup>
+        <h2>Changer dynamiquement l'affichage d'un composant (update + actionListener)</h2>
+        <h:form id="worldForm">
+
+            <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
+                 <f:ajax event="change" execute="@form" render="#worldPanel"/>
+            </h:selectBooleanCheckbox>
+           
+            <h:panelGroup id="worldPanel">
+                <h:panelGroup  rendered="#{renderedManagedBean.afficherWorld}">
+                    World !
+                </h:panelGroup>
+            </h:panelGroup >
+        </h:form>
+        
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
