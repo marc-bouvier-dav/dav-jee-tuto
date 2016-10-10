@@ -26,23 +26,21 @@
  */
 package fr.davidson.sample.jee.jsf.composants;
 
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.faces.bean.ViewScoped;
+
+import javax.faces.bean.ManagedBean;
+
 
 /**
  *
  * @author osboxes
  */
-@Named(value = "renderedManagedBean")
-@ViewScoped
+@ManagedBean(name = "renderedManagedBean")
 public class RenderedManagedBean {
     
-    /** Condition d'affichage du libellé hello. */
-   private  boolean afficherHello=true;
     
+   
     /** Condition d'affichage du libellé hello. */
-    private boolean afficherWorld=true;
+    private boolean afficherWorld;
 
     /**
      * Creates a new instance of Rendered
@@ -50,8 +48,9 @@ public class RenderedManagedBean {
     public RenderedManagedBean() {
     }
 
+    /** Condition d'affichage du libellé hello. */
     public boolean isAfficherHello() {
-        return afficherHello;
+        return true;
     }
 
     public boolean isAfficherWorld() {
@@ -61,6 +60,8 @@ public class RenderedManagedBean {
     public void setAfficherWorld(boolean afficherWorld) {
         this.afficherWorld = afficherWorld;
     }
+
+ 
     
     
     
