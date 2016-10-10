@@ -21,11 +21,12 @@
         <h:form id="worldForm">
 
             <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
-                 <f:ajax event="change" execute="@form" render="#worldPanel"/>
+                 <f:ajax event="change" execute="@form afficherWorld" render="worldPanel"/>
             </h:selectBooleanCheckbox>
            
             <h:panelGroup id="worldPanel">
-                <h:panelGroup  rendered="#{renderedManagedBean.afficherWorld}">
+                <h:panelGroup  rendered="#{not empty renderedManagedBean.afficherWorld 
+                                           and renderedManagedBean.afficherWorld eq true} ">
                     World !
                 </h:panelGroup>
             </h:panelGroup >
