@@ -10,6 +10,29 @@
     </h:head>
     <h:body>
         <h1>f:convertNumber conversions numériques</h1>
+        <h:form>
+            <p>locale="fr_FR" minIntegerDigits="4" minFractionDigits="2" : 
+                <code>
+                    <h:outputText value="#{managedBean1.entier}">
+                        <f:convertNumber locale="fr_FR" minIntegerDigits="4" minFractionDigits="2" />
+                    </h:outputText>
+                </code>
+            </p>
+            <p>currencyCode="EUR" type="currency" : 
+                <code>
+                    <h:outputText value="#{managedBean1.entier}">
+                        <f:convertNumber currencyCode="EUR" type="currency" />
+                    </h:outputText>
+                </code>
+            </p>
+            <p>type="percent" : 
+                <code>
+                    <h:outputText value="#{managedBean1.entier}">
+                        <f:convertNumber type="percent" />
+                    </h:outputText>
+                </code>
+            </p>
+        </h:form>
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>

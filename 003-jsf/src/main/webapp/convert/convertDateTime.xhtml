@@ -10,24 +10,32 @@
     </h:head>
     <h:body>
         <h1>f:convertDateTime : conversion de temps</h1>
-        <p>pattern="yyyy-MM-dd" : <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  pattern="yyyy-MM-dd"/>
-            </h:outputText>
+        <p>pattern="yyyy-MM-dd" : 
+            <code><h:outputText value="#{managedBean1.dateCourante}">
+                    <f:convertDateTime  pattern="yyyy-MM-dd"/>
+                </h:outputText>
+            </code>
         </p>
         <p> dateStyle="long"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  dateStyle="long"/>
-            </h:outputText>
+            <code>
+                <h:outputText value="#{managedBean1.dateCourante}">
+                    <f:convertDateTime  dateStyle="long"/>
+                </h:outputText>
+            </code>
         </p>
         <p>locale="fr_FR"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  locale="fr_FR"/>
-            </h:outputText>
+            <code>
+                <h:outputText value="#{managedBean1.dateCourante}">
+                    <f:convertDateTime  locale="fr_FR"/>
+                </h:outputText>
+            </code>
         </p>
         <p>locale="ja_JP"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  locale="ja_JP"/>
-            </h:outputText>
+            <code>
+                <h:outputText value="#{managedBean1.dateCourante}">
+                    <f:convertDateTime  locale="ja_JP"/>
+                </h:outputText>
+            </code>
         </p>
         <p>
             <h:link value="Retour" outcome="/index"/>
