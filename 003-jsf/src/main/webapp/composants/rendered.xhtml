@@ -18,7 +18,8 @@
         </p>
         <h:panelGroup rendered="#{renderedManagedBean.afficherHello}">Hello</h:panelGroup>
         <h2>Changer dynamiquement l'affichage d'un composant (update + actionListener)</h2>
-        <h:form id="worldForm">
+        <!--
+          <h:form id="worldForm">
 
             <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
                  <f:ajax event="change" execute="@form afficherWorld" render="worldPanel"/>
@@ -30,6 +31,13 @@
                     World !
                 </h:panelGroup>
             </h:panelGroup >
+        </h:form>
+        -->
+        <h:form id="worldForm">
+            <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
+                <f:ajax event="change" execute="worldForm" render="worldForm"/>
+            </h:selectBooleanCheckbox>
+            <h:outputText rendered="#{renderedManagedBean.afficherWorld}" value="World !"/>
         </h:form>
         
         <p>
