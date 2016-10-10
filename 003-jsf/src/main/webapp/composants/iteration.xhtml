@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Composants portant sur des collections</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1>Composants portant sur des collections</h1>
+            <h2>h:selectManyListBox</h2>
+            <h:selectManyListbox  value="#{iterationManagedBean.entreesSelectionnees}">
+
+                <f:selectItems value="#{iterationManagedBean.liste}" var="entry" 
+                               itemLabel="#{entry.valeur}" itemValue="#{entry.cle}"/>
+            </h:selectManyListbox>
+            <h2>h:selectOneMenu</h2>
+            <h:selectOneMenu value="#{iterationManagedBean.entreeSelectionnee}">
+                <f:selectItems value="#{iterationManagedBean.liste}" var="menuEntry" 
+                               itemLabel="#{menuEntry.valeur}" itemValue="#{menuEntry.cle}"/>					
+            </h:selectOneMenu>	
+            <h2>h:selectOneRadio</h2>
+            <h:selectOneRadio value="#{iterationManagedBean.entreeSelectionnee}">
+                <f:selectItems value="#{iterationManagedBean.liste}" var="radioEntry" 
+                               itemLabel="#{radioEntry.valeur}" itemValue="#{radioEntry.cle}"/>					
+            </h:selectOneRadio>	
+             <h2>h:selectManyCheckbox</h2>
+             <h:selectManyCheckbox value="#{iterationManagedBean.entreesSelectionnees}">
+                <f:selectItems value="#{iterationManagedBean.liste}" var="checkEntry" 
+                               itemLabel="#{checkEntry.valeur}" itemValue="#{checkEntry.cle}"/>					
+            </h:selectManyCheckbox>	
+             <h2>h:dataTable</h2>
+             <h:dataTable value="#{iterationManagedBean.liste}" 
+                          var="ligne" >
+                 <h:column > 
+                     <f:facet name="header">Clé</f:facet>
+                     <h:outputText value="#{ligne.cle}"/>
+                 </h:column>
+                 <h:column>
+                     <f:facet name="header">valeur</f:facet>
+                     <h:outputText value="#{ligne.valeur}"/>
+                 </h:column>
+                 
+             </h:dataTable>
+        </h:form>
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

@@ -17,7 +17,7 @@
             &lt;h:panelGroup rendered=&quot;#&#123;renderedManagedBean.afficherHello&#125;&quot;&gt;Hello&lt;/h:panelGroup&gt;
         </p>
         <h:panelGroup rendered="#{renderedManagedBean.afficherHello}">Hello</h:panelGroup>
-        <h2>Changer dynamiquement l'affichage d'un composant (update + actionListener)</h2>
+        <h2>Changer dynamiquement l'affichage d'un composant (f:ajax execute render)</h2>
         
         <h:form id="worldForm">
             <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
