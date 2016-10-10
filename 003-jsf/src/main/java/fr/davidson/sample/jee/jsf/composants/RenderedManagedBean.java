@@ -28,6 +28,7 @@ package fr.davidson.sample.jee.jsf.composants;
 
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 
 /**
@@ -35,6 +36,7 @@ import javax.faces.bean.ManagedBean;
  * @author osboxes
  */
 @ManagedBean(name = "renderedManagedBean")
+@ViewScoped
 public class RenderedManagedBean {
     
     

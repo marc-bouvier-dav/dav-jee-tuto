@@ -29,7 +29,6 @@ package fr.davidson.sample.jee.jsf;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.inject.Named;
 
 
 /**
@@ -41,6 +40,7 @@ import javax.inject.Named;
  * @author marc.bouvier@davidson.fr Bouvier
  */
 @ManagedBean(name = "managedBean1")
+@RequestScoped
 public class ManagedBean1 {
 
     /**
