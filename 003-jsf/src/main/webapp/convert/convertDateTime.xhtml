@@ -5,12 +5,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Attribut "converter" : conversion de données</title>
+        <title>f:convertDateTime : conversion de temps</title>
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body>
-        <h1>Attribut "converter" : conversion de données</h1>
-        <h2>f:convertDateTime</h2>
+        <h1>f:convertDateTime : conversion de temps</h1>
         <p>pattern="yyyy-MM-dd" : <h:outputText value="#{managedBean1.dateCourante}">
                 <f:convertDateTime  pattern="yyyy-MM-dd"/>
             </h:outputText>

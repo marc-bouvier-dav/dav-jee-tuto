@@ -5,31 +5,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Attribut "converter" : conversion de données</title>
+        <title>f:convertNumber conversions numériques</title>
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body>
-        <h1>Attribut "converter" : conversion de données</h1>
-        <h2>f:convertDateTime</h2>
-        <p>pattern="yyyy-MM-dd" : <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  pattern="yyyy-MM-dd"/>
-            </h:outputText>
-        </p>
-        <p> dateStyle="long"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  dateStyle="long"/>
-            </h:outputText>
-        </p>
-        <p>locale="fr_FR"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  locale="fr_FR"/>
-            </h:outputText>
-        </p>
-        <p>locale="ja_JP"
-            <h:outputText value="#{managedBean1.dateCourante}">
-                <f:convertDateTime  locale="ja_JP"/>
-            </h:outputText>
-        </p>
+        <h1>f:convertNumber conversions numériques</h1>
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Attribut "converter" : conversion de données</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Attribut "converter" : conversion de données</h1>
+        <h2>Conversion implicite</h2>
+        <h:form>
+            <p>L'attribut dateCourante du managed bean est de type Integer, il est implicitement converti par javax.faces.Integer
+                : <h:inputText value="#{managedBean1.entier}" />
+            </p>
+        </h:form>
+        <h2>Converter personnalisé</h2>
+        <h:form>
+            <p>Dans le cas suivant on utilise un converter pour supprimer la chaine "hello" du champ
+                : <h:inputText value="#{managedBean1.nom}" converter="#{helloConverter}"/>
+            </p>
+        </h:form>
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

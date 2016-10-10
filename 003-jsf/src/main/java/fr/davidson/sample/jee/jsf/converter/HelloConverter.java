@@ -24,69 +24,28 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.jsf;
+package fr.davidson.sample.jee.jsf.converter;
 
-import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
+import javax.inject.Named;
 
 /**
- * Bean managé par JSF, il est accessible aux facelet via EL
- * <p>
- * Ce bean est en scope Request (@{@link RequestScoped}), cela signifie que l'objet est recréé à chaque
- * requête HTTP de facelet l'utilisant.</p>
  *
- * @author marc.bouvier@davidson.fr Bouvier
+ * @author marc.bouvier@davidson.fr
  */
-@ManagedBean(name = "managedBean1")
-@RequestScoped
-public class ManagedBean1 {
+@Named("helloConverter")
+public class HelloConverter implements Converter{
 
-    /**
-     * Attribut de type date
-     */
-    private Date dateCourante;
-    
-    private Integer entier;
-    
-    private String nom;
-    
-    
-
-    /**
-     * Creates a new instance of ManagedBean1
-     */
-    public ManagedBean1() {
-        dateCourante = new Date();
-        entier =1;
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        return value;
     }
 
-    public Date getDateCourante() {
-        return dateCourante;
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        return((String)value).replace("hello", "");
     }
-
-    public void setDateCourante(Date dateCourante) {
-        this.dateCourante = dateCourante;
-    }
-
-    public Integer getEntier() {
-        return entier;
-    }
-
-    public void setEntier(Integer entier) {
-        this.entier = entier;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    
-    
     
 }
