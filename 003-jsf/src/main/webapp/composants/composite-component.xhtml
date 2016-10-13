@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:util="http://java.sun.com/jsf/composite/util"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Utilisation d'un composant composite</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Utilisation d'un composant composite</h1>
+        <p><util:hello username="Davidson" date="#{managedBean1.dateCourante}"></util:hello> </p>
+        
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
