@@ -32,60 +32,34 @@ import javax.faces.bean.RequestScoped;
 
 
 /**
- * Bean managé par JSF, il est accessible aux facelet via EL
- * <p>
- * Ce bean est en scope Request (@{@link RequestScoped}), cela signifie que l'objet est recréé à chaque
- * requête HTTP de facelet l'utilisant.</p>
+ * Exemples de code.
  *
- * @author marc.bouvier@davidson.fr
+ * @author marc.bouvier@davidson.fr 
  */
-@ManagedBean(name = "managedBean1")
+@ManagedBean(name = "codeExemples")
 @RequestScoped
-public class ManagedBean1 {
+public class CodeExemplesManagedBean {
 
-    /**
-     * Attribut de type date
-     */
-    private Date dateCourante;
+   
+  String uiRepeatJsfc="<div jsfc=\"ui:repeat\" value=\"#{iterationManagedBean.liste}\" var=\"item\" varStatus=\"status\">\n" +
+"   #{item.cle} - #{item.valeur}\n" +
+"</div>";
+  
+  String uiRepeatStatus="<ui:repeat value=\"#{iterationManagedBean.liste}\" var=\"item\" varStatus=\"status\">\n" +
+"   <p style=\"#{status.odd?'color:red':'color:aqua'}\">#{item.cle} - #{item.valeur}</p>\n" +
+"</ui:repeat>";
+
+    public String getUiRepeatJsfc() {
+        return uiRepeatJsfc;
+    }
+
+    public String getUiRepeatStatus() {
+        return uiRepeatStatus;
+    }
     
-    private Integer entier;
     
-    private String nom;
-    
-    
-
-    /**
-     * Creates a new instance of ManagedBean1
-     */
-    public ManagedBean1() {
-        dateCourante = new Date();
-        entier =1;
-    }
-
-    public Date getDateCourante() {
-        return dateCourante;
-    }
-
-    public void setDateCourante(Date dateCourante) {
-        this.dateCourante = dateCourante;
-    }
-
-    public Integer getEntier() {
-        return entier;
-    }
-
-    public void setEntier(Integer entier) {
-        this.entier = entier;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
+  
+  
     
     
     
