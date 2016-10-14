@@ -15,19 +15,18 @@
         <pre><code>
 <h:outputText value="#{codeExemples.uiRepeatStatus}" escape="true"/>                
 </code></pre>
-        <ui:repeat value="#{iterationManagedBean.liste}" var="item" varStatus="status">
-            <p style="#{status.odd?'color:red':'color:aqua'}">#{item.cle} - #{item.valeur}</p>
-        </ui:repeat>
+<ui:repeat value="#{iterationManagedBean.liste}" var="item" varStatus="status">
+    <p style="#{status.odd?'color:red':'color:aqua'}">#{item.cle} - #{item.valeur} 
+        (status.odd : #{status.odd}, status.even : #{status.even}, status.index : #{status.index})</p>
+</ui:repeat>
 
         <h2>ui:repeat utilisation dans une div avec attribut jsfc</h2>
-        <pre><code>
-<h:outputText value="#{codeExemples.uiRepeatJsfc}" escape="true"/>
-                </code></pre>
-
-        <div jsfc="ui:repeat" value="#{iterationManagedBean.liste}" var="item" varStatus="status">
-            #{item.cle} - #{item.valeur}
-        </div>
-
+<pre><code><h:outputText value="#{codeExemples.uiRepeatJsfc}" escape="true"/></code></pre>
+<table style="border: solid 1px">
+    <tr jsfc="ui:repeat" value="#{iterationManagedBean.liste}" var="item" varStatus="status">
+        <td>#{item.cle}</td><td>#{item.valeur}</td>
+    </tr>
+</table>
 
         <p>
             <h:link value="Retour" outcome="/index"/>

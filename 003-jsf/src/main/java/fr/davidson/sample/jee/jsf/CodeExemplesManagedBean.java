@@ -41,12 +41,15 @@ import javax.faces.bean.RequestScoped;
 public class CodeExemplesManagedBean {
 
    
-  String uiRepeatJsfc="<div jsfc=\"ui:repeat\" value=\"#{iterationManagedBean.liste}\" var=\"item\" varStatus=\"status\">\n" +
-"   #{item.cle} - #{item.valeur}\n" +
-"</div>";
+  String uiRepeatJsfc="<table style=\"border: solid 1px\">\n" +
+"    <tr jsfc=\"ui:repeat\" value=\"#{iterationManagedBean.liste}\" var=\"item\" varStatus=\"status\">\n" +
+"        <td>#{item.cle}</td><td>#{item.valeur}</td>\n" +
+"    </tr>\n" +
+"</table>";
   
   String uiRepeatStatus="<ui:repeat value=\"#{iterationManagedBean.liste}\" var=\"item\" varStatus=\"status\">\n" +
-"   <p style=\"#{status.odd?'color:red':'color:aqua'}\">#{item.cle} - #{item.valeur}</p>\n" +
+"    <p style=\"#{status.odd?'color:red':'color:aqua'}\">#{item.cle} - #{item.valeur} \n" +
+"        (status.odd : #{status.odd}, status.even : #{status.even}, status.index : #{status.index})</p>\n" +
 "</ui:repeat>";
 
     public String getUiRepeatJsfc() {
