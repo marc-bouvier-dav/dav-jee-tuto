@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
     <h:head>
         <title>Itération avec ui-repeat</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -12,21 +12,19 @@
         <h1>Itération avec ui-repeat</h1>
         <h2>ui:repeat - varStatus</h2>
         <p>Utilisation de varStatus pour alterner les couleurs des lignes paires/impaires</p>
-        <pre><code>
-<h:outputText value="#{codeExemples.uiRepeatStatus}" escape="true"/>                
-</code></pre>
-<ui:repeat value="#{iterationManagedBean.liste}" var="item" varStatus="status">
-    <p style="#{status.odd?'color:red':'color:aqua'}">#{item.cle} - #{item.valeur} 
-        (status.odd : #{status.odd}, status.even : #{status.even}, status.index : #{status.index})</p>
-</ui:repeat>
+        <util:exemple value="#{codeExemples.uiRepeatStatus}"/>
+        <ui:repeat value="#{iterationManagedBean.liste}" var="item" varStatus="status">
+            <p style="#{status.odd?'color:red':'color:aqua'}">#{item.cle} - #{item.valeur} 
+                (status.odd : #{status.odd}, status.even : #{status.even}, status.index : #{status.index})</p>
+        </ui:repeat>
 
         <h2>ui:repeat utilisation dans une div avec attribut jsfc</h2>
-<pre><code><h:outputText value="#{codeExemples.uiRepeatJsfc}" escape="true"/></code></pre>
-<table style="border: solid 1px">
-    <tr jsfc="ui:repeat" value="#{iterationManagedBean.liste}" var="item" varStatus="status">
-        <td>#{item.cle}</td><td>#{item.valeur}</td>
-    </tr>
-</table>
+        <util:exemple value="#{codeExemples.uiRepeatJsfc}"/>
+        <table style="border: solid 1px">
+            <tr jsfc="ui:repeat" value="#{iterationManagedBean.liste}" var="item" varStatus="status">
+                <td>#{item.cle}</td><td>#{item.valeur}</td>
+            </tr>
+        </table>
 
         <p>
             <h:link value="Retour" outcome="/index"/>
