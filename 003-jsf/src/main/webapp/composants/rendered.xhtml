@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
     <h:head>
         <title>Attribut "rendered" : affichage conditionnel d'un composant</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -18,7 +19,7 @@
         </p>
         <h:panelGroup rendered="#{renderedManagedBean.afficherHello}">Hello</h:panelGroup>
         <h2>Changer dynamiquement l'affichage d'un composant (f:ajax execute render)</h2>
-        
+        <util:exemple value="#{codeExemples.renderedDynamic}"/>
         <h:form id="worldForm">
             <h:selectBooleanCheckbox id="afficherWorld" value="#{renderedManagedBean.afficherWorld}"  >
                 <f:ajax event="change" execute="@form" render=":worldPanel"/>
@@ -27,7 +28,7 @@
         <h:panelGroup id="worldPanel">
             <h:outputText rendered="#{renderedManagedBean.afficherWorld}" value="World !"/>
         </h:panelGroup>
-        
+
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>

@@ -40,6 +40,15 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class CodeExemplesManagedBean {
     
+    String renderedDynamic="<h:form id=\"worldForm\">\n" +
+"    <h:selectBooleanCheckbox id=\"afficherWorld\" value=\"#{renderedManagedBean.afficherWorld}\"  >\n" +
+"        <f:ajax event=\"change\" execute=\"@form\" render=\":worldPanel\"/>\n" +
+"    </h:selectBooleanCheckbox>\n" +
+"</h:form>\n" +
+"<h:panelGroup id=\"worldPanel\">\n" +
+"    <h:outputText rendered=\"#{renderedManagedBean.afficherWorld}\" value=\"World !\"/>\n" +
+"</h:panelGroup>";
+    
     String convertDateTimeLocaleJp="<h:outputText value=\"#{managedBean1.dateCourante}\">\n" +
 "    <f:convertDateTime  locale=\"ja_JP\"/>\n" +
 "</h:outputText>";
@@ -122,6 +131,10 @@ public class CodeExemplesManagedBean {
 
     public String getConvertDateTimeLocaleJp() {
         return convertDateTimeLocaleJp;
+    }
+
+    public String getRenderedDynamic() {
+        return renderedDynamic;
     }
     
     
