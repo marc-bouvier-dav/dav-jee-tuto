@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <!-- INTERFACE -->
+    <cc:interface shortDescription="Ce composant permet d'afficher une liste de Formations">
+        <cc:attribute name="rowSelectUpdate" type="java.lang.String"
+                      shortDescription="Liste des composants à mettre à jour lors de la sélection d'une ligne de la liste de formations"/>
+        <cc:attribute name="value" type="java.util.Collection" shortDescription="Collection de Formation sur laquelle le tableau est construit"/>
+        <cc:attribute name="selection" type="fr.davidson.sample.jee.domain.model.formation.Formation" shortDescription="Valeur sélectionnée"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <!-- Exercice 1. : https://github.com/marc-bouvier-dav/dav-jee-tuto/wiki/JSF-:-composite-composant -->
+        <h:form id="form-liste-formations">
+          <!-- non implémenté -->
+        </h:form>
+    </cc:implementation>
+</html>

@@ -29,7 +29,6 @@ package fr.davidson.sample.jee.domain.model.formation;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
