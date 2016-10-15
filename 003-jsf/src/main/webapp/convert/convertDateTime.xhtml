@@ -3,40 +3,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
     <h:head>
         <title>f:convertDateTime : conversion de temps</title>
         <h:outputStylesheet  name="style.css" library="css" />
     </h:head>
     <h:body>
         <h1>f:convertDateTime : conversion de temps</h1>
-        <p>pattern="yyyy-MM-dd" : 
-            <code><h:outputText value="#{managedBean1.dateCourante}">
-                    <f:convertDateTime  pattern="yyyy-MM-dd"/>
-                </h:outputText>
-            </code>
-        </p>
-        <p> dateStyle="long"
-            <code>
-                <h:outputText value="#{managedBean1.dateCourante}">
-                    <f:convertDateTime  dateStyle="long"/>
-                </h:outputText>
-            </code>
-        </p>
-        <p>locale="fr_FR"
-            <code>
-                <h:outputText value="#{managedBean1.dateCourante}">
-                    <f:convertDateTime  locale="fr_FR"/>
-                </h:outputText>
-            </code>
-        </p>
-        <p>locale="ja_JP"
-            <code>
-                <h:outputText value="#{managedBean1.dateCourante}">
-                    <f:convertDateTime  locale="ja_JP"/>
-                </h:outputText>
-            </code>
-        </p>
+        <h2>pattern="yyyy-MM-dd"</h2>
+        <util:exemple value="#{codeExemples.convertDateTimePattern}"/>
+        <h:outputText value="#{managedBean1.dateCourante}">
+            <f:convertDateTime  pattern="yyyy-MM-dd"/>
+        </h:outputText>
+        <h2>dateStyle="long"</h2>
+
+        <util:exemple value="#{codeExemples.convertDateTimeDateStyle}" />
+        <h:outputText value="#{managedBean1.dateCourante}">
+            <f:convertDateTime  dateStyle="long"/>
+        </h:outputText>
+
+
+        <h2>locale="fr_FR"</h2>
+        <util:exemple value="#{codeExemples.convertDateTimeLocaleFr}" />
+
+        <h:outputText value="#{managedBean1.dateCourante}">
+            <f:convertDateTime  locale="fr_FR"/>
+        </h:outputText>
+
+
+        <h2>locale="ja_JP"</h2>
+        <util:exemple value="#{codeExemples.convertDateTimeLocaleJp}" />
+
+        <h:outputText value="#{managedBean1.dateCourante}">
+            <f:convertDateTime  locale="ja_JP"/>
+        </h:outputText>
+
+
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>

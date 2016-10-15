@@ -39,6 +39,46 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
+    
+    String convertDateTimeLocaleJp="<h:outputText value=\"#{managedBean1.dateCourante}\">\n" +
+"    <f:convertDateTime  locale=\"ja_JP\"/>\n" +
+"</h:outputText>";
+    
+    String convertDateTimeLocaleFr="<h:outputText value=\"#{managedBean1.dateCourante}\">\n" +
+"    <f:convertDateTime  locale=\"fr_FR\"/>\n" +
+"</h:outputText>";
+    
+    String convertDateTimeDateStyle="<h:outputText value=\"#{managedBean1.dateCourante}\">\n" +
+"   <f:convertDateTime  dateStyle=\"long\"/>\n" +
+"</h:outputText>";
+    String convertDateTimePattern="<h:outputText value=\"#{managedBean1.dateCourante}\">\n" +
+"   <f:convertDateTime  pattern=\"yyyy-MM-dd\"/>\n" +
+"</h:outputText>";
+    
+    String faceletSimple="<?xml version='1.0' encoding='UTF-8' ?>\n" +
+"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+"<html xmlns=\"http://www.w3.org/1999/xhtml\"\n" +
+"xmlns:h=\"http://java.sun.com/jsf/html\"\n" +
+"xmlns:ui=\"http://java.sun.com/jsf/facelets\"\n" +
+"xmlns:f=\"http://java.sun.com/jsf/core\">\n" +
+"    <h:head>\n" +
+"        <title>Facelet</title>\n" +
+"        <h:outputStylesheet  name=\"style.css\" library=\"css\" />\n" +
+"    </h:head>\n" +
+"    <h:body>\n" +
+"        <h1>Facelet simple</h1>\n" +
+"        <p>Cette facelet ne contient qu'un texte simple</p>\n" +
+"        <p>\n" +
+"            <h:link value=\"Retour\" outcome=\"index\"/>\n" +
+"        </p>\n" +
+"    </h:body>\n" +
+"</html>\n" +
+"\n" +
+"";
+    
+    String faceletEtManagedBean="<h:outputText value=\"#{managedBean1.dateCourante}\" >\n" +
+"   <f:convertDateTime pattern=\"dd/MM/yyyy HH:mm\" />\n" +
+"</h:outputText>";
 
    
   String uiRepeatJsfc="<table style=\"border: solid 1px\">\n" +
@@ -59,6 +99,31 @@ public class CodeExemplesManagedBean {
     public String getUiRepeatStatus() {
         return uiRepeatStatus;
     }
+
+    public String getFaceletEtManagedBean() {
+        return faceletEtManagedBean;
+    }
+
+    public String getFaceletSimple() {
+        return faceletSimple;
+    }
+
+    public String getConvertDateTimePattern() {
+        return convertDateTimePattern;
+    }
+
+    public String getConvertDateTimeDateStyle() {
+        return convertDateTimeDateStyle;
+    }
+
+    public String getConvertDateTimeLocaleFr() {
+        return convertDateTimeLocaleFr;
+    }
+
+    public String getConvertDateTimeLocaleJp() {
+        return convertDateTimeLocaleJp;
+    }
+    
     
     
   
