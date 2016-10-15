@@ -4,7 +4,7 @@
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
+xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
     <h:head>
         <title>Facelet et managed bean</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -14,7 +14,7 @@ xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
         <p>Date courante (utilisation de h:ouputText et f:convertDateTime): 
             <!-- Affichage de la date présente dans le managed bean managedBean1
             au format dd/MM/yyyy HH:mm -->
-            <util:exemple value="#{codeExemples.faceletEtManagedBean}" />
+            <dav:exemple value="#{codeExemples.faceletEtManagedBean}" />
             <h:outputText value="#{managedBean1.dateCourante}" >
                 <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
             </h:outputText>

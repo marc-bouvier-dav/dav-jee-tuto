@@ -4,7 +4,7 @@
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
+xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
     <h:head>
         <title>Facelet</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -12,7 +12,7 @@ xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
     <h:body>
         <h1>Facelet simple</h1>
         <p>Cette facelet ne contient qu'un texte simple</p>
-        <util:exemple value="#{codeExemples.faceletSimple}"/>
+        <dav:exemple value="#{codeExemples.faceletSimple}"/>
         <p>
             <h:link value="Retour" outcome="index"/>
         </p>

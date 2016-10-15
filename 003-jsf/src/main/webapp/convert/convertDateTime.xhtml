@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:util="http://xmlns.jcp.org/jsf/composite/util">
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
     <h:head>
         <title>f:convertDateTime : conversion de temps</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -12,20 +12,20 @@
     <h:body>
         <h1>f:convertDateTime : conversion de temps</h1>
         <h2>pattern="yyyy-MM-dd"</h2>
-        <util:exemple value="#{codeExemples.convertDateTimePattern}"/>
+        <dav:exemple value="#{codeExemples.convertDateTimePattern}"/>
         <h:outputText value="#{managedBean1.dateCourante}">
             <f:convertDateTime  pattern="yyyy-MM-dd"/>
         </h:outputText>
         <h2>dateStyle="long"</h2>
 
-        <util:exemple value="#{codeExemples.convertDateTimeDateStyle}" />
+        <dav:exemple value="#{codeExemples.convertDateTimeDateStyle}" />
         <h:outputText value="#{managedBean1.dateCourante}">
             <f:convertDateTime  dateStyle="long"/>
         </h:outputText>
 
 
         <h2>locale="fr_FR"</h2>
-        <util:exemple value="#{codeExemples.convertDateTimeLocaleFr}" />
+        <dav:exemple value="#{codeExemples.convertDateTimeLocaleFr}" />
 
         <h:outputText value="#{managedBean1.dateCourante}">
             <f:convertDateTime  locale="fr_FR"/>
@@ -33,7 +33,7 @@
 
 
         <h2>locale="ja_JP"</h2>
-        <util:exemple value="#{codeExemples.convertDateTimeLocaleJp}" />
+        <dav:exemple value="#{codeExemples.convertDateTimeLocaleJp}" />
 
         <h:outputText value="#{managedBean1.dateCourante}">
             <f:convertDateTime  locale="ja_JP"/>

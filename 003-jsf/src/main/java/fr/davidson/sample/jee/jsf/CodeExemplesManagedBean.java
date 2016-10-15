@@ -40,6 +40,22 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class CodeExemplesManagedBean {
     
+    
+    String customHelloConverter="@Named(\"helloConverter\")\n" +
+"public class HelloConverter implements Converter{\n" +
+"\n" +
+"    @Override\n" +
+"    public Object getAsObject(FacesContext context, UIComponent component, String value) {\n" +
+"        return value;\n" +
+"    }\n" +
+"\n" +
+"    @Override\n" +
+"    public String getAsString(FacesContext context, UIComponent component, Object value) {\n" +
+"        return((String)value).replace(\"hello\", \"\");\n" +
+"    }\n" +
+"    \n" +
+"}";
+    
     String renderedDynamic="<h:form id=\"worldForm\">\n" +
 "    <h:selectBooleanCheckbox id=\"afficherWorld\" value=\"#{renderedManagedBean.afficherWorld}\"  >\n" +
 "        <f:ajax event=\"change\" execute=\"@form\" render=\":worldPanel\"/>\n" +
@@ -135,6 +151,10 @@ public class CodeExemplesManagedBean {
 
     public String getRenderedDynamic() {
         return renderedDynamic;
+    }
+
+    public String getCustomHelloConverter() {
+        return customHelloConverter;
     }
     
     
