@@ -29,37 +29,29 @@ package fr.davidson.sample.jee.jsf.composants;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+
 /**
  *
  * @author osboxes
  */
-@ManagedBean(name = "renderedManagedBean")
+@ManagedBean(name = "commandLinkManagedBean")
 @ViewScoped
-public class RenderedManagedBean {
-       
-    /** Condition d'affichage du libellé hello. */
-    private boolean afficherWorld;
+public class CommandLinkManagedBean {
+   
+    private String clickedLabel;
 
-    /**
-     * Creates a new instance of Rendered
-     */
-    public RenderedManagedBean() {
+    public void onClick(){
+        clickedLabel="C'était un bon clic!";
     }
-
-    /** Condition d'affichage du libellé hello. */
-    public boolean isAfficherHello() {
-        return true;
+    
+    public void onClickAjax(){
+        clickedLabel="C'était un bon clic! Mais en Ajax.";
     }
-
-    public boolean isAfficherWorld() {
-        return afficherWorld;
+    
+    public String getClickedLabel() {
+        return clickedLabel;
     }
-
-    public void setAfficherWorld(boolean afficherWorld) {
-        this.afficherWorld = afficherWorld;
-    }
-
- 
+    
     
     
     

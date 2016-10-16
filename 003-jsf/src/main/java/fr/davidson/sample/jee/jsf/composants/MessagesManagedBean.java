@@ -26,38 +26,47 @@
  */
 package fr.davidson.sample.jee.jsf.composants;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
  * @author osboxes
  */
-@ManagedBean(name = "commandLinkManagedBean")
+@ManagedBean(name = "messagesManagedBean")
 @ViewScoped
-public class commandLinkManagedBean {
-   
-    private String clickedLabel;
+public class MessagesManagedBean {
 
-    public void onClick(){
-        clickedLabel="C'était un bon clic!";
+    String userName;
+
+    String email;
+
+    public void addMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage("formMessage:buttonMessage",
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Résumé du message", "Détail du message"));
     }
-    
-    public void onClickAjax(){
-        clickedLabel="C'était un bon clic! Mais en Ajax.";
+
+    public String getUserName() {
+        return userName;
     }
-    
-    public String getClickedLabel() {
-        return clickedLabel;
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
-    
-    
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

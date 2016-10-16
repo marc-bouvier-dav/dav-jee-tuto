@@ -39,6 +39,36 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
+    String messageFromManagedBean1="public void addMessage() {\n" +
+"   FacesContext context = FacesContext.getCurrentInstance();\n" +
+"   context.addMessage(\"formMessage:buttonMessage\",\n" +
+"      new FacesMessage(FacesMessage.SEVERITY_INFO, \"Résumé du message\", \"Détail du message\"));\n" +
+"}";
+    String messageFromManagedBean="<h:form id=\"formMessage\">\n" +
+"    <h:commandButton id=\"buttonMessage\" value=\"Ajouter un message\" actionListener=\"#{messagesManagedBean.addMessage}\" />\n" +
+"    <h:message for=\"buttonMessage\"  showSummary=\"true\" showDetail=\"true\" />\n" +
+"</h:form>";
+    String messagesTable="<h:messages tooltip=\"true\" layout=\"table\"/>";
+    String messages="<h:messages />";
+    
+    String messageInput="<h:form>\n" +
+"    <h:outputLabel value=\"UserName\"  for=\"userName\"/>\n" +
+"    <h:inputText id=\"userName\" value=\"#{messagesManagedBean.userName}\"\n" +
+"                 size=\"20\" required=\"true\" label=\"UserName\" >\n" +
+"        <f:validateLength minimum=\"5\" maximum=\"10\" />\n" +
+"    </h:inputText>\n" +
+"    <h:outputLabel value=\"email\"  for=\"email\"/>\n" +
+"    <h:inputText id=\"email\" value=\"#{messagesManagedBean.email}\"\n" +
+"                 required=\"true\" label=\"Email\" validatorMessage=\"email incorrect\" >\n" +
+"        <f:validateRegex pattern=\"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$\" />\n" +
+"    </h:inputText>\n" +
+"    <h:commandButton value=\"Soumettre\"/>\n" +
+"    <h:message for=\"userName\" style=\"color:red\"   />\n" +
+"</h:form>	";
+    
+    String cssResourceFromEl="<link rel=\"stylesheet\" href=\"#{resource['css:style.css']}\"  type=\"text/css\"/>";
+    String cssOutputStyle="<h:outputStylesheet   name=\"style.css\" library=\"css\" />";
+    String cssResourceImage="background-image: url(\"#{resource['images/davidson_txt_161x17_padding_5px.png']}\");";
     
     String commandLinkClickMeAjax="<h:form>\n" +
 "    <h:commandLink value=\"Cliquez-moi en ajax!\" actionListener=\"#{commandLinkManagedBean.onClickAjax}\" >\n" +
@@ -183,13 +213,38 @@ public class CodeExemplesManagedBean {
     public String getCommandLinkClickMeAjax() {
         return commandLinkClickMeAjax;
     }
-    
-    
-    
-    
-  
-  
-    
+
+    public String getCssResourceImage() {
+        return cssResourceImage;
+    }
+
+    public String getCssResourceFromEl() {
+        return cssResourceFromEl;
+    }
+
+    public String getCssOutputStyle() {
+        return cssOutputStyle;
+    }
+
+    public String getMessageInput() {
+        return messageInput;
+    }
+
+    public String getMessages() {
+        return messages;
+    }
+
+    public String getMessagesTable() {
+        return messagesTable;
+    }
+
+    public String getMessageFromManagedBean() {
+        return messageFromManagedBean;
+    }
+
+    public String getMessageFromManagedBean1() {
+        return messageFromManagedBean1;
+    }
     
     
 }

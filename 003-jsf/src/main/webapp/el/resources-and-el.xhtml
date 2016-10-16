@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:dav="http://java.sun.com/jsf/composite/dav">
+    <h:head>
+        <title>Inclure des ressources à l'aide de EL</title>
+        <link rel="stylesheet" href="#{resource['css:style.css']}"  type="text/css"/>
+    </h:head>
+    <h:body>
+        <h1>Inclure des ressources à l'aide de EL</h1>
+        <p>Il est possible d'inclure des ressources en les référençant via Expression Language (EL).</p>
+        <dav:exemple value="#{codeExemples.cssResourceFromEl}" />
+        <p>Est equivalent à</p>
+        <dav:exemple value="#{codeExemples.cssOutputStyle}" />
+        <p>Dans le fichier css, il est nécessaire de référencer les urls des images dans le fichier CSS en utilisant également les resources via EL</p>
+        <dav:exemple value="#{codeExemples.cssResourceImage}" />
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

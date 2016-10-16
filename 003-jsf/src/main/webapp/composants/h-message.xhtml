@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav" 
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Affichage de messages : h:message</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Affichage de messages : h:message</h1>
+        <h2>Affichage d'un message associé à un seul composant.</h2>
+        <p>Affiche le message de validation lié au champ userName (Un message s'affiche si la valeur est vide ou la taille de la valeur est incorrecte.</p>
+        <dav:exemple value="#{codeExemples.messageInput}" />
+        <h:form>
+            <h:outputLabel value="UserName"  for="userName"/>
+            <h:inputText id="userName" value="#{messagesManagedBean.userName}"
+                         size="20" required="true" label="UserName" >
+                <f:validateLength minimum="5" maximum="10" />
+            </h:inputText>
+            <h:outputLabel value="email"  for="email"/>
+            <h:inputText id="email" value="#{messagesManagedBean.email}"
+                         required="true" label="Email" validatorMessage="email incorrect" >
+                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+            </h:inputText>
+            <h:commandButton value="Soumettre"/>
+            <h:message for="userName" style="color:red"   />
+        </h:form>		
+        <h2>h:messages, affichage de plusieurs messages de validation.</h2>
+        <dav:exemple value="#{codeExemples.messages}" />
+        <h:messages />
+        <h2>h:messages, affichage de plusieurs messages de validation.</h2>
+        <dav:exemple value="#{codeExemples.messagesTable}" />
+        <h:messages tooltip="true" layout="table"/>
+        <h2>Ajouter un message depuis un managed bean</h2>
+        <p>Du côté JSF</p>
+        <dav:exemple value="#{codeExemples.messageFromManagedBean}" />
+        <h:form id="formMessage">
+            <p>Du côté Managed Bean</p>
+            <dav:exemple value="#{codeExemples.messageFromManagedBean1}" />
+            <h:commandButton id="buttonMessage" value="Ajouter un message" actionListener="#{messagesManagedBean.addMessage}" />
+            <h:message for="buttonMessage"  showSummary="true" showDetail="true" />
+        </h:form>
+
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

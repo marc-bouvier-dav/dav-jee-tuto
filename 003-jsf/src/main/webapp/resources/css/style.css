@@ -32,7 +32,7 @@ For more information, please refer to <http://unlicense.org>
 /* JSF permet de référencer des resources relatives à l'application en utilisant EL'*/
 body{
     background-color: #181818;
-    background-image: url("#{resource['images/davidson_txt_161x17_padding_5px.png']}");
+    background-image: url("#{resource['images:davidson_txt_161x17_padding_5px.png']}");
     background-repeat: no-repeat;
 
     color : #a5a4a4;
