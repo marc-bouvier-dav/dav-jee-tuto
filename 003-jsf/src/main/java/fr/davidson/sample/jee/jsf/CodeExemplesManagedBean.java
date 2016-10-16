@@ -40,6 +40,25 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class CodeExemplesManagedBean {
     
+    String commandLinkClickMeAjax="<h:form>\n" +
+"    <h:commandLink value=\"Cliquez-moi en ajax!\" actionListener=\"#{commandLinkManagedBean.onClickAjax}\" >\n" +
+"        <f:ajax render=\":clickedLabelAjax\"/>\n" +
+"    </h:commandLink>\n" +
+"</h:form>\n" +
+"<h:panelGroup id=\"clickedLabelAjax\">\n" +
+"    <p>Lors du clic en ajax, seule cette valeur est rafraichie :</p>\n" +
+"    <h:outputText rendered=\"#{not empty commandLinkManagedBean.clickedLabel}\"\n" +
+"                  value=\"#{commandLinkManagedBean.clickedLabel}\" style=\"color:green\"/>\n" +
+"</h:panelGroup>";
+    
+    String commandLinkClickMe="<h:form>\n" +
+"    <h:commandLink value=\"Cliquez-moi!\" actionListener=\"#{commandLinkManagedBean.onClick}\" ></h:commandLink>\n" +
+"</h:form>\n" +
+"<h:panelGroup id=\"clickedLabel\">\n" +
+"    <p>Valeur </p>\n" +
+"    <h:outputText rendered=\"#{not empty commandLinkManagedBean.clickedLabel}\"\n" +
+"                  value=\"#{commandLinkManagedBean.clickedLabel}\" style=\"color:red\"/>\n" +
+"</h:panelGroup>";
     
     String customHelloConverter="@Named(\"helloConverter\")\n" +
 "public class HelloConverter implements Converter{\n" +
@@ -156,6 +175,15 @@ public class CodeExemplesManagedBean {
     public String getCustomHelloConverter() {
         return customHelloConverter;
     }
+
+    public String getCommandLinkClickMe() {
+        return commandLinkClickMe;
+    }
+
+    public String getCommandLinkClickMeAjax() {
+        return commandLinkClickMeAjax;
+    }
+    
     
     
     

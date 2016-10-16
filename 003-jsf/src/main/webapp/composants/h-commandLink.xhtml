@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:util="http://java.sun.com/jsf/composite/util"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
+    <h:head>
+        <title>Utilisation de h:commandLink</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Utilisation de h:commandLink</h1>
+        <h2>Utilisation basique</h2>
+        <dav:exemple value="#{codeExemples.commandLinkClickMe}"></dav:exemple>
+        <!-- un formulaire est requis -->
+        <h:form>
+            <h:commandLink value="Cliquez-moi!" actionListener="#{commandLinkManagedBean.onClick}" ></h:commandLink>
+        </h:form>
+        <h:panelGroup id="clickedLabel">
+            <p>Valeur </p>
+            <h:outputText rendered="#{not empty commandLinkManagedBean.clickedLabel}"
+                          value="#{commandLinkManagedBean.clickedLabel}" style="color:red"/>
+        </h:panelGroup>
+        <h2>Utilisation avec ajax</h2>
+        <dav:exemple value="#{codeExemples.commandLinkClickMeAjax}"></dav:exemple>
+        <!-- un formulaire est requis -->
+        <h:form>
+            <h:commandLink value="Cliquez-moi en ajax!" actionListener="#{commandLinkManagedBean.onClickAjax}" >
+                <f:ajax render=":clickedLabelAjax"/>
+            </h:commandLink>
+        </h:form>
+        <h:panelGroup id="clickedLabelAjax">
+            <p>Lors du clic en ajax, seule cette valeur est rafraichie :</p>
+            <h:outputText rendered="#{not empty commandLinkManagedBean.clickedLabel}"
+                          value="#{commandLinkManagedBean.clickedLabel}" style="color:green"/>
+        </h:panelGroup>
+
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
