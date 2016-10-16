@@ -26,43 +26,30 @@
  */
 package fr.davidson.sample.jee.jsf.composants;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
  * @author osboxes
  */
-@ManagedBean(name = "messagesManagedBean")
+@ManagedBean(name = "builtInValidationManagedBean")
 @ViewScoped
-public class MessagesManagedBean {
+public class BuiltInValidationManagedBean {
 
-    String userName;
-
-    String email;
-
-    public void addMessage() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage("formMessage:buttonMessage",
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Résumé du message", "Détail du message"));
+    String numeroSecuriteSociale;
+    
+    public String getNumeroSecuriteSociale() {
+        return numeroSecuriteSociale;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setNumeroSecuriteSociale(String numeroSecuriteSociale) {
+        this.numeroSecuriteSociale = numeroSecuriteSociale;
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    
+    
+    
 }

@@ -26,36 +26,24 @@
  */
 package fr.davidson.sample.jee.jsf.composants;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  *
  * @author osboxes
  */
-@ManagedBean(name = "messagesManagedBean")
+@ManagedBean(name = "beanValidationManagedBean")
 @ViewScoped
-public class MessagesManagedBean {
+public class BeanValidationManagedBean {
 
-    String userName;
-
-    String email;
-
-    public void addMessage() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage("formMessage:buttonMessage",
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Résumé du message", "Détail du message"));
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+       
+@NotNull(message = "Email requis")
+@Pattern( regexp = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
+        message = "Format incorrect" )      
+String email;
 
     public String getEmail() {
         return email;
@@ -65,4 +53,7 @@ public class MessagesManagedBean {
         this.email = email;
     }
 
+    
+    
+    
 }

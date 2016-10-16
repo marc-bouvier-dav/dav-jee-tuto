@@ -39,6 +39,38 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
+        
+    String beanValidationNullWebXmlConfig="<context-param>\n" +
+"    <param-name>\n" +
+"        javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL\n" +
+"    </param-name>\n" +
+"    <param-value>true</param-value>\n" +
+"</context-param>";
+    
+    String beanValidationEmail="@NotNull(message = \"Email requis\")\n" +
+"@Pattern( regexp = \"^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$\",\n" +
+"        message = \"Format incorrect\" )      \n" +
+"String email;";
+    String validationRequired2="<h:form>\n" +
+"    <h:outputLabel for=\"numeroSecuriteSociale2\" value=\"Numéro de sécurité sociale\"/>\n" +
+"    <h:inputText id=\"numeroSecuriteSociale2\" value=\"#{builtInValidationManagedBean.numeroSecuriteSociale}\" \n" +
+"                 validatorMessage=\"Numéro de sécurité incorrect (la taille doit être comprise entre 5 et 15 caractères)\"  >\n" +
+"        <f:validateLength minimum=\"5\" maximum=\"15\"/>\n" +
+"    </h:inputText>\n" +
+"\n" +
+"    <h:commandButton value=\"Soumettre\"/>\n" +
+"    <h:message for=\"numeroSecuriteSociale2\" />\n" +
+"</h:form>";
+    String validationRequired1="<h:form>\n" +
+"    <h:outputLabel for=\"numeroSecuriteSociale1\" value=\"Numéro de sécurité sociale\"/>\n" +
+"    <h:inputText id=\"numeroSecuriteSociale1\" value=\"#{builtInValidationManagedBean.numeroSecuriteSociale}\" required=\"true\" \n" +
+"                 label=\"Numéro de sécurité sociale\" />\n" +
+"\n" +
+"    <h:commandButton value=\"Soumettre\"/>\n" +
+"    <h:message for=\"numeroSecuriteSociale1\" />\n" +
+"\n" +
+"</h:form>";
+    
     String messageFromManagedBean1="public void addMessage() {\n" +
 "   FacesContext context = FacesContext.getCurrentInstance();\n" +
 "   context.addMessage(\"formMessage:buttonMessage\",\n" +
@@ -245,6 +277,23 @@ public class CodeExemplesManagedBean {
     public String getMessageFromManagedBean1() {
         return messageFromManagedBean1;
     }
+
+    public String getValidationRequired1() {
+        return validationRequired1;
+    }
+
+    public String getValidationRequired2() {
+        return validationRequired2;
+    }
+
+    public String getBeanValidationEmail() {
+        return beanValidationEmail;
+    }
+
+    public String getBeanValidationNullWebXmlConfig() {
+        return beanValidationNullWebXmlConfig;
+    }
+    
     
     
 }

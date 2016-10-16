@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:util="http://java.sun.com/jsf/composite/util"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
+    <h:head>
+        <title>Bean Validation API</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Bean Validation API</h1>
+        <h2>Validation via Bean validation Api par annotation dans le managed bean.</h2>
+        <p>L'api de bean validation est une alternative à la validation depuis les taglibs.
+        Il existe des annotations intégrées qui peuvent être combinées pour 
+        les validations standard</p>
+         <dav:exemple value="#{codeExemples.beanValidationEmail}"/>
+        <p>Pour prendre en compte les valeurs de champs vide "" comme des 
+            valeurs null, il est nécessaire d'ajouter la configuration suivante 
+            au descripteur de déploiement web.xml</p>
+        <dav:exemple value="#{codeExemples.beanValidationNullWebXmlConfig}"/>
+       
+        <h:form>
+
+            <h:outputLabel for="numeroSecuriteSociale1" value="Numéro de sécurité sociale"/>
+            <h:inputText id="numeroSecuriteSociale1" value="#{beanValidationManagedBean.email}" />
+            <h:commandButton value="Soumettre"/>
+            <h:message for="numeroSecuriteSociale1" />
+
+        </h:form>
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Exemples de pages JSF</title>
         <h:outputStylesheet  name="style.css" library="css" />
@@ -27,16 +27,18 @@ xmlns:f="http://java.sun.com/jsf/core">
             <li><h:link value='f:convertDateTime' outcome="convert/convertDateTime" /> : conversiond de dates</li>
             <li><h:link value='f:convertNumber' outcome="convert/convertNumber" /> : conversions numériques</li>
             <li><h:link value='attribut converter' outcome="convert/converter" /> : conversions</li>
-             <li><h:link value='iterations' outcome="composants/iteration" /> : composants basés sur des collections</li>
-            <li>attribut "disabled" : désactiver un composant</li>
-            
-            
+            <li><h:link value='iterations' outcome="composants/iteration" /> : composants basés sur des collections</li>
+            <li>Todo : attribut "disabled" : désactiver un composant</li>
             <li><h:link value='composants composite' outcome="composants/composite-component" /> : création de composants personnalisés</li>
             <li><h:link value='ui:repeat' outcome="composants/ui-repeat" /> : Itération avec ui:repeat</li>
             <li><h:link value='h:commandLink' outcome="composants/h-commandLink" /> : Lien se comportant comme un boutohn de soumission de formulaire</li>
-            
             <li><h:link value='h:message' outcome="composants/h-message" /> : Affichage de messages liés au formulaire</li>
-            <li></li>
+        </ul>
+        <h1>Validation</h1>
+        <ul>
+            <li><h:link value='Attribut validate, f:validate tags' outcome="validation/built-in-validation" /> : attribut validate et validations intégrées</li>
+            <li><h:link value='Bean validation' outcome="validation/bean-validation" /> : Api Bean Validation</li>
+            <li>Todo : Validation personnalisée</li>
         </ul>
         <h1>Exemples d'utilisation de templates JSF</h1>
         <ul>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:util="http://java.sun.com/jsf/composite/util"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
+    <h:head>
+        <title>Validation intégrée aux composants</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Validation intégrée aux composants</h1>
+        <h2>attribut "required"</h2>
+        <p>Cet attribut force la saisie du champs. Un message d'erreur 
+            automatique apparait si la validation  est incorrecte. L'attribut 
+            "label"  du champs de saisie permet de nommer de façon lisible le 
+            composant apparaissant dans le message d'erreur. </p>
+        <dav:exemple value="#{codeExemples.validationRequired1}"/>
+        <h:form>
+
+            <h:outputLabel for="numeroSecuriteSociale1" value="Numéro de sécurité sociale"/>
+            <h:inputText id="numeroSecuriteSociale1" value="#{builtInValidationManagedBean.numeroSecuriteSociale}" required="true" 
+                         label="Numéro de sécurité sociale" />
+
+            <h:commandButton value="Soumettre"/>
+            <h:message for="numeroSecuriteSociale1" />
+
+        </h:form>
+        <h2>attribut "validatorMessage", f:validateLength</h2>
+        <p>L'attribut "validatorMessage" permet de peronnaliser le message lorsque la validation est incorrecte.</p>
+        <p>La plupart des composants html supportent les tags de validation de JSF.</p>
+        <ul>
+            <li>f:validateDoubleRange : validation de nombre décimal</li>
+            <li>f:validateLength : validation de la taille du champs</li>
+            <li>f:validateLongRange : validation de nombre entiers</li>
+            <li>f:validateRegex : validation selon une expression régulière</li>
+            <li>f:validateRequired : similaire à l'attribut required</li>
+            <li>f:validateBean (permet de spécifier les groupes de validation lors de l'utilisation de bean validation)</li>
+        </ul>
+        <dav:exemple value="#{codeExemples.validationRequired2}"/>
+<h:form>
+    <h:outputLabel for="numeroSecuriteSociale2" value="Numéro de sécurité sociale"/>
+    <h:inputText id="numeroSecuriteSociale2" value="#{builtInValidationManagedBean.numeroSecuriteSociale}" 
+                 validatorMessage="Numéro de sécurité incorrect (la taille doit être comprise entre 5 et 15 caractères)"  >
+        <f:validateLength minimum="5" maximum="15"/>
+    </h:inputText>
+
+    <h:commandButton value="Soumettre"/>
+    <h:message for="numeroSecuriteSociale2" />
+</h:form>
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
