@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:util="http://java.sun.com/jsf/composite/util"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:dav="http://xmlns.jcp.org/jsf/composite/dav">
+    <h:head>
+        <title>Validator personnalisé</title>
+        <h:outputStylesheet  name="style.css" library="css" />
+    </h:head>
+    <h:body>
+        <h1>Validator personnalisé</h1>
+        <h2>Validation d'email via validator personnalisé</h2>
+        <p>Il est possible de créer un validateur personnalisé en créant une classe implémentant l'interface javax.faces.validator.Validator et l'annotation @javax.faces.validator.FacesValidator</p>
+        <p>Classe de validation EmailValidator</p>
+        <dav:exemple value="#{codeExemples.customValidatorMB}"/>
+        <p>Utilisation dans la Facelet</p>
+        <dav:exemple value="#{codeExemples.customValidator}"/>
+<h:form>
+    <h:outputLabel for="email" value="Adresse e-mail"/>
+    <h:inputText id="email" value="#{customValidationManagedBean.email}" required="true" 
+                 label="Adresse e-mail" >
+        <f:validator validatorId="fr.davidson.EmailValidator"/>
+    </h:inputText>
+    <h:commandButton value="Soumettre"/>
+    <h:message for="email" />
+</h:form>
+
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

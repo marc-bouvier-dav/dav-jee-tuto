@@ -39,6 +39,40 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
+    
+    String customValidatorMB="@FacesValidator(\"fr.davidson.EmailValidator\")\n" +
+"public class EmailValidator implements Validator {\n" +
+"\n" +
+"    private static final String EMAIL_PATTERN = \"^[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$\";\n" +
+"\n" +
+"    private final Pattern pattern;\n" +
+"    private Matcher matcher;\n" +
+"\n" +
+"    public EmailValidator() {\n" +
+"        pattern = Pattern.compile(EMAIL_PATTERN);\n" +
+"    }\n" +
+"\n" +
+"    @Override\n" +
+"    public void validate(FacesContext context, UIComponent component,\n" +
+"            Object value) throws ValidatorException {\n" +
+"\n" +
+"        matcher = pattern.matcher(value.toString());\n" +
+"        if (!matcher.matches()) {\n" +
+"            FacesMessage msg = new FacesMessage(\"Echec de la validation de l'e-mail.\", \"Format d'adresse e-mail invalide.\");\n" +
+"            msg.setSeverity(FacesMessage.SEVERITY_ERROR);\n" +
+"            throw new ValidatorException(msg);\n" +
+"        }\n" +
+"    }\n" +
+"}";
+    String customValidator="<h:form>\n" +
+"    <h:outputLabel for=\"email\" value=\"Adresse e-mail\"/>\n" +
+"    <h:inputText id=\"email\" value=\"#{customValidationManagedBean.email}\" required=\"true\" \n" +
+"                 label=\"Adresse e-mail\" >\n" +
+"        <f:validator validatorId=\"fr.davidson.EmailValidator\"/>\n" +
+"    </h:inputText>\n" +
+"    <h:commandButton value=\"Soumettre\"/>\n" +
+"    <h:message for=\"email\" />\n" +
+"</h:form>";
         
     String beanValidationNullWebXmlConfig="<context-param>\n" +
 "    <param-name>\n" +
@@ -293,6 +327,15 @@ public class CodeExemplesManagedBean {
     public String getBeanValidationNullWebXmlConfig() {
         return beanValidationNullWebXmlConfig;
     }
+
+    public String getCustomValidator() {
+        return customValidator;
+    }
+
+    public String getCustomValidatorMB() {
+        return customValidatorMB;
+    }
+    
     
     
     

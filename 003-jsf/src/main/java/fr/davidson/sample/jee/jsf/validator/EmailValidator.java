@@ -24,29 +24,42 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.jsf.composants;
+package fr.davidson.sample.jee.jsf.validator;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.Validator;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
  * @author osboxes
  */
-@ManagedBean(name = "builtInValidationManagedBean")
-@ViewScoped
-public class BuiltInValidationManagedBean {
+@FacesValidator("fr.davidson.EmailValidator")
+public class EmailValidator implements Validator {
 
-    String numeroSecuriteSociale;
-    
-    public String getNumeroSecuriteSociale() {
-        return numeroSecuriteSociale;
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    private final Pattern pattern;
+    private Matcher matcher;
+
+    public EmailValidator() {
+        pattern = Pattern.compile(EMAIL_PATTERN);
     }
 
-    public void setNumeroSecuriteSociale(String numeroSecuriteSociale) {
-        this.numeroSecuriteSociale = numeroSecuriteSociale;
+    @Override
+    public void validate(FacesContext context, UIComponent component,
+            Object value) throws ValidatorException {
+
+        matcher = pattern.matcher(value.toString());
+        if (!matcher.matches()) {
+            FacesMessage msg = new FacesMessage("Echec de la validation de l'e-mail.", "Format d'adresse e-mail invalide.");
+            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+            throw new ValidatorException(msg);
+        }
     }
-    
-    
-    
 }

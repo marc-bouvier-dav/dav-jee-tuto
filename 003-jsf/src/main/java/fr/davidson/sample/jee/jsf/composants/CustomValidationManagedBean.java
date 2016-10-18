@@ -33,20 +33,20 @@ import javax.faces.bean.ViewScoped;
  *
  * @author osboxes
  */
-@ManagedBean(name = "builtInValidationManagedBean")
+@ManagedBean(name = "customValidationManagedBean")
 @ViewScoped
-public class BuiltInValidationManagedBean {
+public class CustomValidationManagedBean {
+String email;
 
-    String numeroSecuriteSociale;
-    
-    public String getNumeroSecuriteSociale() {
-        return numeroSecuriteSociale;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNumeroSecuriteSociale(String numeroSecuriteSociale) {
-        this.numeroSecuriteSociale = numeroSecuriteSociale;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    
+
+
     
     
 }
