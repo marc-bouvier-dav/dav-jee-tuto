@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:dav="http://java.sun.com/jsf/composite/dav">
+    <h:head>
+        <title>Expression Language : operateur "empty"</title>
+        <link rel="stylesheet" href="#{resource['css:style.css']}"  type="text/css"/>
+    </h:head>
+    <h:body>
+        <h1>Expression Language : operateur "empty"</h1>
+        <h2>empty / not empty</h2>
+        <p>Le mot clé "empty" permet de vérifier si une variable est vide ou null.</p>
+        <h3>Sur une chaine ou tout autre objet</h3>
+        <p>Par exemple, empty retournera true si une chaine vaut "" ...</p>
+        <dav:exemple value="#{codeExemples.elChaineVideMb}"/>
+        <dav:exemple value="#{codeExemples.elChaineVide}"/>
+        
+        <h:outputText rendered="#{empty expressionLanguageManagedBean.chaineVide}" 
+                      value="Texte affiché si : empty expressionLanguageManagedBean.chaineVide" />
+        <p>... ou null</p>
+        <dav:exemple value="#{codeExemples.elChaineNullMb}"/>
+        <dav:exemple value="#{codeExemples.elChaineNull}"/>
+        <h:outputText rendered="#{empty expressionLanguageManagedBean.chaineNull}" 
+                      value="Texte affiché si : empty expressionLanguageManagedBean.chaineNull" />
+        <h3>Sur une collection</h3>
+        <p>L'opérateur empty a un comportement spécifique sur une collection ou un tableau. 
+            Si la collection ou le tableau est null ou vide (aucun élément dans la collection), il retournera true.</p>
+        <dav:exemple value="#{codeExemples.elCollectionVideMb}"/>
+        <dav:exemple value="#{codeExemples.elCollectionVide}"/>
+        <h:outputText rendered="#{empty expressionLanguageManagedBean.collectionVide}" 
+                      value="Texte affiché si : empty expressionLanguageManagedBean.collectionVide" />
+        
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+
