@@ -26,7 +26,6 @@
  */
 package fr.davidson.sample.jee.jsf;
 
-import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -38,17 +37,39 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
-    
-    String elFnContains="<h:form>\n" +
-"    <h:inputText id=\"text\" value=\"#{expressionLanguageManagedBean.chaine}\"/>\n" +
-"    <h:commandButton value=\"Soumettre\"/>\n" +
-"    <h:panelGroup>\n" +
-"        <h:panelGroup rendered=\"#{fn:contains(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
-            + "<p>Affiché si chaine contient Davidson (sensible à la casse)</p></h:panelGroup>\n" +
-"        <h:panelGroup rendered=\"#{fn:containsIgnoreCase(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
-            + "<p>Affiché si chaine contient Davidson (insensible à la casse)</p></h:panelGroup>\n" +
-"    </h:panelGroup>\n" +
-"</h:form>";
+
+    String el3streamFilter = "<h:dataTable var=\"streamResult\"\n" +
+"             value=\"#{['1','2','3'].stream().filter(x-> x>1).toList()}\">\n" +
+"    <h:column id=\"nameCol\">\n" +
+"        <h:outputText id=\"name\" value=\"#{streamResult}\"/>\n" +
+"    </h:column>\n" +
+"</h:dataTable>";
+    String el3Set = "<h:dataTable value=\"#{{'1','2','3'}}\" var=\"item\">\n"
+            + "    <h:column>#{item}</h:column>\n"
+            + "</h:dataTable>";
+    String el3Map = "<h:dataTable value=\"#{mapDeclaree={'cle1':'valeur 1','cle2':'valeur 2','cle3':'valeur 3'};mapDeclaree.keySet()}\" var=\"cle\">\n"
+            + "    <h:column>#{cle}</h:column>\n"
+            + "    <h:column>#{mapDeclaree.get(cle)}</h:column>\n"
+            + "</h:dataTable>";
+    String el3List = "<ui:repeat value=\"#{['1','2','3']}\" var=\"item\">\n"
+            + "    <p>#{item}</p>\n"
+            + "</ui:repeat>";
+    String el3DeclarationAffectation1 = "<p>#{entier = 1+1;entier}</p>";
+    String el3DeclarationAffectation2 = "<p>#{entier +1}</p>";
+    String iterateDatatableMap = "<h:dataTable value=\"#{expressionLanguageManagedBean.mapPourIteration.keySet()}\" var=\"cle\">\n"
+            + "    <h:column>#{cle}</h:column>\n"
+            + "    <h:column>#{expressionLanguageManagedBean.mapPourIteration.get(cle)}</h:column>\n"
+            + "</h:dataTable>";
+    String elFnContains = "<h:form>\n"
+            + "    <h:inputText id=\"text\" value=\"#{expressionLanguageManagedBean.chaine}\"/>\n"
+            + "    <h:commandButton value=\"Soumettre\"/>\n"
+            + "    <h:panelGroup>\n"
+            + "        <h:panelGroup rendered=\"#{fn:contains(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
+            + "<p>Affiché si chaine contient Davidson (sensible à la casse)</p></h:panelGroup>\n"
+            + "        <h:panelGroup rendered=\"#{fn:containsIgnoreCase(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
+            + "<p>Affiché si chaine contient Davidson (insensible à la casse)</p></h:panelGroup>\n"
+            + "    </h:panelGroup>\n"
+            + "</h:form>";
     String elLength1 = "<p>#{fn:length('chaine')}</p>";
     String elLength2 = "<p>#{fn:length(['a','b','c'])}</p>";
     String elFnSplit = "<ul>\n"
@@ -419,6 +440,34 @@ public class CodeExemplesManagedBean {
 
     public String getElFnContains() {
         return elFnContains;
+    }
+
+    public String getIterateDatatableMap() {
+        return iterateDatatableMap;
+    }
+
+    public String getEl3DeclarationAffectation1() {
+        return el3DeclarationAffectation1;
+    }
+
+    public String getEl3DeclarationAffectation2() {
+        return el3DeclarationAffectation2;
+    }
+
+    public String getEl3Set() {
+        return el3Set;
+    }
+
+    public String getEl3Map() {
+        return el3Map;
+    }
+
+    public String getEl3List() {
+        return el3List;
+    }
+
+    public String getEl3streamFilter() {
+        return el3streamFilter;
     }
 
 }

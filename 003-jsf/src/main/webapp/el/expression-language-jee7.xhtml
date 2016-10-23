@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:dav="http://java.sun.com/jsf/composite/dav"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Expression Language 3.0: depuis Java EE 7</title>
+        <link rel="stylesheet" href="#{resource['css:style.css']}"  type="text/css"/>
+    </h:head>
+    <h:body>
+        <h1>Expression Language 3.0: depuis Java EE 7</h1>
+        <h2>Concaténation : +=</h2>
+        <dav:exemple value="#{codeExemples.elConcat}"/>
+        <p>#{'a'+='b'}</p>
+        <h2>Déclaration et affectation de variables</h2>
+        <h3>Déclaration et affectation d'un entier</h3>
+        <dav:exemple value="#{codeExemples.el3DeclarationAffectation1}"/>
+
+        <p>#{entier = 1+1;entier}</p>
+        <h3>Réutilisation de la variable déclarée plus loin dans la page</h3>
+        <dav:exemple value="#{codeExemples.el3DeclarationAffectation2}"/>
+        <p>#{entier +1}</p>
+        <h2>Lambda expressions</h2>
+        <h3>Evaluation immédiate</h3>
+        TODO
+        <h3>Evaluation indirecte</h3>
+        TODO
+        <h2>Construction de collections</h2>
+        <p>Il est possible de déclarer des collections dirctement en dur à l'aide d'expression language 3.0</p>
+        <p>Peut être utilisé pour prototypage, il n'est pas recommandé de les utiliser en production.</p>
+        <h3>Set</h3>
+        <dav:exemple value="#{codeExemples.el3Set}"/>
+        <h:dataTable value="#{{'1','2','3'}}" var="item">
+            <h:column>#{item}</h:column>
+        </h:dataTable>
+        <h3>List</h3>
+        <dav:exemple value="#{codeExemples.el3List}"/>
+        <ui:repeat value="#{['1','2','3']}" var="item">
+            <p>#{item}</p>
+        </ui:repeat>
+        <h3>Map</h3>
+        <dav:exemple value="#{codeExemples.el3Map}"/>
+        <h:dataTable value="#{mapDeclaree={'cle1':'valeur 1','cle2':'valeur 2','cle3':'valeur 3'};mapDeclaree.keySet()}" var="cle">
+            <h:column>#{cle}</h:column>
+            <h:column>#{mapDeclaree.get(cle)}</h:column>
+        </h:dataTable>
+        <h2>Opérations avancées sur des collections</h2>
+        <p>Il est possible d'utiliser des opérations sur les collections de la même façon qu'avec Java 8 SE (même en JDK7).</p>
+        <dav:exemple value="#{codeExemples.el3streamFilter}"/>
+        <h:dataTable var="streamResult"
+                     value="#{['1','2','3'].stream().filter(x-> x>1).toList()}">
+            <h:column id="nameCol">
+                <h:outputText id="name" value="#{streamResult}"/>
+            </h:column>
+        </h:dataTable>
+
+        <p><a href="https://docs.oracle.com/javaee/7/tutorial/jsf-el003.htm#sthref415" 
+              target="_BLANK">Pour plus d'informations</a></p>
+        <p><a href="http://fr.slideshare.net/reza_rahman/whats-new-with-expression-language-in-java-ee-7">Autres exemples</a></p>
+        <p><a href="http://www.baeldung.com/jsf-expression-language-el-3">Autres exemples</a></p>
+        
+        <p>
+            <h:link value="Retour" outcome="/index"/>
+        </p>
+    </h:body>
+</html>
+

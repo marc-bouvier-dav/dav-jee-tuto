@@ -4,12 +4,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:dav="http://java.sun.com/jsf/composite/dav">
     <h:head>
-        <title>Expression Language : construction litérale, lambda et streams</title>
+        <title>Expression Language : collections</title>
         <link rel="stylesheet" href="#{resource['css:style.css']}"  type="text/css"/>
     </h:head>
     <h:body>
-        <h1>Expression Language : construction litérale, lambda et streams</h1>
-        TODO
+        <h1>Expression Language : collections</h1>
+        <h2>Itérer sur une map</h2>
+        <dav:exemple value="#{codeExemples.iterateDatatableMap}"/>
+        <h:dataTable value="#{expressionLanguageManagedBean.mapPourIteration.keySet()}" var="cle">
+            <h:column>#{cle}</h:column>
+            <h:column>#{expressionLanguageManagedBean.mapPourIteration.get(cle)}</h:column>
+        </h:dataTable>
+        
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>

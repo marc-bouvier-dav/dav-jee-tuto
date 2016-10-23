@@ -27,9 +27,17 @@
 package fr.davidson.sample.jee.jsf.composants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.PostConstruct;
+import javax.el.ELContextEvent;
+import javax.el.ELContextListener;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -39,24 +47,35 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class ExpressionLanguageManagedBean {
 
-    String chaineVide="";
-    String chaineNull=null;
+    String chaineVide = "";
+    String chaineNull = null;
     List<String> collectionVide = new ArrayList<>();
     Integer entier1;
     Integer entier2;
     Boolean souligner;
     Boolean check1;
     Boolean check2;
-String chaine;
+    String chaine;
+    Map<String, String> mapPourIteration;
     
+
     public ExpressionLanguageManagedBean() {
-    entier1=1;
-    entier2=1;
-    check1=false;
-    check2=false;
+        entier1 = 1;
+        entier2 = 1;
+        check1 = false;
+        check2 = false;
+        mapPourIteration = new HashMap<>();
+        mapPourIteration.put("clé1", "Valeur1");
+        mapPourIteration.put("clé2", "Valeur2");
+        mapPourIteration.put("clé3", "Valeur3");
+
     }
-    
-    
+
+    public static String methodeStatique() {
+        return "valeurMethodeStatique";
+    }
+
+    ;
 
     public String getChaineVide() {
         return chaineVide;
@@ -117,8 +136,13 @@ String chaine;
     public void setChaine(String chaine) {
         this.chaine = chaine;
     }
-    
-    
-    
-    
+
+    public Map<String, String> getMapPourIteration() {
+        return mapPourIteration;
+    }
+
+    public void setMapPourIteration(Map<String, String> mapPourIteration) {
+        this.mapPourIteration = mapPourIteration;
+    }
+
 }
