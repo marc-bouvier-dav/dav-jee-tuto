@@ -42,6 +42,20 @@ public class ExpressionLanguageManagedBean {
     String chaineVide="";
     String chaineNull=null;
     List<String> collectionVide = new ArrayList<>();
+    Integer entier1;
+    Integer entier2;
+    Boolean souligner;
+    Boolean check1;
+    Boolean check2;
+
+    public ExpressionLanguageManagedBean() {
+    entier1=1;
+    entier2=1;
+    check1=false;
+    check2=false;
+    }
+    
+    
 
     public String getChaineVide() {
         return chaineVide;
@@ -53,6 +67,46 @@ public class ExpressionLanguageManagedBean {
 
     public List<String> getCollectionVide() {
         return collectionVide;
+    }
+
+    public Integer getEntier1() {
+        return entier1;
+    }
+
+    public void setEntier1(Integer entier1) {
+        this.entier1 = entier1;
+    }
+
+    public Integer getEntier2() {
+        return entier2;
+    }
+
+    public void setEntier2(Integer entier2) {
+        this.entier2 = entier2;
+    }
+
+    public Boolean getSouligner() {
+        return souligner;
+    }
+
+    public void setSouligner(Boolean souligner) {
+        this.souligner = souligner;
+    }
+
+    public Boolean getCheck1() {
+        return check1;
+    }
+
+    public void setCheck1(Boolean check1) {
+        this.check1 = check1;
+    }
+
+    public Boolean getCheck2() {
+        return check2;
+    }
+
+    public void setCheck2(Boolean check2) {
+        this.check2 = check2;
     }
     
     

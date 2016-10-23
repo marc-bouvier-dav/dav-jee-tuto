@@ -38,6 +38,14 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
+    
+    String elOperateurTernaire="<h:form>\n" +
+"    <h:outputLabel value=\"souligner\" for=\"souligner\"/>\n" +
+"    <h:selectBooleanCheckbox id=\"souligner\" value=\"#{expressionLanguageManagedBean.souligner}\">\n" +
+"        <f:ajax event=\"change\" execute=\"@form\" render=\":texteASouligner\"/>\n" +
+"    </h:selectBooleanCheckbox>\n" +
+"    <h:panelGroup id=\"texteASouligner\" style=\"#{expressionLanguageManagedBean.souligner?'text-decoration: underline;':''} \">Ce texte est souligné quand la cas est cochée</h:panelGroup>\n" +
+"</h:form>";
 
     String elCollectionVideMb = "List<String> collectionVide = new ArrayList<>();";
     String elCollectionVide = "        <h:outputText rendered=\"#{empty expressionLanguageManagedBean.collectionVide}\" \n" +
@@ -368,5 +376,11 @@ public class CodeExemplesManagedBean {
     public String getElCollectionVide() {
         return elCollectionVide;
     }
+
+    public String getElOperateurTernaire() {
+        return elOperateurTernaire;
+    }
+    
+    
 
 }

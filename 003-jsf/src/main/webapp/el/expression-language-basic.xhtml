@@ -2,18 +2,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:dav="http://java.sun.com/jsf/composite/dav">
+      xmlns:dav="http://java.sun.com/jsf/composite/dav"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Expression Language : operateurs basiques</title>
         <link rel="stylesheet" href="#{resource['css:style.css']}"  type="text/css"/>
     </h:head>
     <h:body>
         <h1>Expression Language : operateurs basiques</h1>
-        <h2>eq / gt / lt / le / ge</h2>
+        <h2>eq / gt / ge / lt / le</h2>
+        <h:form>
+            <h:outputLabel value="Entier 1" for="entier1"/>
+            <h:inputText  value="#{expressionLanguageManagedBean.entier1}" id="entier1"/>
+            <h:outputLabel value="Entier 2" for="entier2"/>
+            <h:inputText  value="#{expressionLanguageManagedBean.entier2}" id="entier2"/>
+            <h:commandButton value="Soumettre" />
+            <p><h:outputLabel value="expressionLanguageManagedBean.entier1 eq expressionLanguageManagedBean.entier2 : 
+                              #{expressionLanguageManagedBean.entier1 eq expressionLanguageManagedBean.entier2}" />
+            </p>
+            <p><h:outputLabel value="expressionLanguageManagedBean.entier1 gt expressionLanguageManagedBean.entier2 : 
+                              #{expressionLanguageManagedBean.entier1 gt expressionLanguageManagedBean.entier2}" />
+            </p>
+            <p><h:outputLabel value="expressionLanguageManagedBean.entier1 ge expressionLanguageManagedBean.entier2 : 
+                              #{expressionLanguageManagedBean.entier1 ge expressionLanguageManagedBean.entier2}" />
+            </p>
+            <p><h:outputLabel value="expressionLanguageManagedBean.entier1 lt expressionLanguageManagedBean.entier2 : 
+                              #{expressionLanguageManagedBean.entier1 lt expressionLanguageManagedBean.entier2}" />
+            </p>
+            <p><h:outputLabel value="expressionLanguageManagedBean.entier1 le expressionLanguageManagedBean.entier2 : 
+                              #{expressionLanguageManagedBean.entier1 le expressionLanguageManagedBean.entier2}" />
+            </p>
+        </h:form>
         <h2>not / and / or</h2>
-        <h2>conditions : A ? B : C</h2>
-        
-        
+        <p>Les opérateurs not, and, or permettent de combiner plusieurs booleans dans une expression language.</p>
+        <h:form>
+            <h:outputLabel value="check1" for="check1"/>
+            <h:selectBooleanCheckbox id="check1" value="#{expressionLanguageManagedBean.check1}">
+                <f:ajax  execute="@form" render="@form"/>
+            </h:selectBooleanCheckbox>
+            <h:outputLabel value="check2" for="check2"/>
+            <h:selectBooleanCheckbox id="check2" value="#{expressionLanguageManagedBean.check2}">
+                <f:ajax  execute="@form" render="@form"/>
+            </h:selectBooleanCheckbox>
+            <p>
+                <h:outputLabel value="expressionLanguageManagedBean.check1 or expressionLanguageManagedBean.check2 : 
+                               #{expressionLanguageManagedBean.check1 or expressionLanguageManagedBean.check2}" />
+            </p>
+            <p>
+                <h:outputLabel value="expressionLanguageManagedBean.check1 and expressionLanguageManagedBean.check2 : 
+                               #{expressionLanguageManagedBean.check1 and expressionLanguageManagedBean.check2}" />
+            </p>
+             <p>
+                <h:outputLabel value="not expressionLanguageManagedBean.check1 and expressionLanguageManagedBean.check2 : 
+                               #{not expressionLanguageManagedBean.check1 and expressionLanguageManagedBean.check2}" />
+            </p>
+            <p>
+                <h:outputLabel value="expressionLanguageManagedBean.check1 and not expressionLanguageManagedBean.check2 : 
+                               #{expressionLanguageManagedBean.check1 and not expressionLanguageManagedBean.check2}" />
+            </p>
+        </h:form>
+        <h2>Opérateur ternaire : A ? B : C</h2>
+        <p>Il est poossible de conditionner des valeurs en fonction de boolean. 
+            Cela peut être pratique pour 
+            modifier la valeur d'attributs html tels que "style" ou "class". 
+            Ainsi on peut styler dynamiquement des composants</p>
+        <dav:exemple value="#{codeExemples.elOperateurTernaire}"/>
+        <h:form>
+            <h:outputLabel value="souligner" for="souligner"/>
+            <h:selectBooleanCheckbox id="souligner" value="#{expressionLanguageManagedBean.souligner}">
+                <f:ajax event="change" execute="@form" render="texteASouligner"/>
+            </h:selectBooleanCheckbox>
+            <h:panelGroup id="texteASouligner" style="#{expressionLanguageManagedBean.souligner?'text-decoration: underline;':''} ">Ce texte est souligné quand la cas est cochée</h:panelGroup>
+        </h:form>
+        <h2>Exemples supplémentaires</h2>
         <p><a href="https://docs.oracle.com/javaee/7/tutorial/jsf-el007.htm" target="_BLANK">Plus d'exemples sur le tutorial officiel</a></p>
         <p>
             <h:link value="Retour" outcome="/index"/>
