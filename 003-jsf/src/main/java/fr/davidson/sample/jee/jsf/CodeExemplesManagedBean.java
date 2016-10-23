@@ -38,7 +38,17 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "codeExemples")
 @RequestScoped
 public class CodeExemplesManagedBean {
-
+    
+    String elFnContains="<h:form>\n" +
+"    <h:inputText id=\"text\" value=\"#{expressionLanguageManagedBean.chaine}\"/>\n" +
+"    <h:commandButton value=\"Soumettre\"/>\n" +
+"    <h:panelGroup>\n" +
+"        <h:panelGroup rendered=\"#{fn:contains(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
+            + "<p>Affiché si chaine contient Davidson (sensible à la casse)</p></h:panelGroup>\n" +
+"        <h:panelGroup rendered=\"#{fn:containsIgnoreCase(expressionLanguageManagedBean.chaine,'Davidson')}\">\n"
+            + "<p>Affiché si chaine contient Davidson (insensible à la casse)</p></h:panelGroup>\n" +
+"    </h:panelGroup>\n" +
+"</h:form>";
     String elLength1 = "<p>#{fn:length('chaine')}</p>";
     String elLength2 = "<p>#{fn:length(['a','b','c'])}</p>";
     String elFnSplit = "<ul>\n"
@@ -405,6 +415,10 @@ public class CodeExemplesManagedBean {
 
     public String getElLength2() {
         return elLength2;
+    }
+
+    public String getElFnContains() {
+        return elFnContains;
     }
 
 }

@@ -47,7 +47,8 @@ public class ExpressionLanguageManagedBean {
     Boolean souligner;
     Boolean check1;
     Boolean check2;
-
+String chaine;
+    
     public ExpressionLanguageManagedBean() {
     entier1=1;
     entier2=1;
@@ -107,6 +108,14 @@ public class ExpressionLanguageManagedBean {
 
     public void setCheck2(Boolean check2) {
         this.check2 = check2;
+    }
+
+    public String getChaine() {
+        return chaine;
+    }
+
+    public void setChaine(String chaine) {
+        this.chaine = chaine;
     }
     
     
