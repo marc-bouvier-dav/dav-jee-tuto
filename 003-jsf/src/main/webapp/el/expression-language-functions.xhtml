@@ -27,19 +27,24 @@
             </ui:repeat>
         </ul>
         <h2>fn:contains / fn:containsIgnoreCase</h2>
-        
+
         <p>fn:contains et fn:containsIgnoreCase permettent de conditionner un composant selon la présence d'une chaine dans une autre.
-       </p>
+        </p>
         <p>Dans l'exemple suivant, saisir 'davidson' puis 'Davidson'.</p>
         <dav:exemple value="#{codeExemples.elFnContains}"/>
-<h:form>
-    <h:inputText id="text" value="#{expressionLanguageManagedBean.chaine}"/>
-    <h:commandButton value="Soumettre"/>
-    <h:panelGroup>
-        <h:panelGroup rendered="#{fn:contains(expressionLanguageManagedBean.chaine,'Davidson')}"><p>Affiché si chaine contient Davidson (sensible à la casse)</p></h:panelGroup>
-        <h:panelGroup rendered="#{fn:containsIgnoreCase(expressionLanguageManagedBean.chaine,'Davidson')}"><p>Affiché si chaine contient Davidson (insensible à la casse)</p></h:panelGroup>
-    </h:panelGroup>
-</h:form>
+        <h:form>
+            <h:inputText id="text" value="#{expressionLanguageManagedBean.chaine}"/>
+            <h:commandButton value="Soumettre"/>
+            <h:panelGroup>
+                <h:panelGroup rendered="#{fn:contains(expressionLanguageManagedBean.chaine,'Davidson')}"><p>Affiché si chaine contient Davidson (sensible à la casse)</p></h:panelGroup>
+                <h:panelGroup rendered="#{fn:containsIgnoreCase(expressionLanguageManagedBean.chaine,'Davidson')}"><p>Affiché si chaine contient Davidson (insensible à la casse)</p></h:panelGroup>
+            </h:panelGroup>
+        </h:form>
+        <h2>Librairies utilitaires tierces</h2>
+        <ul>
+            <li><a href="http://showcase.omnifaces.org/">Omnifaces</a></li>
+            <li><a href="http://myfaces.apache.org/tomahawk-project/tomahawk20/">Apache tomahawk 2</a></li>
+        </ul>
         <p>
             <h:link value="Retour" outcome="/index"/>
         </p>
