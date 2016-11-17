@@ -22,7 +22,7 @@ public class ListeFormateursManagedBean {
 
     @PostConstruct
     private void init() {
-        formateurs = formateurService.findAll();
+        formateurs = formateurService.findAllFormateursNativeSql();
     }
 
     public List<Formateur> getFormateurs() {

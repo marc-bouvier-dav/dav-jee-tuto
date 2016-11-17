@@ -28,9 +28,11 @@ package fr.davidson.sample.jee.domain.service.impl;
 
 import fr.davidson.sample.jee.domain.model.formation.Formateur;
 import fr.davidson.sample.jee.domain.service.FormateurService;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -45,6 +47,13 @@ public class FormateurImpl extends AbstractCrudService<Formateur> implements For
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @Override
+    public List<Formateur> findAllFormateursNativeSql(){
+    Query nativeQuery = em.createNativeQuery("SELECT * FROM FORMATEUR", Formateur.class);
+    List results = nativeQuery.getResultList();
+        return results;
     }
 
     public FormateurImpl() {

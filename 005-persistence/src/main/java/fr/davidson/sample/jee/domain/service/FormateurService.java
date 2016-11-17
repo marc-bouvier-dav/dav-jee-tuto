@@ -50,7 +50,9 @@ public interface FormateurService {
     List<Formateur> findRange(int[] range);
 
     int count();
-    
+
+    public List<Formateur> findAllFormateursNativeSql();
+
     
 
 }
