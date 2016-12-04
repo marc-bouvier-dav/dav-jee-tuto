@@ -59,3 +59,5 @@ Temporary Items
 /101-spring-mvc-jsp/target/
 /005-persistence/target/
 /006-cdi/target/
+/007-jax-ws-server/jax-ws-server-api/target/
+/007-jax-ws-server/007-jax-ws-server-api/target/
