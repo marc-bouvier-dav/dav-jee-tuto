@@ -6,15 +6,18 @@
         <groupId>fr.davidson.sample.jee</groupId>
         <artifactId>007-jax-ws-server</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>007-jax-ws-server-api</artifactId>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>007-jax-ws-server-api</name>
 
-    <description>Exemple de web service SOAP utilisant Jax-WS</description>
+    <description>Exemple de web service SOAP utilisant Jax-WS
+    API séparée de l'implémentation car les clients n'ont pas besoin de savoir 
+        comment est faite l'implémentation</description>
         
     <dependencies>
         <dependency>

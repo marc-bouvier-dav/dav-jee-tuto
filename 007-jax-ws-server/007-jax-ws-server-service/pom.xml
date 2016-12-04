@@ -6,6 +6,7 @@
         <groupId>fr.davidson.sample.jee</groupId>
         <artifactId>007-jax-ws-server</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>007-jax-ws-server-service</artifactId>
