@@ -31,8 +31,6 @@ package fr.davidson.sample.jee.jaxws.client;
 import fr.davidson.sample.jee.jaxws.service.Hello;
 import fr.davidson.sample.jee.jaxws.service.HelloService;
 import java.net.MalformedURLException;
-import java.net.URL;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.xml.ws.WebServiceRef;
@@ -53,12 +51,7 @@ public class Client {
             ,value = HelloService.class)
     private Hello hello;
     
-    
-   @PostConstruct
-    void init(){
-//         hello = service.getHelloPort();
-    }
-    
+       
     public  void hello() throws MalformedURLException {
        
         

@@ -2,6 +2,10 @@
 Exemples d'utilisation de Jax-ws : client standalone appelant un service web jax-ws
 ===================================================================================
 
+Ce client autonome n'est pas géré par un conteneur Java EE. Il peut néanmoins 
+communiquer avec un service Web Jax-ws en instanciant les proxy générés à partir 
+du wsdl du service Web.
+
 Prérequis
 ---------
 Java version 7 ou plus

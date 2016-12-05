@@ -1,6 +1,9 @@
 [![alt text](/dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
-Exemples d'utilisation de Jax-ws : client standalone appelant un service web jax-ws
-===================================================================================
+Exemples d'utilisation de Jax-ws : client managé par Java EE
+============================================================
+
+Cette applicationn comunique avec un service web Jax-WS via un client injecté 
+avec l'annotation `@WebServiceRef`
 
 Prérequis
 ---------
