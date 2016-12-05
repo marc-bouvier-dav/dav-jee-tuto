@@ -27,9 +27,12 @@
 package fr.davidson.sample.jee.jaxrs.resource;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
@@ -38,6 +41,9 @@ import javax.ws.rs.core.MediaType;
 @Path("")
 public class DocumentationResource {
 
+    @Context
+    private UriInfo context;
+    
     /**
      * Il est possible de retourner des données dans des formats différents.
      * Selon les headers envoyés par le client la méthode retournera la donnée
@@ -64,9 +70,13 @@ public class DocumentationResource {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public RestDocumentation jsonDocumentation() {
         final RestDocumentation restDocumentation = new RestDocumentation();
-        restDocumentation.addResourceHelp("canard", "GET", "Renvoie un canard qui fait coin coin!");
+        restDocumentation.addResourceHelp(context.getBaseUri()+"canard", "GET", "Renvoie un canard qui fait coin coin!"
+        ,"curl "+context.getBaseUri()+"canard"+" | json_pp"
+        ,"curl -X OPTIONS "+context.getBaseUri()+"canard");
+        restDocumentation.addResourceHelp(context.getBaseUri().toString(),"GET", "Cette documentation"
+        ,"curl "+context.getBaseUri().toString()+" | json_pp"
+        ,"curl -X OPTIONS "+context.getBaseUri().toString());
         return restDocumentation;
     }
-    
-
+ 
 }

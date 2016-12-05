@@ -26,6 +26,9 @@
  */
 package fr.davidson.sample.jee.jaxrs.resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -36,11 +39,17 @@ public class RestResourceHelp {
     private String path;
     private String description;
     private String method;
+    private List<String> exemples=new ArrayList<String>();
 
     public RestResourceHelp(String path, String method, String help) {
         this.path = path;
         this.description = help;
         this.method = method;
+    }
+    
+    public void addExemple(final String exemple) {
+        exemples.add(exemple);
+                
     }
 
     public RestResourceHelp() {
@@ -70,5 +79,15 @@ public class RestResourceHelp {
     public void setMethod(String method) {
         this.method = method;
     }
+
+    public List<String> getExemples() {
+        return exemples;
+    }
+
+    public void setExemples(List<String> exemples) {
+        this.exemples = exemples;
+    }
+    
+    
 
 }

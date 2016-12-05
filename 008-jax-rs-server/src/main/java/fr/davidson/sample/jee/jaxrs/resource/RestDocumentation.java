@@ -27,7 +27,10 @@
 package fr.davidson.sample.jee.jaxrs.resource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -36,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "restDocumentation")
 public class  RestDocumentation {
+
     
    private  List<RestResourceHelp> resourceHelps;
 
@@ -44,8 +48,9 @@ public class  RestDocumentation {
     }
     
     public RestResourceHelp addResourceHelp(
-            final String path,final String method,final String help){
+            final String path,final String method,final String help,final String ... exemples){
         final RestResourceHelp restResourceHelp = new RestResourceHelp(path,method,help);
+        restResourceHelp.getExemples().addAll(Arrays.asList(exemples));
         resourceHelps.add(restResourceHelp);
         return restResourceHelp;
     }
