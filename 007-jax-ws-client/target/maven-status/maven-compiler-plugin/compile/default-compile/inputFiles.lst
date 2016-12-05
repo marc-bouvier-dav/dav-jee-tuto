@@ -1,4 +1,7 @@
-/home/osboxes/NetBeansProjects/dav-j2ee-tuto/006-cdi/src/main/java/fr/davidson/sample/jee/cdi/Hello.java
-/home/osboxes/NetBeansProjects/dav-j2ee-tuto/006-cdi/src/main/java/fr/davidson/sample/jee/cdi/Exemples.java
-/home/osboxes/NetBeansProjects/dav-j2ee-tuto/006-cdi/src/main/java/fr/davidson/sample/jee/cdi/interceptor/Auditor.java
-/home/osboxes/NetBeansProjects/dav-j2ee-tuto/006-cdi/src/main/java/fr/davidson/sample/jee/cdi/interceptor/Audited.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/api/ObjectFactory.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/service/HelloServiceImplService.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/api/package-info.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/api/Hello.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/client/Main.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/api/HelloResponse.java
+/home/osboxes/NetBeansProjects/dav-j2ee-tuto/007-jax-ws-client/src/main/java/fr/davidson/sample/jee/jaxws/service/HelloService.java

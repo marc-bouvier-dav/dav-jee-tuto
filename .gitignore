@@ -62,3 +62,6 @@ Temporary Items
 /007-jax-ws-server/jax-ws-server-api/target/
 /007-jax-ws-server/007-jax-ws-server-api/target/
 /007-jax-ws-server/007-jax-ws-server-service/target/
+/sample-Calculator/CalculatorApp/nbproject/private/
+/sample-Calculator/CalculatorClientApp/nbproject/private/
+/sample-Calculator/CalculatorClientApp/build/

@@ -5,79 +5,112 @@
     <groupId>fr.davidson.sample.jee</groupId>
     <artifactId>007-jax-ws-server</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+
+    <packaging>war</packaging>
 
     <name>007-jax-ws-server</name>
 
     <description>Exemple de web service SOAP utilisant Jax-WS</description>
-    <organization>
-        <name>Davidson Consulting</name>
-        <url>http://www.davidson.fr/</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>Unlicense</name>
-            <url>http://unlicense.org/</url>
-            <comments>This is free and unencumbered software released into the public domain.</comments>
-        </license>
-    </licenses>
-    <developers>
-        <developer>
-            <email>marc.bouvier@davidson.fr</email>
-            <name>marc.bouvier@davidson.fr</name>
-            <organization>Davidson Consulting</organization>
-            <organizationUrl>http://www.davidson.fr/</organizationUrl>
-        </developer>
-    </developers>
-
-    <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    
-    <modules>
-        <module>007-jax-ws-server-api</module>
-        <module>007-jax-ws-server-service</module>
-    </modules>
-    
-    <dependencyManagement>
-        <dependencies>
+        
+    <dependencies>
        
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-web-api</artifactId>
-                <version>7.0</version>
-                <scope>provided</scope>
-            </dependency>
-        
-            <dependency>
-                <groupId>fr.davidson.sample.jee</groupId>
-                <artifactId>007-jax-ws-server-api</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-        
-            <dependency>
-                <groupId>fr.davidson.sample.jee</groupId>
-                <artifactId>007-jax-ws-server-service</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+     
+    </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${endorsed.dir}</outputDirectory>
+                            <silent>true</silent>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>javax</groupId>
+                                    <artifactId>javaee-endorsed-api</artifactId>
+                                    <version>7.0</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <vmArgs>
+                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                    </vmArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <configuration>
+                            <sei>fr.davidson.sample.jee.jaxws.service.Hello</sei>
+                            <genWsdl>true</genWsdl>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-stubs</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            
+                            <wsdlDirectory>target/generated-sources/wsdl</wsdlDirectory>
+                            <wsdlFiles>                   
+                                <wsdlFile>HelloService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://localhost:8080/helloService</wsdlLocation> 
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>package-wsclient-jars</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classesDirectory>target/generated-sources/wsimport</classesDirectory>
+                            <classifier>wsclient</classifier>
+                        </configuration>
+                    </execution>
+                    
+                </executions>
             </plugin>
         </plugins>
     </build>

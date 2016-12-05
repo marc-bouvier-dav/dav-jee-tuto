@@ -1,4 +1,7 @@
-fr/davidson/sample/jee/cdi/Hello.class
-fr/davidson/sample/jee/cdi/interceptor/Audited.class
-fr/davidson/sample/jee/cdi/Exemples.class
-fr/davidson/sample/jee/cdi/interceptor/Auditor.class
+fr/davidson/sample/jee/jaxws/service/HelloService.class
+fr/davidson/sample/jee/jaxws/api/HelloResponse.class
+fr/davidson/sample/jee/jaxws/api/ObjectFactory.class
+fr/davidson/sample/jee/jaxws/client/Main.class
+fr/davidson/sample/jee/jaxws/api/package-info.class
+fr/davidson/sample/jee/jaxws/service/HelloServiceImplService.class
+fr/davidson/sample/jee/jaxws/api/Hello.class
