@@ -28,6 +28,8 @@ package fr.davidson.sample.jee.jaxws.client;
 
 
 
+import fr.davidson.sample.jee.jaxws.service.Hello;
+import fr.davidson.sample.jee.jaxws.service.HelloService;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -39,21 +41,22 @@ import java.net.URL;
 public class Main {
    
     public static void main(String[] args) throws MalformedURLException {
-//        HelloService helloService = getHelloService();
-//        System.out.println(helloService.hello("Davidson"));
+        
+        Hello helloService = getHelloService();
+        System.out.println(helloService.hello("Davidson"));
         
     }
 
-//    /**
-//     * Invocation du proxy client pour le service web
-//     * @return
-//     * @throws MalformedURLException 
-//     */
-//    private static HelloService getHelloService() throws MalformedURLException {
-//        HelloServiceImplService helloServiceImplService = new HelloServiceImplService(
-//                new URL("http://localhost:8080/007-jax-ws-server-service/HelloServiceImplService?wsdl"));
-//        HelloService port = helloServiceImplService.getHelloServiceImplPort();
-//        return port;
-//    }
+    /**
+     * Invocation du proxy client pour le service web
+     * @return
+     * @throws MalformedURLException 
+     */
+    private static Hello getHelloService() throws MalformedURLException {
+        HelloService helloServiceImplService = new HelloService(
+                new URL("http://localhost:8080/007-jax-ws-server-service/HelloServiceImplService?wsdl"));
+        Hello port = helloServiceImplService.getHelloPort();
+        return port;
+    }
 
 }

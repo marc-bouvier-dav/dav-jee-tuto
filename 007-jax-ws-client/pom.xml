@@ -44,7 +44,7 @@
 	</dependency>
         <dependency>
             <groupId>fr.davidson.sample.jee</groupId>
-            <artifactId>jax-ws-server</artifactId>
+            <artifactId>007-jax-ws-server</artifactId>
             <type>jar</type>
             <classifier>wsclient</classifier>
             <version>1.0-SNAPSHOT</version>

@@ -69,6 +69,8 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>generate-client-wsdl</id>
+                        <phase>process-classes</phase>
                         <goals>
                             <goal>wsgen</goal>
                         </goals>
@@ -77,19 +79,18 @@
                             <genWsdl>true</genWsdl>
                         </configuration>
                     </execution>
+                    <!-- Single generation of client proxy because WSDLs share classes. -->
                     <execution>
-                        <id>generate-stubs</id>
+                        <id>generate-proxies</id>
                         <phase>process-classes</phase>
                         <goals>
                             <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            
                             <wsdlDirectory>target/generated-sources/wsdl</wsdlDirectory>
-                            <wsdlFiles>                   
-                                <wsdlFile>HelloService.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <wsdlLocation>http://localhost:8080/helloService</wsdlLocation> 
+<!--                            <destDir>target/wsgen/classes</destDir>-->
+<!--                            <packageName>fr.davidson.sample.jee.jaxws.service.proxy</packageName>-->
+                            <xnocompile>false</xnocompile>
                         </configuration>
                     </execution>
                 </executions>
@@ -105,13 +106,14 @@
                             <goal>jar</goal>
                         </goals>
                         <configuration>
-                            <classesDirectory>target/generated-sources/wsimport</classesDirectory>
+                            <!--<classesDirectory>target/wgen/classes</classesDirectory>-->
                             <classifier>wsclient</classifier>
                         </configuration>
                     </execution>
                     
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
