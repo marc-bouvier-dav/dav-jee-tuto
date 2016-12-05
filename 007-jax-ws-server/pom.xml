@@ -6,115 +6,38 @@
     <artifactId>007-jax-ws-server</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>007-jax-ws-server</name>
 
     <description>Exemple de web service SOAP utilisant Jax-WS</description>
         
-    <dependencies>
-       
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-     
-    </dependencies>
+    <modules>
+        <module>007-jax-ws-server-service</module>
+        <module>007-jax-ws-server-endpoint</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.davidson.sample.jee</groupId>
+                <artifactId>007-jax-ws-server-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.davidson.sample.jee</groupId>
+                <artifactId>007-jax-ws-server-endpoint</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.3</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.4.1</version>
-                <configuration>
-                    <vmArgs>
-                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                    </vmArgs>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-client-wsdl</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>wsgen</goal>
-                        </goals>
-                        <configuration>
-                            <sei>fr.davidson.sample.jee.jaxws.service.Hello</sei>
-                            <genWsdl>true</genWsdl>
-                        </configuration>
-                    </execution>
-                    <!-- Single generation of client proxy because WSDLs share classes. -->
-                    <execution>
-                        <id>generate-proxies</id>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlDirectory>target/generated-sources/wsdl</wsdlDirectory>
-<!--                            <destDir>target/wsgen/classes</destDir>-->
-<!--                            <packageName>fr.davidson.sample.jee.jaxws.service.proxy</packageName>-->
-                            <xnocompile>false</xnocompile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>package-wsclient-jars</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <!--<classesDirectory>target/wgen/classes</classesDirectory>-->
-                            <classifier>wsclient</classifier>
-                        </configuration>
-                    </execution>
-                    
-                </executions>
-            </plugin>
-
-        </plugins>
-    </build>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    
+    </dependencyManagement>
+   
 
 </project>

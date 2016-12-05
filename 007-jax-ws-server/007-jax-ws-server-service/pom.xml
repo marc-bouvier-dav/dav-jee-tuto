@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>fr.davidson.sample.jee</groupId>
+        <artifactId>007-jax-ws-server</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>007-jax-ws-server-service</artifactId>
+    <packaging>jar</packaging>
+
+    <name>007-jax-ws-server-service</name>
+
+    <description>Exemple de web service SOAP utilisant Jax-WS</description>
+        
+    <dependencies>
+       
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+        </dependency>
+     
+    </dependencies>
+    <build>
+       
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <vmArgs>
+                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                    </vmArgs>
+                </configuration>
+                <executions>
+                    <!-- Génération du WSDL -->
+                    <execution>
+                        <id>generate-client-wsdl</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>wsgen</goal>
+                        </goals>
+                        <configuration>
+                            <sei>fr.davidson.sample.jee.jaxws.service.Hello</sei>
+                            <genWsdl>true</genWsdl>
+                        </configuration>
+                    </execution>
+                    <!-- A partir du WSDL, génération des classes proxy pour le client -->
+                    <execution>
+                        <id>generate-proxies</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlDirectory>target/generated-sources/wsdl</wsdlDirectory>
+                            <destDir>target/wsimport/classes</destDir>
+                            
+                            <wsdlFiles>                   
+                                <wsdlFile>HelloService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <xnocompile>false</xnocompile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <!-- Packaging d'un arteract avec le qualifier wsclient pour 
+                    que le client puisse dépendre uniquement du proxy généré 
+                    à partir du WSDL -->
+                    <execution>
+                        <id>package-wsclient-jars</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classesDirectory>target/wsimport/classes</classesDirectory>
+                            <classifier>wsclient</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

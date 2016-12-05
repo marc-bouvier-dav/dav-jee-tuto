@@ -24,40 +24,27 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.jaxws.client;
+package fr.davidson.sample.jee.jaxws.service;
 
 
-
-import fr.davidson.sample.jee.jaxws.service.Hello;
-import fr.davidson.sample.jee.jaxws.service.HelloService;
-import java.net.MalformedURLException;
-import java.net.URL;
-
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
+import javax.jws.WebService;
 
 /**
- *
+ * Implémentation du service web de salutation.
  * @author marc.bouvier@davidson.fr
  */
-public class Main {
-   
-    public static void main(String[] args) throws MalformedURLException {
-        
-        Hello helloService = getHelloService();
-        System.out.println(helloService.sayHello("Davidson"));
-        
+@WebService
+public class Hello{
+
+    @WebMethod(operationName = "sayHello")
+    @WebResult(name = "helloResult")
+    public String sayHello(@WebParam(name = "who") String who) {
+        return "Hello " + who+"!";
     }
 
-    /**
-     * Invocation du proxy client pour le service web
-     * @return
-     * @throws MalformedURLException 
-     */
-    private static Hello getHelloService() throws MalformedURLException {
-        URL endpointUrl = new URL("http://localhost:8080/007-jax-ws-server/HelloService?wsdl");
-        
-        HelloService helloService = new HelloService(endpointUrl) ;
-        return helloService.getHelloPort();
-        
-    }
 
+    
 }
