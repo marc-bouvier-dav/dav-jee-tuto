@@ -35,7 +35,8 @@ import java.net.URL;
 
 
 /**
- *
+ * Cette application simple montre comment initialiser un proxy d'un service web
+ * jax-ws et comment appeler une web méthode depuis ce client.
  * @author marc.bouvier@davidson.fr
  */
 public class Main {
@@ -49,7 +50,7 @@ public class Main {
 
     /**
      * Invocation du proxy client pour le service web
-     * @return
+     * @return proxy
      * @throws MalformedURLException 
      */
     private static Hello getHelloService() throws MalformedURLException {

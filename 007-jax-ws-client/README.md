@@ -1,16 +1,30 @@
 [![alt text](/dav_logo_small.png "Davidson Consulting")](http://www.davidson.fr/)
-Exemples d'utilisation de Jax-ws : client 
-==================================
+Exemples d'utilisation de Jax-ws : client standalone appelant un service web jax-ws
+===================================================================================
 
 Prérequis
 ---------
 Java version 7 ou plus
 
-Pour régénérer les classes du client de service web, 
- - executer le service web 007-jax-ws-server-service
- - se positionner dans 007-jax-ws-client/src/main/java
- - exécuter la commande `wsimport -keep -verbose http://localhost:8080/007-jax-ws-server-service/HelloServiceImplService?wsdl`
+Ce client nécessite la dépendence suivante pour fonctionner
 
+```
+    <dependency>
+        <groupId>fr.davidson.sample.jee</groupId>
+        <artifactId>007-jax-ws-server-service</artifactId>           
+        <classifier>wsclient</classifier>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+```
+
+Cette dépendance est générée par maven en construisant le module 007-jax-ws-server par
+
+```
+   mvn clean install
+```
+
+Pour que le client puisse appeler le service web, il faut que ce dernier soit 
+déployé sur un serveur java EE tel que Glassfish ou Payara
 
 Exemples
 --------
