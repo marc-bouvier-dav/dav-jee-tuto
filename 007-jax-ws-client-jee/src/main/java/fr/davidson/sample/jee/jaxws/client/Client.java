@@ -32,6 +32,10 @@ import fr.davidson.sample.jee.jaxws.service.Hello;
 import fr.davidson.sample.jee.jaxws.service.HelloService;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.inject.Named;
+import javax.xml.ws.WebServiceRef;
 
 
 /**
@@ -39,26 +43,28 @@ import java.net.URL;
  * jax-ws et comment appeler une web méthode depuis ce client.
  * @author marc.bouvier@davidson.fr
  */
-public class Main {
-   
-    public static void main(String[] args) throws MalformedURLException {
+@Named
+public class Client {
+    
+    //    private  HelloService service;
+    
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/007-jax-ws-server-endpoint/HelloService?wsdl"
+            ,type = Hello.class
+            ,value = HelloService.class)
+    private Hello hello;
+    
+    
+   @PostConstruct
+    void init(){
+//         hello = service.getHelloPort();
+    }
+    
+    public  void hello() throws MalformedURLException {
+       
         
-        Hello hello = getHelloService();
         System.out.println(hello.sayHello("Davidson"));
         
     }
 
-    /**
-     * Invocation du proxy client pour le service web
-     * @return proxy
-     * @throws MalformedURLException 
-     */
-    private static Hello getHelloService() throws MalformedURLException {
-        URL endpointUrl = new URL("http://localhost:8080/007-jax-ws-server-endpoint/HelloService?wsdl");
-        
-        HelloService helloService = new HelloService(endpointUrl) ;
-        return helloService.getHelloPort();
-        
-    }
 
 }
