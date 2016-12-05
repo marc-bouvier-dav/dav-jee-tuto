@@ -31,7 +31,7 @@ import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @ManagedBean(name = "customValidationManagedBean")
 @ViewScoped

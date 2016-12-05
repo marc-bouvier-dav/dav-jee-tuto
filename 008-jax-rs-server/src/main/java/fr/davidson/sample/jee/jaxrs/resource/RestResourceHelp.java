@@ -24,40 +24,51 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.web.converter;
+package fr.davidson.sample.jee.jaxrs.resource;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import fr.davidson.sample.jee.domain.service.FormationService;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 /**
  *
- * @author marc.bouvier@davidson.fr
+ * @author osboxes
  */
-@Named
-public class FormationConverter implements Converter{
-@Inject private FormationService formationService;
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Formation formation= null;
-        if(value!=null && Long.valueOf(value) !=null){
-            formation = formationService.find(Long.valueOf(value));
-        }
-        return formation;
+public class RestResourceHelp {
+
+    private String path;
+    private String description;
+    private String method;
+
+    public RestResourceHelp(String path, String method, String help) {
+        this.path = path;
+        this.description = help;
+        this.method = method;
     }
 
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String resultat = null;
-        if(value instanceof Formation){
-            resultat = String.valueOf(((Formation)value).getId());
-        }
-        return resultat;
+    public RestResourceHelp() {
     }
-    
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
 }

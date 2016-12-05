@@ -69,3 +69,9 @@ Temporary Items
 /007-jax-ws-client-standalone/target/
 /007-jax-ws-client-standalone (copy)/target/
 /007-jax-ws-client-jee/target/
+/007-jax-ws-client-jee (copy)/target/
+/008-jax-rs-client-jee/target/
+/008-jax-rs-server/007-jax-ws-server-endpoint/target/
+/008-jax-rs-server/007-jax-ws-server-service/target/
+/008-jax-rs-client-standalone/target/
+/008-jax-rs-server/target/

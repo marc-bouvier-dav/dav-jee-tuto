@@ -38,7 +38,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @Named
 public class FormateurConverter implements Converter{

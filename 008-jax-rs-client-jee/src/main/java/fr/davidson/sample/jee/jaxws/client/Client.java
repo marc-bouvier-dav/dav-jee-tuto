@@ -24,40 +24,40 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.web.converter;
+package fr.davidson.sample.jee.jaxws.client;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import fr.davidson.sample.jee.domain.service.FormationService;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
+
+
+import fr.davidson.sample.jee.jaxws.service.Hello;
+import fr.davidson.sample.jee.jaxws.service.HelloService;
+import java.net.MalformedURLException;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
+import javax.xml.ws.WebServiceRef;
+
 
 /**
- *
+ * Cette application simple montre comment initialiser un proxy d'un service web
+ * jax-ws et comment appeler une web méthode depuis ce client.
  * @author marc.bouvier@davidson.fr
  */
 @Named
-public class FormationConverter implements Converter{
-@Inject private FormationService formationService;
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Formation formation= null;
-        if(value!=null && Long.valueOf(value) !=null){
-            formation = formationService.find(Long.valueOf(value));
-        }
-        return formation;
+public class Client {
+    
+    //    private  HelloService service;
+    
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/007-jax-ws-server-endpoint/HelloService?wsdl"
+            ,type = Hello.class
+            ,value = HelloService.class)
+    private Hello hello;
+    
+       
+    public  void hello() throws MalformedURLException {
+       
+        
+        System.out.println(hello.sayHello("Davidson"));
+        
     }
 
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String resultat = null;
-        if(value instanceof Formation){
-            resultat = String.valueOf(((Formation)value).getId());
-        }
-        return resultat;
-    }
-    
+
 }

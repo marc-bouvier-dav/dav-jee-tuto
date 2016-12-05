@@ -24,40 +24,23 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.web.converter;
+package fr.davidson.sample.jee.jaxrs.resource;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import fr.davidson.sample.jee.domain.service.FormationService;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  *
  * @author marc.bouvier@davidson.fr
  */
-@Named
-public class FormationConverter implements Converter{
-@Inject private FormationService formationService;
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Formation formation= null;
-        if(value!=null && Long.valueOf(value) !=null){
-            formation = formationService.find(Long.valueOf(value));
-        }
-        return formation;
-    }
-
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String resultat = null;
-        if(value instanceof Formation){
-            resultat = String.valueOf(((Formation)value).getId());
-        }
-        return resultat;
+@Path("canard")
+public class CanardResource {
+    
+    @GET
+    @Produces("text/html")
+    public String getHtml(){
+         return "<html lang=\"fr\"><body><h1>Canard</h1><p>Coin coin !</p></body></html>";
     }
     
 }

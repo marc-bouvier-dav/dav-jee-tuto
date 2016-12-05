@@ -33,7 +33,7 @@ import javax.validation.constraints.Pattern;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @ManagedBean(name = "beanValidationManagedBean")
 @ViewScoped

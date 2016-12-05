@@ -41,7 +41,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 @ManagedBean(name = "expressionLanguageManagedBean")
 @ViewScoped

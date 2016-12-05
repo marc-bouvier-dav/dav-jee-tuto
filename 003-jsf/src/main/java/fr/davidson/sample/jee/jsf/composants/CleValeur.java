@@ -28,7 +28,7 @@ package fr.davidson.sample.jee.jsf.composants;
 
 /**
  *
- * @author osboxes
+ * @author marc.bouvier@davidson.fr
  */
 public class CleValeur {
     

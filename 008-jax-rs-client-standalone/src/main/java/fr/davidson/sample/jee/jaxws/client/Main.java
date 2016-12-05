@@ -24,40 +24,41 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.web.converter;
+package fr.davidson.sample.jee.jaxws.client;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import fr.davidson.sample.jee.domain.service.FormationService;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
-import javax.inject.Named;
+
+
+import fr.davidson.sample.jee.jaxws.service.Hello;
+import fr.davidson.sample.jee.jaxws.service.HelloService;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 /**
- *
+ * Cette application simple montre comment initialiser un proxy d'un service web
+ * jax-ws et comment appeler une web méthode depuis ce client.
  * @author marc.bouvier@davidson.fr
  */
-@Named
-public class FormationConverter implements Converter{
-@Inject private FormationService formationService;
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Formation formation= null;
-        if(value!=null && Long.valueOf(value) !=null){
-            formation = formationService.find(Long.valueOf(value));
-        }
-        return formation;
+public class Main {
+   
+    public static void main(String[] args) throws MalformedURLException {
+        
+        Hello hello = getHelloService();
+        System.out.println(hello.sayHello("Davidson"));
+        
     }
 
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String resultat = null;
-        if(value instanceof Formation){
-            resultat = String.valueOf(((Formation)value).getId());
-        }
-        return resultat;
+    /**
+     * Invocation du proxy client pour le service web
+     * @return proxy
+     * @throws MalformedURLException 
+     */
+    private static Hello getHelloService() throws MalformedURLException {
+        URL endpointUrl = new URL("http://localhost:8080/007-jax-ws-server-endpoint/HelloService?wsdl");
+        
+        HelloService helloService = new HelloService(endpointUrl) ;
+        return helloService.getHelloPort();
+        
     }
-    
+
 }

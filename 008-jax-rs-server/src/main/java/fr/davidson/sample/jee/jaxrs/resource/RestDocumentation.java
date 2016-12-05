@@ -24,40 +24,40 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.web.converter;
+package fr.davidson.sample.jee.jaxrs.resource;
 
-import fr.davidson.sample.jee.domain.model.formation.Formation;
-import fr.davidson.sample.jee.domain.service.FormationService;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.inject.Inject;
-import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author marc.bouvier@davidson.fr
+ * @author osboxes
  */
-@Named
-public class FormationConverter implements Converter{
-@Inject private FormationService formationService;
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        Formation formation= null;
-        if(value!=null && Long.valueOf(value) !=null){
-            formation = formationService.find(Long.valueOf(value));
-        }
-        return formation;
+@XmlRootElement(name = "restDocumentation")
+public class  RestDocumentation {
+    
+   private  List<RestResourceHelp> resourceHelps;
+
+    public RestDocumentation() {
+        this.resourceHelps = new ArrayList<RestResourceHelp>();
+    }
+    
+    public RestResourceHelp addResourceHelp(
+            final String path,final String method,final String help){
+        final RestResourceHelp restResourceHelp = new RestResourceHelp(path,method,help);
+        resourceHelps.add(restResourceHelp);
+        return restResourceHelp;
     }
 
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        String resultat = null;
-        if(value instanceof Formation){
-            resultat = String.valueOf(((Formation)value).getId());
-        }
-        return resultat;
+    public List<RestResourceHelp> getResourceHelps() {
+        return resourceHelps;
     }
+
+    public void setResourceHelps(List<RestResourceHelp> resourceHelps) {
+        this.resourceHelps = resourceHelps;
+    }
+    
+    
     
 }
