@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.davidson.sample.jee</groupId>
-    <artifactId>007-jax-ws-client-standalone</artifactId>
+    <artifactId>008-jax-rs-client-standalone</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>007-jax-ws-client-standalone</name>
+    <name>008-jax-rs-client-standalone</name>
 
     <description>Client autonome d'un web service SOAP utilisant Jax-WS</description>
     <organization>
