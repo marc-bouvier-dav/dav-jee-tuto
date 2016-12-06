@@ -24,13 +24,11 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.jaxrs.resource;
+package fr.davidson.sample.jee.jaxrs.api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -62,6 +60,12 @@ public class  RestDocumentation {
     public void setResourceHelps(List<RestResourceHelp> resourceHelps) {
         this.resourceHelps = resourceHelps;
     }
+
+    @Override
+    public String toString() {
+        return "RestDocumentation{" + "resourceHelps=" + resourceHelps + '}';
+    }
+    
     
     
     

@@ -59,7 +59,30 @@
                     </execution>
                 </executions>
             </plugin>
-           
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <!-- Packaging d'un arteract avec le qualifier wsclient pour 
+                    que le client puisse dépendre uniquement du proxy généré 
+                    à partir du WSDL -->
+                    <execution>
+                        <id>package-wsclient-jars</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>fr/davidson/sample/jee/jaxrs/api/**</include>
+                            </includes>
+                            <classesDirectory>target/classes</classesDirectory>
+                            <classifier>api</classifier>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             
         </plugins>
     </build>

@@ -24,7 +24,7 @@
  * 
  * For more information, please refer to <http://unlicense.org>
  */
-package fr.davidson.sample.jee.jaxrs.resource;
+package fr.davidson.sample.jee.jaxrs.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +86,11 @@ public class RestResourceHelp {
 
     public void setExemples(List<String> exemples) {
         this.exemples = exemples;
+    }
+
+    @Override
+    public String toString() {
+        return "RestResourceHelp{" + "path=" + path + ", method=" + method + '}';
     }
     
     
