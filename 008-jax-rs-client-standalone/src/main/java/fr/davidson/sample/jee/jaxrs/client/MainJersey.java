@@ -44,7 +44,7 @@ public class MainJersey {
 
     public static void main(String[] args) throws MalformedURLException, IOException {
         
-        
+            //test 2
         
             
             System.out.println("Options : "+requestOptions("http://localhost:8080/008-jax-rs-server/?detail=true", "application/vnd.sun.wadl+xml"));
