@@ -43,20 +43,15 @@ import java.net.MalformedURLException;
 public class MainJersey {
 
     public static void main(String[] args) throws MalformedURLException, IOException {
-        
-        
-            //test
-            
-            System.out.println("Options : "+requestOptions("http://localhost:8080/008-jax-rs-server/?detail=true", "application/vnd.sun.wadl+xml"));
-            System.out.println("Get (xml): "+requestGet("http://localhost:8080/008-jax-rs-server/", "application/xml"));
-            System.out.println("Get (json): "+requestGet("http://localhost:8080/008-jax-rs-server/", "application/json"));
-            
 
-       
+        System.out.println("Options : " + requestOptions("http://localhost:8080/008-jax-rs-server/?detail=true", "application/vnd.sun.wadl+xml"));
+        System.out.println("Get (xml): " + requestGet("http://localhost:8080/008-jax-rs-server/", "application/xml"));
+        System.out.println("Get (json): " + requestGet("http://localhost:8080/008-jax-rs-server/", "application/json"));
+
     }
 
-     private static String requestGet(final String resourceUrl, final String acceptedResultMimeType) 
-             throws ClientHandlerException, UniformInterfaceException {
+    private static String requestGet(final String resourceUrl, final String acceptedResultMimeType)
+            throws ClientHandlerException, UniformInterfaceException {
         Client client = Client.create();
         WebResource webResource = client.resource(resourceUrl);
         ClientResponse response = webResource.accept(acceptedResultMimeType)
@@ -70,8 +65,8 @@ public class MainJersey {
         System.out.println(output);
         return output;
     }
-    
-    private static String requestOptions(final String resourceUrl, final String acceptedResultMimeType) 
+
+    private static String requestOptions(final String resourceUrl, final String acceptedResultMimeType)
             throws ClientHandlerException, UniformInterfaceException {
         Client client = Client.create();
         WebResource webResource = client.resource(resourceUrl);
