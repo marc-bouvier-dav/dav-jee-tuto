@@ -1,9 +1,6 @@
 TODO
 
-- projet de micro service en thin war
-- lancement avec docker
-- possibilité de lancer la meme chose sur différents serveurs
-- comme adam bien
+- connecter le service à une source de données
 
 Créer l'image pour docker
 
